@@ -5,10 +5,9 @@ permissions:
   pull-requests: write
 
 on:
-  push:
-    branches: ['*', '!main', '!dev']
   pull_request:
     branches: ['*', '!main']
+    types: [opened, synchronize, reopened]
   workflow_dispatch:
 
 jobs:
