@@ -32,5 +32,6 @@ export default defineConfig({
     },
     // @vitest/ui
     reporters: ['default', 'html'],
+    api: { port: 51204, strictPort: true },
   },
 });
