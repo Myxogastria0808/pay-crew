@@ -1,10 +1,26 @@
 /// <reference types="vitest" />
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react-swc';
+import { sentryVitePlugin } from '@sentry/vite-plugin';
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  server: {
+    host: true,
+    port: 5173,
+    strictPort: true,
+  },
+  plugins: [
+    react(),
+    sentryVitePlugin({
+      org: process.env.SENTRY_ORG,
+      project: process.env.SENTRY_PROJECT,
+      authToken: process.env.SENTRY_AUTH_TOKEN,
+    }),
+  ],
+  build: {
+    sourcemap: true,
+  },
   test: {
     environment: 'happy-dom',
     // @vitest/coverage-v8
@@ -16,5 +32,6 @@ export default defineConfig({
     },
     // @vitest/ui
     reporters: ['default', 'html'],
+    api: { port: 51204, strictPort: true },
   },
 });

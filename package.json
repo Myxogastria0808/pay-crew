@@ -60,10 +60,18 @@
   },
   "homepage": "https://github.com/Myxogastria0808/pay-crew/",
   "packageManager": "pnpm@10.13.1",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@sentry/cli",
+      "workerd"
+    ]
+  },
   "devDependencies": {
     "@astrojs/check": "catalog:docs",
     "@cloudflare/workers-types": "catalog:backend",
     "@eslint/js": "catalog:frontend",
+    "@sentry/react": "catalog:frontend",
+    "@sentry/vite-plugin": "catalog:frontend",
     "@types/pg": "catalog:backend",
     "@types/react": "catalog:frontend",
     "@types/react-dom": "catalog:frontend",

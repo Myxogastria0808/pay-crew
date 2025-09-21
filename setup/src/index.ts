@@ -7,13 +7,14 @@ const main = () => {
 
   // Check current directory is project root
   if (!fs.existsSync('pay-crew')) {
-    throw new Error('This script must be run from the root directory of the project.');
+    throw new Error('This script must be run from the root directory of the project');
   }
 
   // Load environment variables from .env file
-  const dbConfig = dotenvLoader();
+  const envConfig = dotenvLoader();
 
   // Create secret configuration files
+  // backend
   const wranglerData = `{
     "name": "pay-crew-backend",
     "main": "src/index.ts",
@@ -25,16 +26,24 @@ const main = () => {
         {
             "binding": "HYPERDRIVE",
             "id": "dummy",
-            "localConnectionString": "postgresql://${dbConfig.postgresUser}:${dbConfig.postgresPassword}@localhost:${dbConfig.postgresPort}/${dbConfig.postgresDb}"
+            "localConnectionString": "postgresql://${envConfig.backendConfig.postgresUser ?? ''}:${envConfig.backendConfig.postgresPassword ?? ''}@localhost:${envConfig.backendConfig.postgresPort ?? ''}/${envConfig.backendConfig.postgresDb ?? ''}"
         }
     ]
 }
 `;
   fileWriter('./products/backend/wrangler.local.jsonc', wranglerData);
 
-  const dotEnvData = `POSTGRES_URL=postgresql://${dbConfig.postgresUser}:${dbConfig.postgresPassword}@localhost:${dbConfig.postgresPort}/${dbConfig.postgresDb}
+  const backendDotenvData = `POSTGRES_URL=postgresql://${envConfig.backendConfig.postgresUser ?? ''}:${envConfig.backendConfig.postgresPassword ?? ''}@localhost:${envConfig.backendConfig.postgresPort ?? ''}/${envConfig.backendConfig.postgresDb ?? ''}
 `;
-  fileWriter('./products/backend/.env', dotEnvData);
+  fileWriter('./products/backend/.env', backendDotenvData);
+
+  // frontend
+  const frontendDotenvData = `VITE_SENTRY_DSN=${envConfig.frontendConfig.VITE_SENTRY_DSN ?? ''}
+SENTRY_AUTH_TOKEN=${envConfig.frontendConfig.SENTRY_AUTH_TOKEN ?? ''}
+SENTRY_ORG=${envConfig.frontendConfig.SENTRY_ORG ?? ''}
+SENTRY_PROJECT=${envConfig.frontendConfig.SENTRY_PROJECT ?? ''}
+`;
+  fileWriter('./products/frontend/.env', frontendDotenvData);
 };
 
 main();
