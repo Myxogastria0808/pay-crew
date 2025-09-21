@@ -1,29 +1,53 @@
 import dotenv from 'dotenv';
 import fs from 'fs';
-import { DatabaseConfig } from './types';
+import { DatabaseConfig, EnvConfig, FrontendConfig } from './types';
 
-export const dotenvLoader = (): DatabaseConfig => {
+export const dotenvLoader = (): EnvConfig => {
   dotenv.config();
-  console.info('Environment variables loaded from .env file.');
+  console.info('Environment variables loaded from .env file');
   console.table({
-    POSTGRES_USER: process.env.POSTGRES_USER,
-    POSTGRES_PASSWORD: process.env.POSTGRES_PASSWORD ? '******' : null,
-    POSTGRES_DB: process.env.POSTGRES_DB,
-    POSTGRES_PORT: process.env.POSTGRES_PORT,
+    VITE_SENTRY_DSN: process.env.VITE_SENTRY_DSN ? '*****' : null,
+    SENTRY_AUTH_TOKEN: process.env.SENTRY_AUTH_TOKEN ? '*****' : null,
+    SENTRY_ORG: process.env.SENTRY_ORG ?? null,
+    SENTRY_PROJECT: process.env.SENTRY_PROJECT ?? null,
+    POSTGRES_USER: process.env.POSTGRES_USER ?? null,
+    POSTGRES_PASSWORD: process.env.POSTGRES_PASSWORD ? '*****' : null,
+    POSTGRES_DB: process.env.POSTGRES_DB ?? null,
+    POSTGRES_PORT: process.env.POSTGRES_PORT ?? null,
   });
 
-  const dbConfig: DatabaseConfig = {
-    postgresUser: process.env.POSTGRES_USER || null,
-    postgresPassword: process.env.POSTGRES_PASSWORD || null,
-    postgresDb: process.env.POSTGRES_DB || null,
+  const frontendConfig: FrontendConfig = {
+    VITE_SENTRY_DSN: process.env.VITE_SENTRY_DSN ?? null,
+    SENTRY_AUTH_TOKEN: process.env.SENTRY_AUTH_TOKEN ?? null,
+    SENTRY_ORG: process.env.SENTRY_ORG ?? null,
+    SENTRY_PROJECT: process.env.SENTRY_PROJECT ?? null,
+  };
+  const backendConfig: DatabaseConfig = {
+    postgresUser: process.env.POSTGRES_USER ?? null,
+    postgresPassword: process.env.POSTGRES_PASSWORD ?? null,
+    postgresDb: process.env.POSTGRES_DB ?? null,
     postgresPort: process.env.POSTGRES_PORT ? parseInt(process.env.POSTGRES_PORT, 10) : null,
   };
 
-  if (!dbConfig.postgresUser || !dbConfig.postgresPassword || !dbConfig.postgresDb || !dbConfig.postgresPort) {
-    throw new Error('Missing required database configuration in environment variables.');
+  if (
+    !frontendConfig.VITE_SENTRY_DSN ||
+    !frontendConfig.SENTRY_AUTH_TOKEN ||
+    !frontendConfig.SENTRY_ORG ||
+    !frontendConfig.SENTRY_PROJECT ||
+    !backendConfig.postgresUser ||
+    !backendConfig.postgresPassword ||
+    !backendConfig.postgresDb ||
+    !backendConfig.postgresPort
+  ) {
+    throw new Error('Missing required project configuration in environment variables');
   }
 
-  return dbConfig;
+  const envConfig = {
+    frontendConfig,
+    backendConfig,
+  };
+
+  return envConfig;
 };
 
 export const fileWriter = (path: string, data: string) => {
@@ -32,5 +56,5 @@ export const fileWriter = (path: string, data: string) => {
       throw new Error(`Failed to write ${path}: ${error.message}`);
     }
   });
-  console.info(`Succeeded to write ${path}.`);
+  console.info(`Succeeded to write ${path}`);
 };
