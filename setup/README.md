@@ -1,4 +1,4 @@
-# pat-crew Setup
+# pay-crew Setup
 
 ## 概要
 
