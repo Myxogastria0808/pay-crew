@@ -78,7 +78,7 @@ sudo docker compose down
 - クリーンアップ
 
 ```sh
-docker-compose down --rmi all --volumes
+docker compose down --rmi all --volumes
 ```
 
 ## ドキュメント
