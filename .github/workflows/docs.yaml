@@ -39,10 +39,6 @@ jobs:
         run: |
           mkdir -p ./docs/dist/vitest/frontend/
           mv ./products/frontend/html/* ./docs/dist/vitest/frontend/
-      - name: Move Vitest UI Report (setup)
-        run: |
-          mkdir -p ./docs/dist/vitest/setup/
-          mv ./setup/html/* ./docs/dist/vitest/setup/
       # Move Coverage Report
       - name: Move Coverage Report (backend)
         run: |
@@ -52,10 +48,6 @@ jobs:
         run: |
           mkdir -p ./docs/dist/coverage/frontend/
           mv ./products/frontend/coverage/* ./docs/dist/coverage/frontend/
-      - name: Move Coverage Report (setup)
-        run: |
-          mkdir -p ./docs/dist/coverage/setup/
-          mv ./setup/coverage/* ./docs/dist/coverage/setup/
       # Move _config.yml
       - name: Move _config.yml
         run: mv ./docs/_config.yml ./docs/dist/_config.yml
