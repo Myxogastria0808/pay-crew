@@ -6,14 +6,14 @@ export const dotenvLoader = (): EnvConfig => {
   dotenv.config();
   console.info('Environment variables loaded from .env file');
   console.table({
-    VITE_SENTRY_DSN: process.env.VITE_SENTRY_DSN ? '*****' : null,
-    SENTRY_AUTH_TOKEN: process.env.SENTRY_AUTH_TOKEN ? '*****' : null,
-    SENTRY_ORG: process.env.SENTRY_ORG ?? null,
-    SENTRY_PROJECT: process.env.SENTRY_PROJECT ?? null,
-    POSTGRES_USER: process.env.POSTGRES_USER ?? null,
-    POSTGRES_PASSWORD: process.env.POSTGRES_PASSWORD ? '*****' : null,
-    POSTGRES_DB: process.env.POSTGRES_DB ?? null,
-    POSTGRES_PORT: process.env.POSTGRES_PORT ?? null,
+    VITE_SENTRY_DSN: process.env.VITE_SENTRY_DSN ? '*****' : '',
+    SENTRY_AUTH_TOKEN: process.env.SENTRY_AUTH_TOKEN ? '*****' : '',
+    SENTRY_ORG: process.env.SENTRY_ORG ?? '',
+    SENTRY_PROJECT: process.env.SENTRY_PROJECT ?? '',
+    POSTGRES_USER: process.env.POSTGRES_USER ?? '',
+    POSTGRES_PASSWORD: process.env.POSTGRES_PASSWORD ? '*****' : '',
+    POSTGRES_DB: process.env.POSTGRES_DB ?? '',
+    POSTGRES_PORT: process.env.POSTGRES_PORT ?? '',
   });
 
   const frontendConfig: FrontendConfig = {
