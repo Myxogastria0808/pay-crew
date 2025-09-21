@@ -1,0 +1,36 @@
+{
+  "name": "frontend",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "test": "vitest run --typecheck",
+    "coverage": "vitest run --coverage --typecheck",
+    "ui": "vitest run --ui --typecheck"
+  },
+  "dependencies": {
+    "react": "catalog:frontend",
+    "react-dom": "catalog:frontend",
+    "react-router": "catalog:frontend"
+  },
+  "devDependencies": {
+    "@eslint/js": "catalog:frontend",
+    "@types/react": "catalog:frontend",
+    "@types/react-dom": "catalog:frontend",
+    "@vitejs/plugin-react-swc": "catalog:frontend",
+    "@vitest/coverage-v8": "catalog:",
+    "@vitest/ui": "catalog:",
+    "eslint": "catalog:frontend",
+    "eslint-plugin-react-hooks": "catalog:frontend",
+    "eslint-plugin-react-refresh": "catalog:frontend",
+    "happy-dom": "catalog:frontend",
+    "globals": "catalog:frontend",
+    "typescript": "catalog:",
+    "typescript-eslint": "catalog:frontend",
+    "vite": "catalog:frontend",
+    "vitest": "catalog:"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "setup",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "generate": "tsx ./src/index.ts"
+  },
+  "devDependencies": {
+    "dotenv": "catalog:setup",
+    "tsx": "catalog:setup"
+  }
+}
