@@ -7,7 +7,7 @@ const main = () => {
 
   // Check current directory is project root
   if (!fs.existsSync('pay-crew')) {
-    throw new Error('This script must be run from the root directory of the project');
+    throw new Error('This script must be run from the root directory of the project.');
   }
 
   // Load environment variables from .env file

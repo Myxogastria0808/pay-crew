@@ -55,6 +55,52 @@ sudo docker compose up -d
 pnpm i && pnpm run setup:generate && pnpm run backend:generate && pnpm run backend:migrate
 ```
 
+## docker-compose の操作 (基本操作のみ掲載)
+
+### 起動
+
+```sh
+sudo docker compose up -d
+```
+
+### コンテナに入る
+
+```sh
+sudo docker exec -it postgres psql -U <POSTGRES_USER> -d <POSTGRES_DB>
+```
+
+<POSTGRES_USER> と <POSTGRES_DB> には、.env ファイルで設定した値を入力する。
+
+例: .env の設定例を使っている場合は以下のようになる。
+
+```sh
+sudo docker exec -it postgres psql -U postgres -d sample
+```
+
+### 停止
+
+```sh
+sudo docker compose down
+```
+
+### クリーンアップ
+
+```sh
+docker compose down --rmi all --volumes
+```
+
+## 本番環境 (Xata Lite) のマイグレーション
+
+1. `products/backend/.env`を本番環境のURLに変更
+
+2. 以下のコマンドを実行
+
+```sh
+pnpm run backend:migrate
+```
+
+3. `products/backend/.env`を開発環境のURLに戻す
+
 ## ドキュメント
 
 https://myxogastria0808.github.io/pay-crew/
@@ -108,7 +154,7 @@ https://myxogastria0808.github.io/pay-crew/
 ### Database
 
 - development
-  - PostgreSQL as Docker container
+  - PostgreSQL with docker-compose
 - production
   - Xata Lite
 
@@ -121,6 +167,16 @@ https://myxogastria0808.github.io/pay-crew/
 
 #### [Details](https://github.com/Myxogastria0808/pay-crew/tree/dev/docs/README.md)
 - https://github.com/Myxogastria0808/pay-crew/tree/dev/docs/README.md
+
+### Setup
+
+- TypeScript
+
+#### [Docs](https://github.com/Myxogastria0808/pay-crew/tree/dev/setup/)
+- https://github.com/Myxogastria0808/pay-crew/tree/dev/setup/
+
+#### [Details](https://github.com/Myxogastria0808/pay-crew/tree/dev/setup/README.md)
+- https://github.com/Myxogastria0808/pay-crew/tree/dev/setup/README.md
 
 ## CI/CD
 
@@ -272,13 +328,14 @@ flowchart LR
     main --with checks (cron)--> main
 ```
 
-#### with `checks` (`dev branch`)
+#### with checks (`dev branch`)
 
 - test (`push` and `pull requests`)
 - CodeQL Scanning
 - docs (`push`)
+- preview-frontend (`pull requests`)
 
-#### with `checks` (`main branch`)
+#### with checks (`main branch`)
 
 - test (`pull requests`)
 - CodeQL Scanning
