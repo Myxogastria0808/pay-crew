@@ -60,6 +60,12 @@
   },
   "homepage": "https://github.com/Myxogastria0808/pay-crew/",
   "packageManager": "pnpm@10.13.1",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@sentry/cli",
+      "workerd"
+    ]
+  },
   "devDependencies": {
     "@astrojs/check": "catalog:docs",
     "@cloudflare/workers-types": "catalog:backend",
