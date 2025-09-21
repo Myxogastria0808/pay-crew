@@ -170,7 +170,7 @@ https://myxogastria0808.github.io/pay-crew/
 
 ### Setup
 
-- typescript
+- TypeScript
 
 #### [Docs](https://github.com/Myxogastria0808/pay-crew/tree/dev/setup/)
 - https://github.com/Myxogastria0808/pay-crew/tree/dev/setup/
