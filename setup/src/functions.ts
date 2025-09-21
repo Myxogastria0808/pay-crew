@@ -29,7 +29,7 @@ export const dotenvLoader = (): DatabaseConfig => {
 export const fileWriter = (path: string, data: string) => {
   fs.writeFile(path, data, (error) => {
     if (error) {
-      throw new Error(`Failed to write ${path}.`);
+      throw new Error(`Failed to write ${path}: ${error.message}`);
     }
   });
   console.info(`Succeeded to write ${path}.`);
