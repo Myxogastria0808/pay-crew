@@ -66,7 +66,10 @@ sudo docker compose up -d
 - コンテナに入る
 
 ```sh
- sudo docker exec -it postgres psql -U <POSTGRES_USER> -d <POSTGRES_DB>
+# <POSTGRES_USER> と <POSTGRES_DB> には、.env ファイルで設定した値を入力してください。
+# 例: .env の設定例を使っている場合は以下のようになります
+sudo docker exec -it postgres psql -U postgres -d sample
+# もし値を変更している場合は、適宜書き換えてください
 ```
 
 - 停止
