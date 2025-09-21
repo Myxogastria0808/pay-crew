@@ -20,7 +20,7 @@ export const dotenvLoader = (): DatabaseConfig => {
   };
 
   if (!dbConfig.postgresUser || !dbConfig.postgresPassword || !dbConfig.postgresDb || !dbConfig.postgresPort) {
-    throw new Error('Failed to load required database configuration in environment variables.');
+    throw new Error('Missing required database configuration in environment variables.');
   }
 
   return dbConfig;
