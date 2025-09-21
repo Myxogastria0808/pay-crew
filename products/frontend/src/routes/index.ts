@@ -1,5 +1,5 @@
 export { default as Root } from './Root';
 export { default as NotFound } from './NotFound';
 
-// defaultで送られた名前を直す
-// {default as 名前} from 'パス'
+// 新しいページを追加する場合は、以下の形式でexport文を追加する
+// export {default as ページのコンポーネント名 } from 'ページのコンポーネントのあるディレクトリ名のパス'；

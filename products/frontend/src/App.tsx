@@ -14,7 +14,7 @@ const App: FC = () => {
   );
 };
 
-// <Route path="/" element={<名前 />} />
-// 追加する
+// 以下を追加することで、ページを追加できる
+// <Route path="ページのパス" element={<ページのコンポーネント名 />} />
 
 export default App;
