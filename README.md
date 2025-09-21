@@ -32,7 +32,7 @@ cd pay-crew
 2. レポジトリのルートに`.env` ファイルを作成
 
 > [!TIP]
-> `.emv.exmaple`を参考に適当な値を設定してください。
+> `.env.example`を参考に適当な値を設定してください。
 
 以下は、`.env`の設定例です。
 
@@ -43,16 +43,16 @@ POSTGRES_DB=sample
 POSTGRES_PORT=5432
 ```
 
-3. 以下のコマンドを実行
-
-```sh
-pnpm i && pnpm run setup:generate && pnpm run backend:generate && pnpm run backend:migrate
-```
-
-4. コンテナを起動
+3. コンテナを起動
 
 ```sh
 sudo docker compose up -d
+```
+
+4. 以下のコマンドを実行
+
+```sh
+pnpm i && pnpm run setup:generate && pnpm run backend:generate && pnpm run backend:migrate
 ```
 
 ## ドキュメント
