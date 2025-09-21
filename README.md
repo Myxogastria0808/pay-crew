@@ -43,16 +43,16 @@ POSTGRES_DB=sample
 POSTGRES_PORT=5432
 ```
 
-3. 以下のコマンドを実行
-
-```sh
-pnpm i && pnpm run setup:generate && pnpm run backend:generate && pnpm run backend:migrate
-```
-
-4. コンテナを起動
+3. コンテナを起動
 
 ```sh
 sudo docker compose up -d
+```
+
+4. 以下のコマンドを実行
+
+```sh
+pnpm i && pnpm run setup:generate && pnpm run backend:generate && pnpm run backend:migrate
 ```
 
 ## ドキュメント
