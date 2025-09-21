@@ -20,8 +20,13 @@ jobs:
         uses: cachix/install-nix-action@v31
         with:
           nix_path: nixpkgs=channel:nixpkgs-unstable
-      # Build Check pay-crew
-      - name: Build Check pay-crew
+      # Build
+      - name: Build
+        env:
+          VITE_SENTRY_DSN: ${{ secrets.VITE_SENTRY_DSN }}
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+          SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
         run: nix develop --command bash -c "pnpm i && pnpm run build"
       # Deploy Frontend to Cloudflare Workers
       - name: Deploy Frontend to Cloudflare Workers

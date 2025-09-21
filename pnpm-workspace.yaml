@@ -25,6 +25,8 @@ catalogs:
     prettier-plugin-astro: ^0.14.1
   frontend:
     '@eslint/js': ^9.35.0
+    '@sentry/react': ^10.12.0
+    '@sentry/vite-plugin': ^4.3.0
     '@types/react': ^19.1.13
     '@types/react-dom': ^19.1.9
     '@vitejs/plugin-react-swc': ^4.0.1

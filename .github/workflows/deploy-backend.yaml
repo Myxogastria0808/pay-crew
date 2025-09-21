@@ -20,8 +20,8 @@ jobs:
         uses: cachix/install-nix-action@v31
         with:
           nix_path: nixpkgs=channel:nixpkgs-unstable
-      # Build Check pay-crew
-      - name: Build Check pay-crew
+      # Build
+      - name: Build
         run: nix develop --command bash -c "pnpm i && pnpm run build"
       # Inject hyperdrive id in ./products/backend/wrangler.toml
       - name: Inject hyperdrive id
