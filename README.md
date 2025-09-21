@@ -89,6 +89,18 @@ sudo docker compose down
 docker compose down --rmi all --volumes
 ```
 
+## 本番環境 (Xata Lite) のマイグレーション
+
+1. `products/backend/.env`を本番環境のURLに変更
+
+2. 以下のコマンドを実行
+
+```sh
+pnpm run backend:migrate
+```
+
+3. `products/backend/.env`を開発環境のURLに戻す
+
 ## ドキュメント
 
 https://myxogastria0808.github.io/pay-crew/
