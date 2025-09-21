@@ -1,6 +1,8 @@
 import type { FC } from 'react';
 import styles from './index.module.css';
 
+import * as Sentry from '@sentry/react';
+
 const Root: FC = () => {
   return (
     <>
@@ -30,6 +32,17 @@ const Root: FC = () => {
           <h2>リマインダー通知</h2>
           <p className={styles.reminderMessage}>現在通知はありません。</p>
         </div>
+        <button
+          onClick={() => {
+            // Send a log before throwing the error
+            Sentry.logger.info('User triggered test error', {
+              action: 'test_error_button_click',
+            });
+            throw new Error('This is your first error!');
+          }}
+        >
+          Break the world
+        </button>
       </div>
     </>
   );

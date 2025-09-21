@@ -12,6 +12,8 @@
     "ui": "vitest run --ui --typecheck"
   },
   "dependencies": {
+    "@sentry/react": "catalog:frontend",
+    "@sentry/vite-plugin": "catalog:frontend",
     "react": "catalog:frontend",
     "react-dom": "catalog:frontend",
     "react-router": "catalog:frontend"
