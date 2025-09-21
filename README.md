@@ -31,17 +31,7 @@ cd pay-crew
 
 2. レポジトリのルートに`.env` ファイルを作成
 
-> [!TIP]
-> `.env.example`を参考に適当な値を設定してください。
-
-以下は、`.env`の設定例です。
-
-```.env
-POSTGRES_USER=postgres
-POSTGRES_PASSWORD=password
-POSTGRES_DB=sample
-POSTGRES_PORT=5432
-```
+`.env.example`を参考に適当な値を設定してください。
 
 3. コンテナを起動
 
