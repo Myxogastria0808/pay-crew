@@ -57,28 +57,33 @@ pnpm i && pnpm run setup:generate && pnpm run backend:generate && pnpm run backe
 
 ## docker-compose の操作 (基本操作のみ掲載)
 
-- 起動
+### 起動
 
 ```sh
 sudo docker compose up -d
 ```
 
-- コンテナに入る
+### コンテナに入る
 
 ```sh
-# <POSTGRES_USER> と <POSTGRES_DB> には、.env ファイルで設定した値を入力してください。
-# 例: .env の設定例を使っている場合は以下のようになります
-sudo docker exec -it postgres psql -U postgres -d sample
-# もし値を変更している場合は、適宜書き換えてください
+sudo docker exec -it postgres psql -U <POSTGRES_USER> -d <POSTGRES_DB>
 ```
 
-- 停止
+<POSTGRES_USER> と <POSTGRES_DB> には、.env ファイルで設定した値を入力する。
+
+例: .env の設定例を使っている場合は以下のようになる。
+
+```sh
+sudo docker exec -it postgres psql -U postgres -d sample
+```
+
+### 停止
 
 ```sh
 sudo docker compose down
 ```
 
-- クリーンアップ
+### クリーンアップ
 
 ```sh
 docker compose down --rmi all --volumes
