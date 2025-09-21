@@ -17,7 +17,7 @@ const main = () => {
   const wranglerData = `{
     "name": "pay-crew-backend",
     "main": "src/index.ts",
-    "compatibility_date": "2025-09-15",
+    "compatibility_date": "2025-09-21",
     "compatibility_flags": [
         "nodejs_compat"
     ],
@@ -28,7 +28,8 @@ const main = () => {
             "localConnectionString": "postgresql://${dbConfig.postgresUser}:${dbConfig.postgresPassword}@localhost:${dbConfig.postgresPort}/${dbConfig.postgresDb}"
         }
     ]
-}`;
+}
+`;
   fileWriter('./products/backend/wrangler.local.jsonc', wranglerData);
 
   const dotEnvData = `POSTGRES_URL=postgresql://${dbConfig.postgresUser}:${dbConfig.postgresPassword}@localhost:${dbConfig.postgresPort}/${dbConfig.postgresDb}
