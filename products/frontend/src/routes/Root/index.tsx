@@ -35,15 +35,15 @@ const Root: FC = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="name">Name</label>
         <input id="name" type="text" {...register('name')} />
-        <ErrorMessage errors={errors} name="name" message={errors.name?.message} />
+        <ErrorMessage errors={errors} name="name" />
         <br />
         <label htmlFor="email">Email</label>
         <input id="email" type="email" {...register('email')} />
-        <ErrorMessage errors={errors} name="email" message={errors.email?.message} />
+        <ErrorMessage errors={errors} name="email" />
         <br />
         <label htmlFor="password">Password</label>
         <input id="password" type="password" {...register('password')} />
-        <ErrorMessage errors={errors} name="password" message={errors.password?.message} />
+        <ErrorMessage errors={errors} name="password" />
         <br />
         <button type="submit" disabled={isMutating}>
           {isMutating ? '送信中…' : '送信'}
