@@ -4,6 +4,7 @@ export type EnvConfig = {
 };
 
 export type FrontendConfig = {
+  VITE_API_URL: string | null;
   VITE_SENTRY_DSN: string | null;
   SENTRY_AUTH_TOKEN: string | null;
   SENTRY_ORG: string | null;

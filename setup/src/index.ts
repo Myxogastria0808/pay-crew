@@ -38,7 +38,8 @@ const main = () => {
   fileWriter('./products/backend/.env', backendDotenvData);
 
   // frontend
-  const frontendDotenvData = `VITE_SENTRY_DSN=${envConfig.frontendConfig.VITE_SENTRY_DSN ?? ''}
+  const frontendDotenvData = `VITE_API_URL=${envConfig.frontendConfig.VITE_API_URL ?? ''}
+VITE_SENTRY_DSN=${envConfig.frontendConfig.VITE_SENTRY_DSN ?? ''}
 SENTRY_AUTH_TOKEN=${envConfig.frontendConfig.SENTRY_AUTH_TOKEN ?? ''}
 SENTRY_ORG=${envConfig.frontendConfig.SENTRY_ORG ?? ''}
 SENTRY_PROJECT=${envConfig.frontendConfig.SENTRY_PROJECT ?? ''}

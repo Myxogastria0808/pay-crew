@@ -1,4 +1,3 @@
-// import styles from './App.module.css'
 import type { FC } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router';
 import { NotFound, Root } from './routes';
