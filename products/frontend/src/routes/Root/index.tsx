@@ -1,5 +1,4 @@
 import type { FC } from 'react';
-import * as Sentry from '@sentry/react';
 import { type SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ErrorMessage } from '@hookform/error-message';
@@ -58,18 +57,6 @@ const Root: FC = () => {
       )}
       {/* 受信データのクリア */}
       <button onClick={() => reset()}>リセット</button>
-      {/* エラーを発生させるボタン */}
-      <button
-        onClick={() => {
-          // Send a log before throwing the error
-          Sentry.logger.info('User triggered test error', {
-            action: 'test_error_button_click',
-          });
-          throw new Error('This is your first error!');
-        }}
-      >
-        Break the world
-      </button>
     </main>
   );
 };

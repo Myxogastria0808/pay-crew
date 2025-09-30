@@ -1,5 +1,6 @@
 import { errorResponseSchema } from 'paycrew-validator';
 import { ApiError } from './apiError';
+import { captureException } from '@sentry/react';
 
 // NOTE: Supports cases where `content-type` is other than `json`
 const getBody = <T>(c: Response | Request): Promise<T> => {
@@ -42,31 +43,38 @@ export const customFetch = async <T>(url: string, options: RequestInit): Promise
       const contentType = response.headers.get('content-type');
 
       if (contentType && contentType.includes('application/json')) {
-        const errorBody = errorResponseSchema.parse(JSON.parse(await response.text()));
-        throw new ApiError({
+        const bodyText = await response.text();
+        const errorBody = errorResponseSchema.parse(JSON.parse(bodyText));
+        const apiError = new ApiError({
           headers: response.headers,
           status: response.status,
           statusText: response.statusText,
           url: response.url,
           body: errorBody,
         });
+        captureException(apiError);
+        throw apiError;
       } else {
-        throw new ApiError({
+        const apiError = new ApiError({
           headers: response.headers,
           status: response.status,
           statusText: response.statusText,
           url: response.url,
           body: { status: -1, message: 'Undefined error response was reached' },
         });
+        captureException(apiError);
+        throw apiError;
       }
     } catch {
-      throw new ApiError({
+      const apiError = new ApiError({
         headers: response.headers,
         status: response.status,
         statusText: response.statusText,
         url: response.url,
         body: { status: -1, message: 'Undefined error response was reached' },
       });
+      captureException(apiError);
+      throw apiError;
     }
   }
   // get body

@@ -123,6 +123,7 @@ https://myxogastria0808.github.io/pay-crew/
   - fetch API (for data fetching)
   - SWR (for data fetching)
   - MSW (mocking API)
+- Sentry (for error tracking)
 
 #### [Live Demo](https://pay-crew.yukiosada.work/)
 - https://pay-crew.yukiosada.work/
