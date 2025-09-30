@@ -5,6 +5,7 @@ import { route } from '../shared';
 import { users } from '../../db/schema';
 import type { Bindings } from '../../domain';
 import { HTTPException } from 'hono/http-exception';
+import { cors } from 'hono/cors';
 
 const user = new OpenAPIHono<{
   Bindings: Bindings;
@@ -21,6 +22,8 @@ const user = new OpenAPIHono<{
     }
   },
 });
+
+user.use('*', cors());
 
 const userPostSchema = route.createSchema(
   {
