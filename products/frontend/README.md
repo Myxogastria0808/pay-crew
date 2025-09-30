@@ -1,4 +1,5 @@
 # pay-crew Frontend
+
 ## 構造
 
 - src/index.css
@@ -28,12 +29,15 @@
 
 各ページのコンポーネントがこのディレクトリに定義されています。
 
+- src/routes/shared/
+
+このディレクトリには、ページ間で共有されるコンポーネントを配置することができます。
 
 - src/components/[page name]/index.tsx
 
 このファイルは、各ページのコンポーネントのエントリーポイントのコンポーネントです。
 
-- src/components/[page name]/*
+- src/components/[page name]/\*
 
 このディレクトリ内の他のファイルは、各ページコンポーネントのサブコンポーネントです。
 

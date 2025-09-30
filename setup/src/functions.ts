@@ -6,6 +6,7 @@ export const dotenvLoader = (): EnvConfig => {
   dotenv.config();
   console.info('Environment variables loaded from .env file');
   console.table({
+    VITE_API_URL: process.env.VITE_API_URL ?? '',
     VITE_SENTRY_DSN: process.env.VITE_SENTRY_DSN ? '*****' : '',
     SENTRY_AUTH_TOKEN: process.env.SENTRY_AUTH_TOKEN ? '*****' : '',
     SENTRY_ORG: process.env.SENTRY_ORG ?? '',
@@ -17,6 +18,7 @@ export const dotenvLoader = (): EnvConfig => {
   });
 
   const frontendConfig: FrontendConfig = {
+    VITE_API_URL: process.env.VITE_API_URL ?? null,
     VITE_SENTRY_DSN: process.env.VITE_SENTRY_DSN ?? null,
     SENTRY_AUTH_TOKEN: process.env.SENTRY_AUTH_TOKEN ?? null,
     SENTRY_ORG: process.env.SENTRY_ORG ?? null,
@@ -30,6 +32,7 @@ export const dotenvLoader = (): EnvConfig => {
   };
 
   if (
+    !frontendConfig.VITE_API_URL ||
     !frontendConfig.VITE_SENTRY_DSN ||
     !frontendConfig.SENTRY_AUTH_TOKEN ||
     !frontendConfig.SENTRY_ORG ||
