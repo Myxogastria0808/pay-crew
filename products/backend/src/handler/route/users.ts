@@ -81,7 +81,7 @@ user.openapi(userGetSchema, async (c) => {
 });
 
 user.openapi(userPostSchema, async (c) => {
-  const { name, email, password } = await c.req.json();
+  const { name, email, password } = c.req.valid('json');
   const db = drizzle({ connection: c.env.HYPERDRIVE, casing: 'snake_case' });
   const result = await db.insert(users).values({ name, email, password }).returning();
   return c.json(result);
