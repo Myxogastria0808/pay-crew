@@ -22,13 +22,7 @@ const app = new OpenAPIHono<{
 });
 
 // CORSの設定
-app.use('*', cors());
-
-// 404のエラーハンドリング
-app.notFound((c) => {
-  console.error(`Not Found: ${c.req.url}`);
-  return c.json({ status: 404, message: 'Not Found' } satisfies ErrorResponseSchemaType, 404);
-});
+app.use('/', cors());
 
 // 404以外のエラーハンドリング
 app.onError((error, c) => {
@@ -52,5 +46,11 @@ app.onError((error, c) => {
 
 // ルートの登録
 app.route('/', user);
+
+// 404のエラーハンドリング
+app.notFound((c) => {
+  console.error(`Not Found: ${c.req.url}`);
+  return c.json({ status: 404, message: 'Not Found' } satisfies ErrorResponseSchemaType, 404);
+});
 
 export default app;
