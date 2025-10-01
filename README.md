@@ -1,4 +1,4 @@
-# pay-crew (not released yet)
+# pay-crew
 
 [![Test](https://github.com/Myxogastria0808/pay-crew/actions/workflows/test.yaml/badge.svg)](https://github.com/Myxogastria0808/pay-crew/actions/workflows/test.yaml)
 [![Docs](https://github.com/Myxogastria0808/pay-crew/actions/workflows/docs.yaml/badge.svg)](https://github.com/Myxogastria0808/pay-crew/actions/workflows/docs.yaml)
