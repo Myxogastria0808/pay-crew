@@ -1,28 +1,56 @@
-import { drizzle } from 'drizzle-orm/node-postgres';
-import { Hono } from 'hono';
-import { users } from './db/schema';
+import { OpenAPIHono } from '@hono/zod-openapi';
+import { HTTPException } from 'hono/http-exception';
+import { cors } from 'hono/cors';
+import type { ErrorResponseSchemaType } from 'paycrew-validator';
+import type { Bindings } from './domain';
+import { user } from './handler';
 
-export type Bindings = {
-  HYPERDRIVE: Hyperdrive;
-};
-
-const app = new Hono<{ Bindings: Bindings }>();
-
-app.get('/', (c) => {
-  return c.text('Hello Hono!');
+const app = new OpenAPIHono<{
+  Bindings: Bindings;
+}>({
+  // Open API Honoのインスタンスを生
+  // ZodのバリデーションエラーをHTTPExceptionで投げるように設定
+  // result.successがfalseの場合はZodErrorが入っている
+  defaultHook: (result) => {
+    if (!result.success) {
+      console.error(result.error);
+      throw new HTTPException(400, {
+        message: 'Zod Validation Error',
+      });
+    }
+  },
 });
 
-app.get('/users', async (c) => {
-  const db = drizzle({ connection: c.env.HYPERDRIVE, casing: 'snake_case' });
-  const result = await db.select().from(users);
-  return c.json(result);
+// CORSの設定
+app.use('*', cors());
+
+// 404のエラーハンドリング
+app.notFound((c) => {
+  console.error(`Not Found: ${c.req.url}`);
+  return c.json({ status: 404, message: 'Not Found' } satisfies ErrorResponseSchemaType, 404);
 });
 
-app.post('/users', async (c) => {
-  const { name, email, password } = await c.req.json();
-  const db = drizzle({ connection: c.env.HYPERDRIVE, casing: 'snake_case' });
-  const result = await db.insert(users).values({ name, email, password }).returning();
-  return c.json(result);
+// 404以外のエラーハンドリング
+app.onError((error, c) => {
+  if (error instanceof HTTPException) {
+    return c.json(
+      {
+        status: error.status,
+        message: error.message,
+      } satisfies ErrorResponseSchemaType,
+      error.status
+    );
+  }
+  return c.json(
+    {
+      status: 500,
+      message: 'Internal Server Error',
+    } satisfies ErrorResponseSchemaType,
+    500
+  );
 });
+
+// ルートの登録
+app.route('/', user);
 
 export default app;

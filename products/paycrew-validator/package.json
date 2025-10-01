@@ -1,16 +1,15 @@
 {
-  "name": "setup",
+  "name": "paycrew-validator",
   "private": true,
   "type": "module",
   "main": "src/index.ts",
   "scripts": {
-    "generate": "tsx ./src/index.ts",
     "test": "vitest run --typecheck",
     "coverage": "vitest run --coverage --typecheck",
     "ui": "vitest run --ui --typecheck"
   },
   "devDependencies": {
-    "dotenv": "catalog:setup",
-    "tsx": "catalog:node"
+    "vitest": "catalog:",
+    "zod": "catalog:"
   }
 }

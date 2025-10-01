@@ -25,6 +25,7 @@ jobs:
       - name: Build
         id: build
         env:
+          VITE_API_URL: ${{ secrets.VITE_API_URL }}
           VITE_SENTRY_DSN: ${{ secrets.VITE_SENTRY_DSN }}
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
@@ -39,7 +40,7 @@ jobs:
         continue-on-error: true
         uses: cloudflare/wrangler-action@v3
         with:
-          wranglerVersion: "4.38.0"
+          wranglerVersion: "4.40.3"
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: "products/frontend"

@@ -1,4 +1,4 @@
-# pay-crew (not released yet)
+# pay-crew
 
 [![Test](https://github.com/Myxogastria0808/pay-crew/actions/workflows/test.yaml/badge.svg)](https://github.com/Myxogastria0808/pay-crew/actions/workflows/test.yaml)
 [![Docs](https://github.com/Myxogastria0808/pay-crew/actions/workflows/docs.yaml/badge.svg)](https://github.com/Myxogastria0808/pay-crew/actions/workflows/docs.yaml)
@@ -29,19 +29,9 @@ git clone https://github.com/Myxogastria0808/pay-crew.git
 cd pay-crew
 ```
 
-2. レポジトリのルートに`.env` ファイルを作成
+2. レポジトリのルートに`.env`ファイルを作成
 
-> [!TIP]
-> `.env.example`を参考に適当な値を設定してください。
-
-以下は、`.env`の設定例です。
-
-```.env
-POSTGRES_USER=postgres
-POSTGRES_PASSWORD=password
-POSTGRES_DB=sample
-POSTGRES_PORT=5432
-```
+`.env.example`を参考に適当な値を設定してください。
 
 3. コンテナを起動
 
@@ -89,6 +79,20 @@ sudo docker compose down
 docker compose down --rmi all --volumes
 ```
 
+## API情報の更新
+
+1. `openapi.json`を更新
+
+```sh
+pnpm run backend:openapi
+```
+
+2. `orval`を実行して、コードを生成
+
+```sh
+pnpm run frontend:orval
+```
+
 ## 本番環境 (Xata Lite) のマイグレーション
 
 1. `products/backend/.env`を本番環境のURLに変更
@@ -107,12 +111,19 @@ https://myxogastria0808.github.io/pay-crew/
 
 ## 技術スタック
 
-### Frontend
+### Frontend (products/frontend)
 
 - TypeScript
 - CSS Modules
 - Vite + React
 - React Router (for routing)
+- react-hook-form (for form handling)
+  - validator: Zod (with @hookform/resolvers)
+- Orval (for generating API client and mock from OpenAPI spec)
+  - fetch API (for data fetching)
+  - SWR (for data fetching)
+  - MSW (mocking API)
+- Sentry (for error tracking)
 
 #### [Live Demo](https://pay-crew.yukiosada.work/)
 - https://pay-crew.yukiosada.work/
@@ -129,10 +140,11 @@ https://myxogastria0808.github.io/pay-crew/
 #### [Coverage Report](https://myxogastria0808.github.io/pay-crew/coverage/frontend/)
 - https://myxogastria0808.github.io/pay-crew/coverage/frontend/
 
-### Backend
+### Backend (products/backend)
 
 - TypeScript
 - Hono (Web Framework)
+- @hono/zod-openapi (for validation and OpenAPI spec generation)
 - fetch API (for calling Webhook)
 - Drizzle (ORM)
 
@@ -158,7 +170,7 @@ https://myxogastria0808.github.io/pay-crew/
 - production
   - Xata Lite
 
-### Docs
+### Docs (docs)
 
 - Astro
 
@@ -168,15 +180,26 @@ https://myxogastria0808.github.io/pay-crew/
 #### [Details](https://github.com/Myxogastria0808/pay-crew/tree/dev/docs/README.md)
 - https://github.com/Myxogastria0808/pay-crew/tree/dev/docs/README.md
 
-### Setup
+### Setup (setup)
 
 - TypeScript
 
-#### [Docs](https://github.com/Myxogastria0808/pay-crew/tree/dev/setup/)
+#### [Source Code](https://github.com/Myxogastria0808/pay-crew/tree/dev/setup/)
 - https://github.com/Myxogastria0808/pay-crew/tree/dev/setup/
 
 #### [Details](https://github.com/Myxogastria0808/pay-crew/tree/dev/setup/README.md)
 - https://github.com/Myxogastria0808/pay-crew/tree/dev/setup/README.md
+
+### Validator (products/paycrew-validator)
+
+- TypeScript
+- Zod
+
+#### [Source Code](https://github.com/Myxogastria0808/pay-crew/tree/dev/products/paycrew-validator/)
+- https://github.com/Myxogastria0808/pay-crew/tree/dev/products/paycrew-validator/
+
+#### [Details](https://github.com/Myxogastria0808/pay-crew/tree/dev/products/paycrew-validator/README.md)
+- https://github.com/Myxogastria0808/pay-crew/tree/dev/products/paycrew-validator/README.md
 
 ## CI/CD
 
