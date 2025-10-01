@@ -17,6 +17,8 @@ const getUrl = (contextUrl: string): string => {
   const baseUrl = import.meta.env.VITE_API_URL as string;
   const url = new URL(contextUrl, baseUrl);
 
+  console.info(`Request URL: ${url.toString()}`);
+
   return url.toString();
 };
 

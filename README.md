@@ -144,6 +144,7 @@ https://myxogastria0808.github.io/pay-crew/
 
 - TypeScript
 - Hono (Web Framework)
+- @hono/zod-openapi (for validation and OpenAPI spec generation)
 - fetch API (for calling Webhook)
 - Drizzle (ORM)
 
