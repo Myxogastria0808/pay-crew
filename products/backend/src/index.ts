@@ -22,7 +22,7 @@ const app = new OpenAPIHono<{
 });
 
 // CORSの設定
-app.use('/', cors());
+app.use('*', cors());
 
 // 404のエラーハンドリング
 app.notFound((c) => {
