@@ -1,49 +1,49 @@
-import dotenv from 'dotenv';
+import * as dotenv from 'dotenv';
+import { DotEnvCaster } from 'dotenv-caster';
 import fs from 'fs';
 import { DatabaseConfig, EnvConfig, FrontendConfig } from './types';
 
 export const dotenvLoader = (): EnvConfig => {
   dotenv.config();
+
+  const caster = new DotEnvCaster();
+
+  const viteApiUrl = caster.castString(process.env.VITE_API_URL);
+  const viteSentryDsn = caster.castString(process.env.VITE_SENTRY_DSN);
+  const sentryAuthToken = caster.castString(process.env.SENTRY_AUTH_TOKEN);
+  const sentryOrg = caster.castString(process.env.SENTRY_ORG);
+  const sentryProject = caster.castString(process.env.SENTRY_PROJECT);
+  const postgresUser = caster.castString(process.env.POSTGRES_USER);
+  const postgresPassword = caster.castString(process.env.POSTGRES_PASSWORD);
+  const postgresDb = caster.castString(process.env.POSTGRES_DB);
+  const postgresPort = parseInt(caster.castString(process.env.POSTGRES_PORT), 10);
+
   console.info('Environment variables loaded from .env file');
   console.table({
-    VITE_API_URL: process.env.VITE_API_URL ?? '',
-    VITE_SENTRY_DSN: process.env.VITE_SENTRY_DSN ? '*****' : '',
-    SENTRY_AUTH_TOKEN: process.env.SENTRY_AUTH_TOKEN ? '*****' : '',
-    SENTRY_ORG: process.env.SENTRY_ORG ?? '',
-    SENTRY_PROJECT: process.env.SENTRY_PROJECT ?? '',
-    POSTGRES_USER: process.env.POSTGRES_USER ?? '',
-    POSTGRES_PASSWORD: process.env.POSTGRES_PASSWORD ? '*****' : '',
-    POSTGRES_DB: process.env.POSTGRES_DB ?? '',
-    POSTGRES_PORT: process.env.POSTGRES_PORT ?? '',
+    VITE_API_URL: viteApiUrl,
+    VITE_SENTRY_DSN: viteSentryDsn ? '*****' : '',
+    SENTRY_AUTH_TOKEN: sentryAuthToken ? '*****' : '',
+    SENTRY_ORG: sentryOrg,
+    SENTRY_PROJECT: sentryProject,
+    POSTGRES_USER: postgresUser,
+    POSTGRES_PASSWORD: postgresPassword ? '*****' : '',
+    POSTGRES_DB: postgresDb,
+    POSTGRES_PORT: postgresPort,
   });
 
   const frontendConfig: FrontendConfig = {
-    VITE_API_URL: process.env.VITE_API_URL ?? null,
-    VITE_SENTRY_DSN: process.env.VITE_SENTRY_DSN ?? null,
-    SENTRY_AUTH_TOKEN: process.env.SENTRY_AUTH_TOKEN ?? null,
-    SENTRY_ORG: process.env.SENTRY_ORG ?? null,
-    SENTRY_PROJECT: process.env.SENTRY_PROJECT ?? null,
+    VITE_API_URL: viteApiUrl,
+    VITE_SENTRY_DSN: viteSentryDsn,
+    SENTRY_AUTH_TOKEN: sentryAuthToken,
+    SENTRY_ORG: sentryOrg,
+    SENTRY_PROJECT: sentryProject,
   };
   const backendConfig: DatabaseConfig = {
-    postgresUser: process.env.POSTGRES_USER ?? null,
-    postgresPassword: process.env.POSTGRES_PASSWORD ?? null,
-    postgresDb: process.env.POSTGRES_DB ?? null,
-    postgresPort: process.env.POSTGRES_PORT ? parseInt(process.env.POSTGRES_PORT, 10) : null,
+    postgresUser: postgresUser,
+    postgresPassword: postgresPassword,
+    postgresDb: postgresDb,
+    postgresPort: postgresPort,
   };
-
-  if (
-    !frontendConfig.VITE_API_URL ||
-    !frontendConfig.VITE_SENTRY_DSN ||
-    !frontendConfig.SENTRY_AUTH_TOKEN ||
-    !frontendConfig.SENTRY_ORG ||
-    !frontendConfig.SENTRY_PROJECT ||
-    !backendConfig.postgresUser ||
-    !backendConfig.postgresPassword ||
-    !backendConfig.postgresDb ||
-    !backendConfig.postgresPort
-  ) {
-    throw new Error('Missing required project configuration in environment variables');
-  }
 
   const envConfig = {
     frontendConfig,

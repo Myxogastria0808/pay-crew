@@ -1,5 +1,5 @@
 import { errorResponseSchema } from 'paycrew-validator';
-import { ZodOpenAPISchema } from '../../tmp';
+import { ZodOpenAPISchema } from 'zod-openapi-share';
 
 export const route = new ZodOpenAPISchema({
   400: {

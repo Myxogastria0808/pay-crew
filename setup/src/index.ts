@@ -26,23 +26,23 @@ const main = () => {
         {
             "binding": "HYPERDRIVE",
             "id": "dummy",
-            "localConnectionString": "postgresql://${envConfig.backendConfig.postgresUser ?? ''}:${envConfig.backendConfig.postgresPassword ?? ''}@localhost:${envConfig.backendConfig.postgresPort ?? ''}/${envConfig.backendConfig.postgresDb ?? ''}"
+            "localConnectionString": "postgresql://${envConfig.backendConfig.postgresUser}:${envConfig.backendConfig.postgresPassword}@localhost:${envConfig.backendConfig.postgresPort}/${envConfig.backendConfig.postgresDb}"
         }
     ]
 }
 `;
   fileWriter('./products/backend/wrangler.local.jsonc', wranglerData);
 
-  const backendDotenvData = `POSTGRES_URL=postgresql://${envConfig.backendConfig.postgresUser ?? ''}:${envConfig.backendConfig.postgresPassword ?? ''}@localhost:${envConfig.backendConfig.postgresPort ?? ''}/${envConfig.backendConfig.postgresDb ?? ''}
+  const backendDotenvData = `POSTGRES_URL=postgresql://${envConfig.backendConfig.postgresUser}:${envConfig.backendConfig.postgresPassword}@localhost:${envConfig.backendConfig.postgresPort}/${envConfig.backendConfig.postgresDb}
 `;
   fileWriter('./products/backend/.env', backendDotenvData);
 
   // frontend
-  const frontendDotenvData = `VITE_API_URL=${envConfig.frontendConfig.VITE_API_URL ?? ''}
-VITE_SENTRY_DSN=${envConfig.frontendConfig.VITE_SENTRY_DSN ?? ''}
-SENTRY_AUTH_TOKEN=${envConfig.frontendConfig.SENTRY_AUTH_TOKEN ?? ''}
-SENTRY_ORG=${envConfig.frontendConfig.SENTRY_ORG ?? ''}
-SENTRY_PROJECT=${envConfig.frontendConfig.SENTRY_PROJECT ?? ''}
+  const frontendDotenvData = `VITE_API_URL=${envConfig.frontendConfig.VITE_API_URL}
+VITE_SENTRY_DSN=${envConfig.frontendConfig.VITE_SENTRY_DSN}
+SENTRY_AUTH_TOKEN=${envConfig.frontendConfig.SENTRY_AUTH_TOKEN}
+SENTRY_ORG=${envConfig.frontendConfig.SENTRY_ORG}
+SENTRY_PROJECT=${envConfig.frontendConfig.SENTRY_PROJECT}
 `;
   fileWriter('./products/frontend/.env', frontendDotenvData);
 };

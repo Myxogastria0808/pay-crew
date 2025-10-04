@@ -13,21 +13,22 @@
     "ui": "vitest run --ui --typecheck"
   },
   "dependencies": {
+    "@hono/zod-openapi": "catalog:backend",
+    "@scalar/hono-api-reference": "catalog:backend",
     "drizzle-orm": "catalog:backend",
     "hono": "catalog:backend",
     "pg": "catalog:backend"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "catalog:backend",
-    "@hono/zod-openapi": "catalog:backend",
     "@types/pg": "catalog:backend",
-    "@scalar/hono-api-reference": "catalog:backend",
     "@vitest/coverage-v8": "catalog:",
     "@vitest/ui": "catalog:",
     "tsx": "catalog:node",
     "drizzle-kit": "catalog:backend",
     "paycrew-validator": "workspace:*",
     "wrangler": "catalog:backend",
-    "vitest": "catalog:"
+    "vitest": "catalog:",
+    "zod-openapi-share": "catalog:backend"
   }
 }

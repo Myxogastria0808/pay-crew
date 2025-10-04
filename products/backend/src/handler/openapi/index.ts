@@ -2,8 +2,8 @@ import { default as app } from '../../index';
 import fs from 'node:fs';
 
 try {
-  const doc = app.getOpenAPIDocument({
-    openapi: '3.0.0',
+  const doc = app.getOpenAPI31Document({
+    openapi: '3.1.0',
     info: {
       title: 'Echo API',
       version: '1.0.0',
