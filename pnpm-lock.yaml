@@ -33,6 +33,9 @@ catalogs:
     wrangler:
       specifier: ^4.40.3
       version: 4.40.3
+    zod-openapi-share:
+      specifier: ^0.0.4
+      version: 0.0.4
   default:
     '@vitest/coverage-v8':
       specifier: ^3.2.4
@@ -144,6 +147,9 @@ catalogs:
     dotenv:
       specifier: ^17.2.3
       version: 17.2.3
+    dotenv-caster:
+      specifier: ^2.1.20
+      version: 2.1.20
 
 importers:
 
@@ -204,7 +210,7 @@ importers:
         specifier: catalog:setup
         version: 17.2.3
       dotenv-caster:
-        specifier: ^2.1.20
+        specifier: catalog:setup
         version: 2.1.20(dotenv@17.2.3)
       drizzle-kit:
         specifier: catalog:backend
@@ -285,7 +291,7 @@ importers:
         specifier: 'catalog:'
         version: 4.1.11
       zod-openapi-share:
-        specifier: ^0.0.4
+        specifier: catalog:backend
         version: 0.0.4(@hono/zod-openapi@1.1.3(hono@4.9.9)(zod@4.1.11))(hono@4.9.9)
 
   docs:
@@ -352,6 +358,9 @@ importers:
       wrangler:
         specifier: catalog:backend
         version: 4.40.3(@cloudflare/workers-types@4.20250927.0)
+      zod-openapi-share:
+        specifier: catalog:backend
+        version: 0.0.4(@hono/zod-openapi@1.1.3(hono@4.9.9)(zod@4.1.11))(hono@4.9.9)
 
   products/frontend:
     dependencies:
@@ -461,6 +470,9 @@ importers:
       dotenv:
         specifier: catalog:setup
         version: 17.2.3
+      dotenv-caster:
+        specifier: catalog:setup
+        version: 2.1.20(dotenv@17.2.3)
       tsx:
         specifier: catalog:node
         version: 4.20.6
