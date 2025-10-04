@@ -17,6 +17,9 @@ export const dotenvLoader = (): EnvConfig => {
   const postgresPassword = caster.castString(process.env.POSTGRES_PASSWORD);
   const postgresDb = caster.castString(process.env.POSTGRES_DB);
   const postgresPort = parseInt(caster.castString(process.env.POSTGRES_PORT), 10);
+  if (Number.isNaN(postgresPort)) {
+    throw new Error('POSTGRES_PORT has to be a number');
+  }
 
   console.info('Environment variables loaded from .env file');
   console.table({
@@ -32,11 +35,11 @@ export const dotenvLoader = (): EnvConfig => {
   });
 
   const frontendConfig: FrontendConfig = {
-    VITE_API_URL: viteApiUrl,
-    VITE_SENTRY_DSN: viteSentryDsn,
-    SENTRY_AUTH_TOKEN: sentryAuthToken,
-    SENTRY_ORG: sentryOrg,
-    SENTRY_PROJECT: sentryProject,
+    ViteApiUrl: viteApiUrl,
+    ViteSentryDsn: viteSentryDsn,
+    SentryAuthToken: sentryAuthToken,
+    SentryOrg: sentryOrg,
+    SentryProject: sentryProject,
   };
   const backendConfig: DatabaseConfig = {
     postgresUser: postgresUser,

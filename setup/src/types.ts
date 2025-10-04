@@ -4,11 +4,11 @@ export type EnvConfig = {
 };
 
 export type FrontendConfig = {
-  VITE_API_URL: string;
-  VITE_SENTRY_DSN: string;
-  SENTRY_AUTH_TOKEN: string;
-  SENTRY_ORG: string;
-  SENTRY_PROJECT: string;
+  ViteApiUrl: string;
+  ViteSentryDsn: string;
+  SentryAuthToken: string;
+  SentryOrg: string;
+  SentryProject: string;
 };
 
 export type DatabaseConfig = {
