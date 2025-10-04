@@ -38,11 +38,11 @@ const main = () => {
   fileWriter('./products/backend/.env', backendDotenvData);
 
   // frontend
-  const frontendDotenvData = `VITE_API_URL=${envConfig.frontendConfig.ViteApiUrl}
-VITE_SENTRY_DSN=${envConfig.frontendConfig.ViteSentryDsn}
-SENTRY_AUTH_TOKEN=${envConfig.frontendConfig.SentryAuthToken}
-SENTRY_ORG=${envConfig.frontendConfig.SentryOrg}
-SENTRY_PROJECT=${envConfig.frontendConfig.SentryProject}
+  const frontendDotenvData = `VITE_API_URL=${envConfig.frontendConfig.viteApiUrl}
+VITE_SENTRY_DSN=${envConfig.frontendConfig.viteSentryDsn}
+SENTRY_AUTH_TOKEN=${envConfig.frontendConfig.sentryAuthToken}
+SENTRY_ORG=${envConfig.frontendConfig.sentryOrg}
+SENTRY_PROJECT=${envConfig.frontendConfig.sentryProject}
 `;
   fileWriter('./products/frontend/.env', frontendDotenvData);
 };

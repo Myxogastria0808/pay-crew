@@ -35,17 +35,17 @@ export const dotenvLoader = (): EnvConfig => {
   });
 
   const frontendConfig: FrontendConfig = {
-    ViteApiUrl: viteApiUrl,
-    ViteSentryDsn: viteSentryDsn,
-    SentryAuthToken: sentryAuthToken,
-    SentryOrg: sentryOrg,
-    SentryProject: sentryProject,
+    viteApiUrl,
+    viteSentryDsn,
+    sentryAuthToken,
+    sentryOrg,
+    sentryProject,
   };
   const backendConfig: DatabaseConfig = {
-    postgresUser: postgresUser,
-    postgresPassword: postgresPassword,
-    postgresDb: postgresDb,
-    postgresPort: postgresPort,
+    postgresUser,
+    postgresPassword,
+    postgresDb,
+    postgresPort,
   };
 
   const envConfig = {
