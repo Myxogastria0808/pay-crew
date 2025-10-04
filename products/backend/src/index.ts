@@ -53,7 +53,7 @@ app.onError((error, c) => {
 
 // OpenAPI Spec Endpoint
 app.doc('/openapi', {
-  openapi: '3.0.0',
+  openapi: '3.1.0',
   info: {
     title: 'Echo API',
     version: '1.0.0',
