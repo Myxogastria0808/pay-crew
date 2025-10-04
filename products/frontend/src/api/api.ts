@@ -11,7 +11,13 @@ import type { Key, SWRConfiguration } from 'swr';
 import useSWRMutation from 'swr/mutation';
 import type { SWRMutationConfiguration } from 'swr/mutation';
 
-import type { GetUsers200Item, GetUsers500, PostUsers201Item, PostUsers500, PostUsersBody } from './api.schemas';
+import type {
+  GetApiUsers200Item,
+  GetApiUsers500,
+  PostApiUsers201Item,
+  PostApiUsers500,
+  PostApiUsersBody,
+} from './api.schemas';
 
 import { customFetch } from './customFetch';
 
@@ -20,50 +26,50 @@ type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 /**
  * ユーザーの取得
  */
-export type getUsersResponse200 = {
-  data: GetUsers200Item[];
+export type getApiUsersResponse200 = {
+  data: GetApiUsers200Item[];
   status: 200;
 };
 
-export type getUsersResponse500 = {
-  data: GetUsers500;
+export type getApiUsersResponse500 = {
+  data: GetApiUsers500;
   status: 500;
 };
 
-export type getUsersResponseSuccess = getUsersResponse200 & {
+export type getApiUsersResponseSuccess = getApiUsersResponse200 & {
   headers: Headers;
 };
-export type getUsersResponseError = getUsersResponse500 & {
+export type getApiUsersResponseError = getApiUsersResponse500 & {
   headers: Headers;
 };
 
-export type getUsersResponse = getUsersResponseSuccess | getUsersResponseError;
+export type getApiUsersResponse = getApiUsersResponseSuccess | getApiUsersResponseError;
 
-export const getGetUsersUrl = () => {
-  return `/users`;
+export const getGetApiUsersUrl = () => {
+  return `/api/users`;
 };
 
-export const getUsers = async (options?: RequestInit): Promise<getUsersResponse> => {
-  return customFetch<getUsersResponse>(getGetUsersUrl(), {
+export const getApiUsers = async (options?: RequestInit): Promise<getApiUsersResponse> => {
+  return customFetch<getApiUsersResponse>(getGetApiUsersUrl(), {
     ...options,
     method: 'GET',
   });
 };
 
-export const getGetUsersKey = () => [`/users`] as const;
+export const getGetApiUsersKey = () => [`/api/users`] as const;
 
-export type GetUsersQueryResult = NonNullable<Awaited<ReturnType<typeof getUsers>>>;
-export type GetUsersQueryError = GetUsers500;
+export type GetApiUsersQueryResult = NonNullable<Awaited<ReturnType<typeof getApiUsers>>>;
+export type GetApiUsersQueryError = GetApiUsers500;
 
-export const useGetUsers = <TError = GetUsers500>(options?: {
-  swr?: SWRConfiguration<Awaited<ReturnType<typeof getUsers>>, TError> & { swrKey?: Key; enabled?: boolean };
+export const useGetApiUsers = <TError = GetApiUsers500>(options?: {
+  swr?: SWRConfiguration<Awaited<ReturnType<typeof getApiUsers>>, TError> & { swrKey?: Key; enabled?: boolean };
   request?: SecondParameter<typeof customFetch>;
 }) => {
   const { swr: swrOptions, request: requestOptions } = options ?? {};
 
   const isEnabled = swrOptions?.enabled !== false;
-  const swrKey = swrOptions?.swrKey ?? (() => (isEnabled ? getGetUsersKey() : null));
-  const swrFn = () => getUsers(requestOptions);
+  const swrKey = swrOptions?.swrKey ?? (() => (isEnabled ? getGetApiUsersKey() : null));
+  const swrFn = () => getApiUsers(requestOptions);
 
   const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions);
 
@@ -76,62 +82,65 @@ export const useGetUsers = <TError = GetUsers500>(options?: {
 /**
  * ユーザーの作成
  */
-export type postUsersResponse201 = {
-  data: PostUsers201Item[];
+export type postApiUsersResponse201 = {
+  data: PostApiUsers201Item[];
   status: 201;
 };
 
-export type postUsersResponse500 = {
-  data: PostUsers500;
+export type postApiUsersResponse500 = {
+  data: PostApiUsers500;
   status: 500;
 };
 
-export type postUsersResponseSuccess = postUsersResponse201 & {
+export type postApiUsersResponseSuccess = postApiUsersResponse201 & {
   headers: Headers;
 };
-export type postUsersResponseError = postUsersResponse500 & {
+export type postApiUsersResponseError = postApiUsersResponse500 & {
   headers: Headers;
 };
 
-export type postUsersResponse = postUsersResponseSuccess | postUsersResponseError;
+export type postApiUsersResponse = postApiUsersResponseSuccess | postApiUsersResponseError;
 
-export const getPostUsersUrl = () => {
-  return `/users`;
+export const getPostApiUsersUrl = () => {
+  return `/api/users`;
 };
 
-export const postUsers = async (postUsersBody: PostUsersBody, options?: RequestInit): Promise<postUsersResponse> => {
-  return customFetch<postUsersResponse>(getPostUsersUrl(), {
+export const postApiUsers = async (
+  postApiUsersBody: PostApiUsersBody,
+  options?: RequestInit
+): Promise<postApiUsersResponse> => {
+  return customFetch<postApiUsersResponse>(getPostApiUsersUrl(), {
     ...options,
     method: 'POST',
     headers: { 'Content-Type': 'application/json', ...options?.headers },
-    body: JSON.stringify(postUsersBody),
+    body: JSON.stringify(postApiUsersBody),
   });
 };
 
-export const getPostUsersMutationFetcher = (options?: SecondParameter<typeof customFetch>) => {
-  return (_: Key, { arg }: { arg: PostUsersBody }) => {
-    return postUsers(arg, options);
+export const getPostApiUsersMutationFetcher = (options?: SecondParameter<typeof customFetch>) => {
+  return (_: Key, { arg }: { arg: PostApiUsersBody }) => {
+    return postApiUsers(arg, options);
   };
 };
-export const getPostUsersMutationKey = () => [`/users`] as const;
+export const getPostApiUsersMutationKey = () => [`/api/users`] as const;
 
-export type PostUsersMutationResult = NonNullable<Awaited<ReturnType<typeof postUsers>>>;
-export type PostUsersMutationError = PostUsers500;
+export type PostApiUsersMutationResult = NonNullable<Awaited<ReturnType<typeof postApiUsers>>>;
+export type PostApiUsersMutationError = PostApiUsers500;
 
-export const usePostUsers = <TError = PostUsers500>(options?: {
+export const usePostApiUsers = <TError = PostApiUsers500>(options?: {
   swr?: SWRMutationConfiguration<
-    Awaited<ReturnType<typeof postUsers>>,
+    Awaited<ReturnType<typeof postApiUsers>>,
     TError,
     Key,
-    PostUsersBody,
-    Awaited<ReturnType<typeof postUsers>>
+    PostApiUsersBody,
+    Awaited<ReturnType<typeof postApiUsers>>
   > & { swrKey?: string };
   request?: SecondParameter<typeof customFetch>;
 }) => {
   const { swr: swrOptions, request: requestOptions } = options ?? {};
 
-  const swrKey = swrOptions?.swrKey ?? getPostUsersMutationKey();
-  const swrFn = getPostUsersMutationFetcher(requestOptions);
+  const swrKey = swrOptions?.swrKey ?? getPostApiUsersMutationKey();
+  const swrFn = getPostApiUsersMutationFetcher(requestOptions);
 
   const query = useSWRMutation(swrKey, swrFn, swrOptions);
 

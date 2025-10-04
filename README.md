@@ -148,8 +148,11 @@ https://myxogastria0808.github.io/pay-crew/
 - fetch API (for calling Webhook)
 - Drizzle (ORM)
 
-#### [Live Demo](https://pay-crew-api.yukiosada.work/)
-- https://pay-crew-api.yukiosada.work/
+### [Web UI for OpenAPI](https://pay-crew-api.yukiosada.work/docs)
+- https://pay-crew-api.yukiosada.work/docs
+
+### [OpenAPI Spec](https://pay-crew-api.yukiosada.work/openapi)
+- https://pay-crew-api.yukiosada.work/openapi
 
 #### [Source Code](https://github.com/Myxogastria0808/pay-crew/tree/dev/products/backend/)
 - https://github.com/Myxogastria0808/pay-crew/tree/dev/products/backend/

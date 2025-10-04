@@ -4,12 +4,12 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { ErrorMessage } from '@hookform/error-message';
 import { userPostRequestSchema, type UserPostRequestSchemaType } from 'paycrew-validator';
 
-import { usePostUsers } from '../../api/api';
+import { usePostApiUsers } from '../../api/api';
 import type { ApiError } from '../../api/apiError';
-import type { PostUsersBody } from '../../api/api.schemas';
+import type { PostApiUsersBody } from '../../api/api.schemas';
 
 const Root: FC = () => {
-  const { isMutating, trigger, reset, data, error } = usePostUsers<ApiError>();
+  const { isMutating, trigger, reset, data, error } = usePostApiUsers<ApiError>();
 
   const {
     register,
@@ -26,7 +26,7 @@ const Root: FC = () => {
 
   const onSubmit: SubmitHandler<UserPostRequestSchemaType> = async (formData) => {
     // 送信のフックを発火させる
-    await trigger(formData satisfies PostUsersBody);
+    await trigger(formData satisfies PostApiUsersBody);
   };
 
   return (
