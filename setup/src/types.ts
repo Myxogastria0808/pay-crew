@@ -4,16 +4,16 @@ export type EnvConfig = {
 };
 
 export type FrontendConfig = {
-  VITE_API_URL: string | null;
-  VITE_SENTRY_DSN: string | null;
-  SENTRY_AUTH_TOKEN: string | null;
-  SENTRY_ORG: string | null;
-  SENTRY_PROJECT: string | null;
+  viteApiUrl: string;
+  viteSentryDsn: string;
+  sentryAuthToken: string;
+  sentryOrg: string;
+  sentryProject: string;
 };
 
 export type DatabaseConfig = {
-  postgresUser: string | null;
-  postgresPassword: string | null;
-  postgresDb: string | null;
-  postgresPort: number | null;
+  postgresUser: string;
+  postgresPassword: string;
+  postgresDb: string;
+  postgresPort: number;
 };

@@ -5,7 +5,7 @@
  * 受け取った入力値をそのまま応答するAPI
  * OpenAPI spec version: 1.0.0
  */
-export type GetUsers200Item = {
+export type GetApiUsers200Item = {
   /** @minimum 1 */
   id: number;
   /** @minLength 1 */
@@ -16,7 +16,7 @@ export type GetUsers200Item = {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const GetUsers500Status = {
+export const GetApiUsers500Status = {
   NUMBER_100: 100,
   NUMBER_102: 102,
   NUMBER_103: 103,
@@ -78,9 +78,9 @@ export const GetUsers500Status = {
   NUMBER_511: 511,
   NUMBER_MINUS_1: -1,
 } as const;
-export type GetUsers500 = {
+export type GetApiUsers500 = {
   /** HTTPステータスコード */
-  status: (typeof GetUsers500Status)[keyof typeof GetUsers500Status];
+  status: (typeof GetApiUsers500Status)[keyof typeof GetApiUsers500Status];
   /**
    * エラーメッセージ
    * @minLength 1
@@ -88,7 +88,7 @@ export type GetUsers500 = {
   message: string;
 };
 
-export type PostUsersBody = {
+export type PostApiUsersBody = {
   /** @minLength 1 */
   name: string;
   email: string;
@@ -96,7 +96,7 @@ export type PostUsersBody = {
   password: string;
 };
 
-export type PostUsers201Item = {
+export type PostApiUsers201Item = {
   /** @minimum 1 */
   id: number;
   /** @minLength 1 */
@@ -107,7 +107,7 @@ export type PostUsers201Item = {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const PostUsers500Status = {
+export const PostApiUsers500Status = {
   NUMBER_100: 100,
   NUMBER_102: 102,
   NUMBER_103: 103,
@@ -169,9 +169,9 @@ export const PostUsers500Status = {
   NUMBER_511: 511,
   NUMBER_MINUS_1: -1,
 } as const;
-export type PostUsers500 = {
+export type PostApiUsers500 = {
   /** HTTPステータスコード */
-  status: (typeof PostUsers500Status)[keyof typeof PostUsers500Status];
+  status: (typeof PostApiUsers500Status)[keyof typeof PostApiUsers500Status];
   /**
    * エラーメッセージ
    * @minLength 1

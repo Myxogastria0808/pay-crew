@@ -91,6 +91,7 @@
     "@vitest/ui": "catalog:",
     "astro": "catalog:docs",
     "dotenv": "catalog:setup",
+    "dotenv-caster": "catalog:setup",
     "drizzle-kit": "catalog:backend",
     "drizzle-orm": "catalog:backend",
     "eslint": "catalog:frontend",
@@ -116,6 +117,7 @@
     "vite": "catalog:frontend",
     "vitest": "catalog:",
     "wrangler": "catalog:backend",
-    "zod": "catalog:"
+    "zod": "catalog:",
+    "zod-openapi-share": "catalog:backend"
   }
 }
