@@ -1,9 +1,9 @@
 import { userPostResponseSchema, userPostRequestSchema, userGetResponseSchema } from 'paycrew-validator';
 import { drizzle } from 'drizzle-orm/node-postgres';
 import { OpenAPIHono } from '@hono/zod-openapi';
-import { route } from '../shared';
+import { route } from '../share';
 import { users } from '../../db/schema';
-import type { Bindings } from '../../domain';
+import type { Bindings } from '../share/binding';
 import { HTTPException } from 'hono/http-exception';
 
 const user = new OpenAPIHono<{
