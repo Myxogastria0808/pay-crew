@@ -9,7 +9,7 @@
     "coverage": "vitest run --coverage --typecheck",
     "ui": "vitest run --ui --typecheck"
   },
-  "dependencies": {
+  "devDependencies": {
     "dotenv": "catalog:setup",
     "tsx": "catalog:node",
     "dotenv-caster": "catalog:setup"
