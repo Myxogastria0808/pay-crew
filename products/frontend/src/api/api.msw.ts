@@ -10,9 +10,9 @@ import { faker } from '@faker-js/faker';
 import { HttpResponse, delay, http } from 'msw';
 import type { RequestHandlerOptions } from 'msw';
 
-import type { GetUsers200Item, GetUsers500, PostUsers201Item, PostUsers500 } from './api.schemas';
+import type { GetApiUsers200Item, GetApiUsers500, PostApiUsers201Item, PostApiUsers500 } from './api.schemas';
 
-export const getGetUsersResponseMock = (): GetUsers200Item[] =>
+export const getGetApiUsersResponseMock = (): GetApiUsers200Item[] =>
   Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({
     id: faker.number.float({ min: 1, max: undefined, fractionDigits: 2 }),
     name: faker.string.alpha({ length: { min: 1, max: 20 } }),
@@ -20,7 +20,7 @@ export const getGetUsersResponseMock = (): GetUsers200Item[] =>
     password: faker.string.alpha({ length: { min: 6, max: 20 } }),
   }));
 
-export const getGetUsersResponseMock200 = (): GetUsers200Item[] =>
+export const getGetApiUsersResponseMock200 = (): GetApiUsers200Item[] =>
   Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({
     id: faker.number.float({ min: 1, max: undefined, fractionDigits: 2 }),
     name: faker.string.alpha({ length: { min: 1, max: 20 } }),
@@ -28,7 +28,7 @@ export const getGetUsersResponseMock200 = (): GetUsers200Item[] =>
     password: faker.string.alpha({ length: { min: 6, max: 20 } }),
   }));
 
-export const getGetUsersResponseMock500 = (overrideResponse: Partial<GetUsers500> = {}): GetUsers500 => ({
+export const getGetApiUsersResponseMock500 = (overrideResponse: Partial<GetApiUsers500> = {}): GetApiUsers500 => ({
   status: faker.helpers.arrayElement([
     faker.helpers.arrayElement([100] as const),
     faker.helpers.arrayElement([102] as const),
@@ -95,7 +95,7 @@ export const getGetUsersResponseMock500 = (overrideResponse: Partial<GetUsers500
   ...overrideResponse,
 });
 
-export const getPostUsersResponseMock = (): PostUsers201Item[] =>
+export const getPostApiUsersResponseMock = (): PostApiUsers201Item[] =>
   Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({
     id: faker.number.float({ min: 1, max: undefined, fractionDigits: 2 }),
     name: faker.string.alpha({ length: { min: 1, max: 20 } }),
@@ -103,7 +103,7 @@ export const getPostUsersResponseMock = (): PostUsers201Item[] =>
     password: faker.string.alpha({ length: { min: 6, max: 20 } }),
   }));
 
-export const getPostUsersResponseMock201 = (): PostUsers201Item[] =>
+export const getPostApiUsersResponseMock201 = (): PostApiUsers201Item[] =>
   Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({
     id: faker.number.float({ min: 1, max: undefined, fractionDigits: 2 }),
     name: faker.string.alpha({ length: { min: 1, max: 20 } }),
@@ -111,7 +111,7 @@ export const getPostUsersResponseMock201 = (): PostUsers201Item[] =>
     password: faker.string.alpha({ length: { min: 6, max: 20 } }),
   }));
 
-export const getPostUsersResponseMock500 = (overrideResponse: Partial<PostUsers500> = {}): PostUsers500 => ({
+export const getPostApiUsersResponseMock500 = (overrideResponse: Partial<PostApiUsers500> = {}): PostApiUsers500 => ({
   status: faker.helpers.arrayElement([
     faker.helpers.arrayElement([100] as const),
     faker.helpers.arrayElement([102] as const),
@@ -178,14 +178,14 @@ export const getPostUsersResponseMock500 = (overrideResponse: Partial<PostUsers5
   ...overrideResponse,
 });
 
-export const getGetUsersMockHandler = (
+export const getGetApiUsersMockHandler = (
   overrideResponse?:
-    | GetUsers200Item[]
-    | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<GetUsers200Item[]> | GetUsers200Item[]),
+    | GetApiUsers200Item[]
+    | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<GetApiUsers200Item[]> | GetApiUsers200Item[]),
   options?: RequestHandlerOptions
 ) => {
   return http.get(
-    '*/users',
+    '*/api/users',
     async (info) => {
       await delay(1000);
 
@@ -195,7 +195,7 @@ export const getGetUsersMockHandler = (
             ? typeof overrideResponse === 'function'
               ? await overrideResponse(info)
               : overrideResponse
-            : getGetUsersResponseMock()
+            : getGetApiUsersResponseMock()
         ),
         { status: 200, headers: { 'Content-Type': 'application/json' } }
       );
@@ -204,14 +204,14 @@ export const getGetUsersMockHandler = (
   );
 };
 
-export const getGetUsersMockHandler200 = (
+export const getGetApiUsersMockHandler200 = (
   overrideResponse?:
-    | GetUsers200Item[]
-    | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<GetUsers200Item[]> | GetUsers200Item[]),
+    | GetApiUsers200Item[]
+    | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<GetApiUsers200Item[]> | GetApiUsers200Item[]),
   options?: RequestHandlerOptions
 ) => {
   return http.get(
-    '*/users',
+    '*/api/users',
     async (info) => {
       await delay(1000);
 
@@ -221,7 +221,7 @@ export const getGetUsersMockHandler200 = (
             ? typeof overrideResponse === 'function'
               ? await overrideResponse(info)
               : overrideResponse
-            : getGetUsersResponseMock200()
+            : getGetApiUsersResponseMock200()
         ),
         { status: 200, headers: { 'Content-Type': 'application/json' } }
       );
@@ -230,14 +230,14 @@ export const getGetUsersMockHandler200 = (
   );
 };
 
-export const getGetUsersMockHandler500 = (
+export const getGetApiUsersMockHandler500 = (
   overrideResponse?:
-    | GetUsers500
-    | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<GetUsers500> | GetUsers500),
+    | GetApiUsers500
+    | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<GetApiUsers500> | GetApiUsers500),
   options?: RequestHandlerOptions
 ) => {
   return http.get(
-    '*/users',
+    '*/api/users',
     async (info) => {
       await delay(1000);
 
@@ -247,7 +247,7 @@ export const getGetUsersMockHandler500 = (
             ? typeof overrideResponse === 'function'
               ? await overrideResponse(info)
               : overrideResponse
-            : getGetUsersResponseMock500()
+            : getGetApiUsersResponseMock500()
         ),
         { status: 500, headers: { 'Content-Type': 'application/json' } }
       );
@@ -256,14 +256,16 @@ export const getGetUsersMockHandler500 = (
   );
 };
 
-export const getPostUsersMockHandler = (
+export const getPostApiUsersMockHandler = (
   overrideResponse?:
-    | PostUsers201Item[]
-    | ((info: Parameters<Parameters<typeof http.post>[1]>[0]) => Promise<PostUsers201Item[]> | PostUsers201Item[]),
+    | PostApiUsers201Item[]
+    | ((
+        info: Parameters<Parameters<typeof http.post>[1]>[0]
+      ) => Promise<PostApiUsers201Item[]> | PostApiUsers201Item[]),
   options?: RequestHandlerOptions
 ) => {
   return http.post(
-    '*/users',
+    '*/api/users',
     async (info) => {
       await delay(1000);
 
@@ -273,7 +275,7 @@ export const getPostUsersMockHandler = (
             ? typeof overrideResponse === 'function'
               ? await overrideResponse(info)
               : overrideResponse
-            : getPostUsersResponseMock()
+            : getPostApiUsersResponseMock()
         ),
         { status: 201, headers: { 'Content-Type': 'application/json' } }
       );
@@ -282,14 +284,16 @@ export const getPostUsersMockHandler = (
   );
 };
 
-export const getPostUsersMockHandler201 = (
+export const getPostApiUsersMockHandler201 = (
   overrideResponse?:
-    | PostUsers201Item[]
-    | ((info: Parameters<Parameters<typeof http.post>[1]>[0]) => Promise<PostUsers201Item[]> | PostUsers201Item[]),
+    | PostApiUsers201Item[]
+    | ((
+        info: Parameters<Parameters<typeof http.post>[1]>[0]
+      ) => Promise<PostApiUsers201Item[]> | PostApiUsers201Item[]),
   options?: RequestHandlerOptions
 ) => {
   return http.post(
-    '*/users',
+    '*/api/users',
     async (info) => {
       await delay(1000);
 
@@ -299,7 +303,7 @@ export const getPostUsersMockHandler201 = (
             ? typeof overrideResponse === 'function'
               ? await overrideResponse(info)
               : overrideResponse
-            : getPostUsersResponseMock201()
+            : getPostApiUsersResponseMock201()
         ),
         { status: 201, headers: { 'Content-Type': 'application/json' } }
       );
@@ -308,14 +312,14 @@ export const getPostUsersMockHandler201 = (
   );
 };
 
-export const getPostUsersMockHandler500 = (
+export const getPostApiUsersMockHandler500 = (
   overrideResponse?:
-    | PostUsers500
-    | ((info: Parameters<Parameters<typeof http.post>[1]>[0]) => Promise<PostUsers500> | PostUsers500),
+    | PostApiUsers500
+    | ((info: Parameters<Parameters<typeof http.post>[1]>[0]) => Promise<PostApiUsers500> | PostApiUsers500),
   options?: RequestHandlerOptions
 ) => {
   return http.post(
-    '*/users',
+    '*/api/users',
     async (info) => {
       await delay(1000);
 
@@ -325,7 +329,7 @@ export const getPostUsersMockHandler500 = (
             ? typeof overrideResponse === 'function'
               ? await overrideResponse(info)
               : overrideResponse
-            : getPostUsersResponseMock500()
+            : getPostApiUsersResponseMock500()
         ),
         { status: 500, headers: { 'Content-Type': 'application/json' } }
       );
@@ -333,4 +337,4 @@ export const getPostUsersMockHandler500 = (
     options
   );
 };
-export const getEchoAPIMock = () => [getGetUsersMockHandler(), getPostUsersMockHandler()];
+export const getEchoAPIMock = () => [getGetApiUsersMockHandler(), getPostApiUsersMockHandler()];

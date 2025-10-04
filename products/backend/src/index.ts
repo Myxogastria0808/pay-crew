@@ -2,6 +2,7 @@ import { OpenAPIHono } from '@hono/zod-openapi';
 import { HTTPException } from 'hono/http-exception';
 import { cors } from 'hono/cors';
 import type { ErrorResponseSchemaType } from 'paycrew-validator';
+import { Scalar } from '@scalar/hono-api-reference';
 import type { Bindings } from './domain';
 import { user } from './handler';
 
@@ -49,6 +50,21 @@ app.onError((error, c) => {
     500
   );
 });
+
+// OpenAPI Spec Endpoint
+app.doc('/openapi', {
+  openapi: '3.0.0',
+  info: {
+    title: 'Echo API',
+    version: '1.0.0',
+    description: '受け取った入力値をそのまま応答するAPI',
+  },
+});
+
+// Scalar Web UI Endpoint
+// References
+// https://guides.scalar.com/scalar/scalar-api-references/integrations/hono
+app.get('/docs', Scalar({ url: '/openapi' }));
 
 // ルートの登録
 app.route('/', user);

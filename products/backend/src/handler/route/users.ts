@@ -24,7 +24,7 @@ const user = new OpenAPIHono<{
 
 const userPostSchema = route.createSchema(
   {
-    path: '/users',
+    path: '/api/users',
     method: 'post',
     description: 'ユーザーの作成',
     request: {
@@ -53,7 +53,7 @@ const userPostSchema = route.createSchema(
 
 const userGetSchema = route.createSchema(
   {
-    path: '/users',
+    path: '/api/users',
     method: 'get',
     description: 'ユーザーの取得',
     request: {},
