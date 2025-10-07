@@ -1,10 +1,9 @@
-import { userPostResponseSchema, userPostRequestSchema, userGetResponseSchema } from 'paycrew-validator';
-import { drizzle } from 'drizzle-orm/node-postgres';
-import { OpenAPIHono } from '@hono/zod-openapi';
-import { route } from '../share';
-import { users } from '../../db/schema';
-import type { Bindings } from '../share/binding';
 import { HTTPException } from 'hono/http-exception';
+import { OpenAPIHono } from '@hono/zod-openapi';
+import { userPostResponseSchema, userPostRequestSchema, userGetResponseSchema } from 'paycrew-validator';
+import { route } from '../share';
+import type { Bindings } from '../share/binding';
+import { UserService } from '../../application';
 
 const user = new OpenAPIHono<{
   Bindings: Bindings;
@@ -20,6 +19,34 @@ const user = new OpenAPIHono<{
       });
     }
   },
+});
+
+const userGetSchema = route.createSchema(
+  {
+    path: '/api/users',
+    method: 'get',
+    description: 'ユーザーの取得',
+    request: {},
+    responses: {
+      200: {
+        description: 'OK',
+        content: {
+          'application/json': {
+            schema: userGetResponseSchema,
+          },
+        },
+      },
+    },
+  },
+  [500]
+);
+
+user.openapi(userGetSchema, async (c) => {
+  // NOTE: application層のサービスを呼び出す
+  const service = new UserService(c.env.HYPERDRIVE);
+  const result = await service.getUserService();
+
+  return c.json(result);
 });
 
 const userPostSchema = route.createSchema(
@@ -51,36 +78,12 @@ const userPostSchema = route.createSchema(
   [500]
 );
 
-const userGetSchema = route.createSchema(
-  {
-    path: '/api/users',
-    method: 'get',
-    description: 'ユーザーの取得',
-    request: {},
-    responses: {
-      200: {
-        description: 'OK',
-        content: {
-          'application/json': {
-            schema: userGetResponseSchema,
-          },
-        },
-      },
-    },
-  },
-  [500]
-);
-
-user.openapi(userGetSchema, async (c) => {
-  const db = drizzle({ connection: c.env.HYPERDRIVE, casing: 'snake_case' });
-  const result = await db.select().from(users);
-  return c.json(result);
-});
-
 user.openapi(userPostSchema, async (c) => {
-  const { name, email, password } = c.req.valid('json');
-  const db = drizzle({ connection: c.env.HYPERDRIVE, casing: 'snake_case' });
-  const result = await db.insert(users).values({ name, email, password }).returning();
+  const data = c.req.valid('json');
+  // NOTE: application層のサービスを呼び出す
+  const service = new UserService(c.env.HYPERDRIVE);
+  const result = await service.postUserService(data);
+
   return c.json(result);
 });
 

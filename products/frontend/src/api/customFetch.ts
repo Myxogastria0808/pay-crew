@@ -17,8 +17,6 @@ const getUrl = (contextUrl: string): string => {
   const baseUrl = import.meta.env.VITE_API_URL as string;
   const url = new URL(contextUrl, baseUrl);
 
-  console.info(`Request URL: ${url.toString()}`);
-
   return url.toString();
 };
 
@@ -37,7 +35,7 @@ export const customFetch = async <T>(url: string, options: RequestInit): Promise
     headers: requestHeaders,
   };
 
-  // fetch process
+  // fetch API
   const response = await fetch(requestUrl, requestInit);
   // error handling
   if (!response.ok) {
@@ -45,6 +43,7 @@ export const customFetch = async <T>(url: string, options: RequestInit): Promise
       const contentType = response.headers.get('content-type');
 
       if (contentType && contentType.includes('application/json')) {
+        // content-type is 'application/json'
         const bodyText = await response.text();
         const errorBody = errorResponseSchema.parse(JSON.parse(bodyText));
         const apiError = new ApiError({
@@ -54,9 +53,12 @@ export const customFetch = async <T>(url: string, options: RequestInit): Promise
           url: response.url,
           body: errorBody,
         });
+        // send to Sentry
         captureException(apiError);
+        // throw ApiError
         throw apiError;
       } else {
+        // content-type is not 'application/json'
         const apiError = new ApiError({
           headers: response.headers,
           status: response.status,
@@ -64,7 +66,9 @@ export const customFetch = async <T>(url: string, options: RequestInit): Promise
           url: response.url,
           body: { status: -1, message: 'Undefined error response was reached' },
         });
+        // send to Sentry
         captureException(apiError);
+        // throw ApiError
         throw apiError;
       }
     } catch {
@@ -75,7 +79,9 @@ export const customFetch = async <T>(url: string, options: RequestInit): Promise
         url: response.url,
         body: { status: -1, message: 'Undefined error response was reached' },
       });
+      // send to Sentry
       captureException(apiError);
+      // throw ApiError
       throw apiError;
     }
   }

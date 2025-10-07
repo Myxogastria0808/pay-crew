@@ -4,11 +4,11 @@
 
 この構造は、レイヤードアーキテクチャから着想を得て定義している。
 
-このプロジェクトでは、hyperdriveによってDB接続が抽象化されており、
-drizzleというORMを使用してDB操作も抽象化しているため、インフラストラクチャ層は
-用意していない。
+このプロジェクトでは、hyperdriveによってDB接続が抽象化されている。
+また、drizzleというORMを使用してDB操作も抽象化している。
+そのため、infrastructure層は不要と判断し、用意していない。
 
-### handler (handler/routeを含む)
+### presentation (presentation/shareを除く)
 
 ルーティングの定義を行う。
 
@@ -17,15 +17,10 @@ drizzleというORMを使用してDB操作も抽象化しているため、イ�
   - @hono/zod-openapi
   - zod-openapi-share
 
-### handler/middleware
 
-ミドルウェアの定義を行う。
+#### presentation/share
 
-Zodによるバリデーションも実際はミドルウェアとして実装されているはずだが、
-このプロジェクトではhandler/routeに直接組み込んでいる。
-
-- 外部依存
-  - hono
+presentation層で共通して使用するエンティティを定義する。
 
 ### application
 
@@ -41,14 +36,25 @@ Zodによるバリデーションも実際はミドルウェアとして実装�
 - 外部依存
   - Drizzle
 
+### openapi
+
+openapi.jsonの生成を行う処理を定義している。
+
+`pnpm run backend:openapi`で生成できる。
+
+- 外部依存 (間接的な依存も含む)
+  - hono
+  - @hono/zod-openapi
+  - zod-openapi-share
+
 ## 依存関係
 
 ```mermaid
 flowchart TD
-  handler["handler (include entrypoint)"]
+  presentation["presentation (include entrypoint)"]
   application["application"]
   db["db"]
-  handler --> application
+  presentation --> application
   application --> db
 ```
 
@@ -57,23 +63,15 @@ flowchart TD
 ```mermaid
 flowchart TD
     io[Network IO]
-    route["route (include entrypoint)"]
-    middleware["handler/middleware (include zod validation)"]
+    routes["routes (include entrypoint)"]
     application["application"]
     hyperdrive["cloudflare hyperdrive"]
     db["Xata Lite (DBaaS)"]
 
-    subgraph handler
-        route
-        middleware
-    end
-
-    io --> route
-    route --> io
-    route --> middleware
-    middleware --> route
-    middleware --> application
-    application --> middleware
+    io --> routes
+    routes --> io
+    routes --> application
+    application --> routes
     application --> hyperdrive
     hyperdrive --> application
     hyperdrive --> db
