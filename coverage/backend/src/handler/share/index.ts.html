@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/handler/openapi/index.ts</title>
+    <title>Code coverage report for src/handler/share/index.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">src/handler/openapi</a> index.ts</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">src/handler/share</a> index.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/17</span>
+                <span class='fraction'>0/12</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/17</span>
+                <span class='fraction'>0/12</span>
             </div>
         
             
@@ -76,12 +76,7 @@
 <a name='L11'></a><a href='#L11'>11</a>
 <a name='L12'></a><a href='#L12'>12</a>
 <a name='L13'></a><a href='#L13'>13</a>
-<a name='L14'></a><a href='#L14'>14</a>
-<a name='L15'></a><a href='#L15'>15</a>
-<a name='L16'></a><a href='#L16'>16</a>
-<a name='L17'></a><a href='#L17'>17</a>
-<a name='L18'></a><a href='#L18'>18</a>
-<a name='L19'></a><a href='#L19'>19</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L14'></a><a href='#L14'>14</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -94,29 +89,19 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >import { default as app } from '../../index';</span></span></span>
-<span class="cstat-no" title="statement not covered" >import fs from 'node:fs';</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { errorResponseSchema } from 'paycrew-validator';<span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ></span></span></span>
+<span class="cstat-no" title="statement not covered" >import { ZodOpenAPISchema } from 'zod-openapi-share';</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >try {</span>
-<span class="cstat-no" title="statement not covered" >  const doc = app.getOpenAPI31Document({</span>
-<span class="cstat-no" title="statement not covered" >    openapi: '3.1.0',</span>
-<span class="cstat-no" title="statement not covered" >    info: {</span>
-<span class="cstat-no" title="statement not covered" >      title: 'Echo API',</span>
-<span class="cstat-no" title="statement not covered" >      version: '1.0.0',</span>
-<span class="cstat-no" title="statement not covered" >      description: '受け取った入力値をそのまま応答するAPI',</span>
-<span class="cstat-no" title="statement not covered" >    },</span>
-<span class="cstat-no" title="statement not covered" >  });</span>
-<span class="cstat-no" title="statement not covered" >  fs.writeFileSync('../frontend/openapi.json', JSON.stringify(doc, null, 2));</span>
-<span class="cstat-no" title="statement not covered" >  console.info('OpenAPI document generated successfully');</span>
-<span class="cstat-no" title="statement not covered" >} catch (error: unknown) {</span>
-<span class="cstat-no" title="statement not covered" >  console.error('Failed to generate OpenAPI document');</span>
-<span class="cstat-no" title="statement not covered" >  console.error(`Error Message: ${error}`);</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+<span class="cstat-no" title="statement not covered" >export const route = new ZodOpenAPISchema({</span>
+<span class="cstat-no" title="statement not covered" >  400: {</span>
+<span class="cstat-no" title="statement not covered" >    description: 'Bad Request',</span>
+<span class="cstat-no" title="statement not covered" >    content: { 'application/json': { schema: errorResponseSchema } },</span>
+<span class="cstat-no" title="statement not covered" >  },</span>
+<span class="cstat-no" title="statement not covered" >  500: {</span>
+<span class="cstat-no" title="statement not covered" >    description: 'Internal Server Error',</span>
+<span class="cstat-no" title="statement not covered" >    content: { 'application/json': { schema: errorResponseSchema } },</span>
+<span class="cstat-no" title="statement not covered" >  },</span>
+<span class="cstat-no" title="statement not covered" >} as const);</span>
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -124,7 +109,7 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-10-04T18:13:56.588Z
+                at 2025-10-07T04:46:20.281Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
