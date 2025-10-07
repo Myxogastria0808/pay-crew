@@ -3,7 +3,7 @@ import { HTTPException } from 'hono/http-exception';
 import { cors } from 'hono/cors';
 import type { ErrorResponseSchemaType } from 'paycrew-validator';
 import { Scalar } from '@scalar/hono-api-reference';
-import type { Bindings } from './domain';
+import type { Bindings } from './handler/share/binding';
 import { user } from './handler';
 
 const app = new OpenAPIHono<{

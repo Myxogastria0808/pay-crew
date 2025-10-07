@@ -1,4 +1,4 @@
-import { default as app } from '../../index';
+import { default as app } from '../index';
 import fs from 'node:fs';
 
 try {

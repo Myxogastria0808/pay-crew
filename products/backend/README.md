@@ -2,41 +2,37 @@
 
 ## 構造
 
-この構造は、レイヤードアーキテクチャから着想を得て定義しています。
+この構造は、レイヤードアーキテクチャから着想を得て定義している。
+
+このプロジェクトでは、hyperdriveによってDB接続が抽象化されており、
+drizzleというORMを使用してDB操作も抽象化しているため、インフラストラクチャ層は
+用意していない。
 
 ### handler (handler/routeを含む)
 
-ルーティングの定義を行う
+ルーティングの定義を行う。
 
 - 外部依存
-  - Hono
+  - hono
+  - @hono/zod-openapi
+  - zod-openapi-share
 
 ### handler/middleware
 
-ミドルウェアの定義を行う
+ミドルウェアの定義を行う。
+
+Zodによるバリデーションも実際はミドルウェアとして実装されているはずだが、
+このプロジェクトではhandler/routeに直接組み込んでいる。
 
 - 外部依存
-  - Hono
+  - hono
 
 ### application
 
-ビジネスロジックの定義を行う
+ビジネスロジック及びデータベースCRUD操作の定義を行う
 
 - 外部依存
-
-### domain
-
-モデル（データベーススキーマではない）と型の定義を行う
-
-### infrastructure
-
-データベースCRUD操作の定義を行う
-
-> [TIP!]
-> 全ての操作は、最小の操作となるように定義する
-
-- 外部依存
-  - Drizzle
+  - drizzle
 
 ### db
 
@@ -49,23 +45,11 @@
 
 ```mermaid
 flowchart TD
-    subgraph handler
-        route["route (include handler/route)"]
-        middleware["handler/middleware"]
-    end
-    application["application"]
-    infrastructure["infrastructure"]
-    db["db"]
-    domain["domain"]
-
-    route --> middleware
-    route --> application
-    application --> infrastructure
-    infrastructure --> db
-
-    middleware --> domain
-    application --> domain
-    infrastructure --> domain
+  handler["handler (include entrypoint)"]
+  application["application"]
+  db["db"]
+  handler --> application
+  application --> db
 ```
 
 ## 処理の流れ
@@ -73,11 +57,11 @@ flowchart TD
 ```mermaid
 flowchart TD
     io[Network IO]
-    route["route (include handler/route)"]
-    middleware["handler/middleware"]
+    route["route (include entrypoint)"]
+    middleware["handler/middleware (include zod validation)"]
     application["application"]
-    infrastructure["infrastructure"]
-    db["db"]
+    hyperdrive["cloudflare hyperdrive"]
+    db["Xata Lite (DBaaS)"]
 
     subgraph handler
         route
@@ -88,11 +72,10 @@ flowchart TD
     route --> io
     route --> middleware
     middleware --> route
-    route --> application
-    application --> route
     middleware --> application
-    application --> infrastructure
-    infrastructure --> application
-    infrastructure --> db
-    db --> infrastructure
+    application --> middleware
+    application --> hyperdrive
+    hyperdrive --> application
+    hyperdrive --> db
+    db --> hyperdrive
 ```
