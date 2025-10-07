@@ -7,7 +7,7 @@ export { default as user } from './routes/users';
 const root = new OpenAPIHono<{
   Bindings: Bindings;
 }>({
-  // Open API Honoのインスタンスを生
+  // Open API Honoのインスタンスを生成
   // ZodのバリデーションエラーをHTTPExceptionで投げるように設定
   // result.successがfalseの場合はZodErrorが入っている
   defaultHook: (result) => {

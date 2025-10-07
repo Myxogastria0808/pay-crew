@@ -8,7 +8,7 @@ import { UserService } from '../../application';
 const user = new OpenAPIHono<{
   Bindings: Bindings;
 }>({
-  // Open API Honoのインスタンスを生
+  // Open API Honoのインスタンスを生成
   // ZodのバリデーションエラーをHTTPExceptionで投げるように設定
   // result.successがfalseの場合はZodErrorが入っている
   defaultHook: (result) => {
