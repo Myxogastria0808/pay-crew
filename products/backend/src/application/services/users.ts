@@ -1,4 +1,4 @@
-import { drizzle } from 'drizzle-orm/postgres-js';
+import { drizzle } from 'drizzle-orm/node-postgres';
 import { users } from '../../db/schema';
 import { UserServiceType, UserType } from '../model/users';
 

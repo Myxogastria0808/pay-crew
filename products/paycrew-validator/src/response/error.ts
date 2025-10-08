@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from '@hono/zod-openapi';
 
 const ContentfulStatusCodeArray = [
   100, 102, 103, 200, 201, 202, 203, 206, 207, 208, 226, 300, 301, 302, 303, 305, 306, 307, 308, 400, 401, 402, 403,
@@ -16,5 +16,7 @@ export const errorResponseSchema = z.object({
     description: 'エラーメッセージ',
   }),
 });
+
+export const errorResponseAPISchema = errorResponseSchema.openapi('Error');
 
 export type ErrorResponseSchemaType = z.infer<typeof errorResponseSchema>;
