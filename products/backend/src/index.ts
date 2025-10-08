@@ -3,13 +3,13 @@ import { HTTPException } from 'hono/http-exception';
 import { cors } from 'hono/cors';
 import type { ErrorResponseSchemaType } from 'paycrew-validator';
 import { Scalar } from '@scalar/hono-api-reference';
-import type { Bindings } from './handler/share/binding';
-import { user } from './handler';
+import type { Bindings } from './presentation/share/binding';
+import { default as root } from './presentation';
 
 const app = new OpenAPIHono<{
   Bindings: Bindings;
 }>({
-  // Open API Honoのインスタンスを生
+  // Open API Honoのインスタンスを生成
   // ZodのバリデーションエラーをHTTPExceptionで投げるように設定
   // result.successがfalseの場合はZodErrorが入っている
   defaultHook: (result) => {
@@ -66,7 +66,7 @@ app.doc('/openapi', {
 // https://guides.scalar.com/scalar/scalar-api-references/integrations/hono
 app.get('/docs', Scalar({ url: '/openapi' }));
 
-// ルートの登録
-app.route('/', user);
+// エンドポイントのルートの登録
+app.route('/', root);
 
 export default app;

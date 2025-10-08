@@ -31,7 +31,7 @@ jobs:
       - name: Build & Deploy Backend to Cloudflare Workers
         uses: cloudflare/wrangler-action@v3
         with:
-          wranglerVersion: "4.40.3"
+          wranglerVersion: "4.42.1"
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: "products/backend"
