@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/76</span>
+                <span class='fraction'>0/83</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/76</span>
+                <span class='fraction'>0/83</span>
             </div>
         
             
@@ -149,7 +149,13 @@
 <a name='L84'></a><a href='#L84'>84</a>
 <a name='L85'></a><a href='#L85'>85</a>
 <a name='L86'></a><a href='#L86'>86</a>
-<a name='L87'></a><a href='#L87'>87</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -169,8 +175,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -195,6 +199,14 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -254,8 +266,6 @@
 <span class="cstat-no" title="statement not covered" >  const baseUrl = import.meta.env.VITE_API_URL as string;</span>
 <span class="cstat-no" title="statement not covered" >  const url = new URL(contextUrl, baseUrl);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  console.info(`Request URL: ${url.toString()}`);</span>
-&nbsp;
 <span class="cstat-no" title="statement not covered" >  return url.toString();</span>
 <span class="cstat-no" title="statement not covered" >};</span>
 &nbsp;
@@ -274,7 +284,7 @@
 <span class="cstat-no" title="statement not covered" >    headers: requestHeaders,</span>
 <span class="cstat-no" title="statement not covered" >  };</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  // fetch process</span>
+<span class="cstat-no" title="statement not covered" >  // fetch API</span>
 <span class="cstat-no" title="statement not covered" >  const response = await fetch(requestUrl, requestInit);</span>
 <span class="cstat-no" title="statement not covered" >  // error handling</span>
 <span class="cstat-no" title="statement not covered" >  if (!response.ok) {</span>
@@ -282,6 +292,7 @@
 <span class="cstat-no" title="statement not covered" >      const contentType = response.headers.get('content-type');</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      if (contentType &amp;&amp; contentType.includes('application/json')) {</span>
+<span class="cstat-no" title="statement not covered" >        // content-type is 'application/json'</span>
 <span class="cstat-no" title="statement not covered" >        const bodyText = await response.text();</span>
 <span class="cstat-no" title="statement not covered" >        const errorBody = errorResponseSchema.parse(JSON.parse(bodyText));</span>
 <span class="cstat-no" title="statement not covered" >        const apiError = new ApiError({</span>
@@ -291,9 +302,12 @@
 <span class="cstat-no" title="statement not covered" >          url: response.url,</span>
 <span class="cstat-no" title="statement not covered" >          body: errorBody,</span>
 <span class="cstat-no" title="statement not covered" >        });</span>
+<span class="cstat-no" title="statement not covered" >        // send to Sentry</span>
 <span class="cstat-no" title="statement not covered" >        captureException(apiError);</span>
+<span class="cstat-no" title="statement not covered" >        // throw ApiError</span>
 <span class="cstat-no" title="statement not covered" >        throw apiError;</span>
 <span class="cstat-no" title="statement not covered" >      } else {</span>
+<span class="cstat-no" title="statement not covered" >        // content-type is not 'application/json'</span>
 <span class="cstat-no" title="statement not covered" >        const apiError = new ApiError({</span>
 <span class="cstat-no" title="statement not covered" >          headers: response.headers,</span>
 <span class="cstat-no" title="statement not covered" >          status: response.status,</span>
@@ -301,7 +315,9 @@
 <span class="cstat-no" title="statement not covered" >          url: response.url,</span>
 <span class="cstat-no" title="statement not covered" >          body: { status: -1, message: 'Undefined error response was reached' },</span>
 <span class="cstat-no" title="statement not covered" >        });</span>
+<span class="cstat-no" title="statement not covered" >        // send to Sentry</span>
 <span class="cstat-no" title="statement not covered" >        captureException(apiError);</span>
+<span class="cstat-no" title="statement not covered" >        // throw ApiError</span>
 <span class="cstat-no" title="statement not covered" >        throw apiError;</span>
 <span class="cstat-no" title="statement not covered" >      }</span>
 <span class="cstat-no" title="statement not covered" >    } catch {</span>
@@ -312,7 +328,9 @@
 <span class="cstat-no" title="statement not covered" >        url: response.url,</span>
 <span class="cstat-no" title="statement not covered" >        body: { status: -1, message: 'Undefined error response was reached' },</span>
 <span class="cstat-no" title="statement not covered" >      });</span>
+<span class="cstat-no" title="statement not covered" >      // send to Sentry</span>
 <span class="cstat-no" title="statement not covered" >      captureException(apiError);</span>
+<span class="cstat-no" title="statement not covered" >      // throw ApiError</span>
 <span class="cstat-no" title="statement not covered" >      throw apiError;</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
@@ -328,7 +346,7 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-10-07T04:46:20.805Z
+                at 2025-10-08T04:53:24.780Z
             </div>
         <script src="../prettify.js"></script>
         <script>

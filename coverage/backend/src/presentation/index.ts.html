@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/openapi/index.ts</title>
+    <title>Code coverage report for src/presentation/index.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/openapi</a> index.ts</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/presentation</a> index.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -81,8 +81,25 @@
 <a name='L16'></a><a href='#L16'>16</a>
 <a name='L17'></a><a href='#L17'>17</a>
 <a name='L18'></a><a href='#L18'>18</a>
-<a name='L19'></a><a href='#L19'>19</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -93,30 +110,37 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >import { default as app } from '../index';</span></span></span>
-<span class="cstat-no" title="statement not covered" >import fs from 'node:fs';</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { OpenAPIHono } from '@hono/zod-openapi';<span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ></span></span></span>
+import { Bindings } from './share/binding';
+<span class="cstat-no" title="statement not covered" >import { HTTPException } from 'hono/http-exception';</span>
+<span class="cstat-no" title="statement not covered" >import user from './routes/users';</span>
+<span class="cstat-no" title="statement not covered" >export { default as user } from './routes/users';</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >try {</span>
-<span class="cstat-no" title="statement not covered" >  const doc = app.getOpenAPI31Document({</span>
-<span class="cstat-no" title="statement not covered" >    openapi: '3.1.0',</span>
-<span class="cstat-no" title="statement not covered" >    info: {</span>
-<span class="cstat-no" title="statement not covered" >      title: 'Echo API',</span>
-<span class="cstat-no" title="statement not covered" >      version: '1.0.0',</span>
-<span class="cstat-no" title="statement not covered" >      description: '受け取った入力値をそのまま応答するAPI',</span>
-<span class="cstat-no" title="statement not covered" >    },</span>
-<span class="cstat-no" title="statement not covered" >  });</span>
-<span class="cstat-no" title="statement not covered" >  fs.writeFileSync('../frontend/openapi.json', JSON.stringify(doc, null, 2));</span>
-<span class="cstat-no" title="statement not covered" >  console.info('OpenAPI document generated successfully');</span>
-<span class="cstat-no" title="statement not covered" >} catch (error: unknown) {</span>
-<span class="cstat-no" title="statement not covered" >  console.error('Failed to generate OpenAPI document');</span>
-<span class="cstat-no" title="statement not covered" >  console.error(`Error Message: ${error}`);</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+<span class="cstat-no" title="statement not covered" >const root = new OpenAPIHono&lt;{</span>
+  Bindings: Bindings;
+<span class="cstat-no" title="statement not covered" >}&gt;({</span>
+  // Open API Honoのインスタンスを生成
+  // ZodのバリデーションエラーをHTTPExceptionで投げるように設定
+  // result.successがfalseの場合はZodErrorが入っている
+<span class="cstat-no" title="statement not covered" >  defaultHook: (result) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    if (!result.success) {</span>
+<span class="cstat-no" title="statement not covered" >      console.error(result.error);</span>
+<span class="cstat-no" title="statement not covered" >      throw new HTTPException(400, {</span>
+<span class="cstat-no" title="statement not covered" >        message: 'Zod Validation Error',</span>
+<span class="cstat-no" title="statement not covered" >      });</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
+<span class="cstat-no" title="statement not covered" >  },</span>
+<span class="cstat-no" title="statement not covered" >});</span>
+&nbsp;
+// エンドポイントの登録
+<span class="cstat-no" title="statement not covered" >root.route('/', user);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >export default root;</span>
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
