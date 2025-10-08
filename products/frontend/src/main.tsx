@@ -17,26 +17,26 @@ Sentry.init({
     Sentry.feedbackIntegration({
       // Additional SDK configuration goes in here, for example:
       colorScheme: 'light',
-      showName: true,
-      showEmail: true,
+      showName: false,
+      showEmail: false,
       enableScreenshot: true,
-      isNameRequired: true,
-      isEmailRequired: true,
-      triggerLabel: '不具合を報告',
-      triggerAriaLabel: '不具合を報告',
-      formTitle: '不具合報告フォーム',
-      nameLabel: 'お名前',
-      namePlaceholder: 'お名前を入力してください',
-      emailLabel: 'メールアドレス',
-      emailPlaceholder: 'メールアドレスを入力してください',
-      messageLabel: '不具合の詳細',
-      isRequiredLabel: '（必須）',
-      messagePlaceholder: '不具合の詳細を入力してください',
-      addScreenshotButtonLabel: 'スクリーンショットを追加',
-      removeScreenshotButtonLabel: 'スクリーンショットを削除',
-      submitButtonLabel: '送信',
-      cancelButtonLabel: 'キャンセル',
-      successMessageText: 'ご協力していただき、ありがとうございました！',
+      isNameRequired: false,
+      isEmailRequired: false,
+      triggerLabel: 'User Feedback',
+      triggerAriaLabel: 'Send Feedback',
+      formTitle: 'User Feedback',
+      nameLabel: '',
+      namePlaceholder: '',
+      emailLabel: '',
+      emailPlaceholder: '',
+      messageLabel: 'Feedback Message',
+      isRequiredLabel: '(Required)',
+      messagePlaceholder: 'Please enter your feedback',
+      addScreenshotButtonLabel: 'Add Screenshot',
+      removeScreenshotButtonLabel: 'Remove Screenshot',
+      submitButtonLabel: 'Submit',
+      cancelButtonLabel: 'Cancel',
+      successMessageText: 'Thank you for your feedback!',
     }),
   ],
   // Set tracesSampleRate to 1.0 to capture 100%
@@ -45,7 +45,7 @@ Sentry.init({
   // Set 'tracePropagationTargets' to control for which URLs distributed tracing should be enabled
   tracePropagationTargets: ['localhost', /^https:\/\/pay-crew\.yukiosada\.work\//],
   // Session Replay
-  replaysSessionSampleRate: 0.1, // This sets the sample rate at 10%. You may want to change it to 100% while in development and then sample at a lower rate in production.
+  replaysSessionSampleRate: 1.0, // This sets the sample rate at 10%. You may want to change it to 100% while in development and then sample at a lower rate in production.
   replaysOnErrorSampleRate: 1.0, // If you're not already sampling the entire session, change the sample rate to 100% when sampling sessions where errors occur.
   // Enable logs to be sent to Sentry
   enableLogs: true,

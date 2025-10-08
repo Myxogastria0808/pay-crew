@@ -9,6 +9,7 @@
     "ui": "vitest run --ui --typecheck"
   },
   "devDependencies": {
+    "@hono/zod-openapi": "catalog:backend",
     "vitest": "catalog:",
     "zod": "catalog:"
   }

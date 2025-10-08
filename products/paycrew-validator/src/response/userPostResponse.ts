@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from '@hono/zod-openapi';
 
 export const userPostResponseSchema = z.array(
   z.object({
@@ -8,5 +8,7 @@ export const userPostResponseSchema = z.array(
     password: z.string().min(6),
   })
 );
+
+export const userPostResponseAPISchema = userPostResponseSchema.openapi('User');
 
 export type UserPostResponseSchemaType = z.infer<typeof userPostResponseSchema>;
