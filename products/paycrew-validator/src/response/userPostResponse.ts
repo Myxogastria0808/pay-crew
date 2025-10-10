@@ -9,6 +9,4 @@ export const userPostResponseSchema = z.array(
   })
 );
 
-export const userPostResponseAPISchema = userPostResponseSchema.openapi('User');
-
 export type UserPostResponseSchemaType = z.infer<typeof userPostResponseSchema>;
