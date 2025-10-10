@@ -16,7 +16,10 @@ const sentry = new OpenAPIHono({
 });
 
 sentry.post('/', async (c) => {
-  return c.json({ status: 'ok' });
+  const body = await c.req.json();
+  console.table(body);
+  console.info(body);
+  return c.text('Hello, World!');
 });
 
 export default sentry;
