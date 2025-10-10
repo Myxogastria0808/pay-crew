@@ -7,6 +7,10 @@
 ![Vitest](https://img.shields.io/badge/-vitest-6e9f18?style=flat&logo=vitest&logoColor=ffffff)
 [![RenovateBot](https://img.shields.io/badge/RenovateBot-1A1F6C?logo=renovate&logoColor=fff)](#)
 
+## ドキュメント
+
+https://myxogastria0808.github.io/pay-crew/
+
 ## セットアップ
 
 0. いくつかのツールをインストール
@@ -47,13 +51,13 @@ pnpm i && pnpm run setup:generate && pnpm run backend:generate && pnpm run backe
 
 ## docker-compose の操作 (基本操作のみ掲載)
 
-### 起動
+- 起動
 
 ```sh
 sudo docker compose up -d
 ```
 
-### コンテナに入る
+- コンテナに入る
 
 ```sh
 sudo docker exec -it postgres psql -U <POSTGRES_USER> -d <POSTGRES_DB>
@@ -67,13 +71,13 @@ sudo docker exec -it postgres psql -U <POSTGRES_USER> -d <POSTGRES_DB>
 sudo docker exec -it postgres psql -U postgres -d sample
 ```
 
-### 停止
+- 停止
 
 ```sh
 sudo docker compose down
 ```
 
-### クリーンアップ
+- クリーンアップ
 
 ```sh
 docker compose down --rmi all --volumes
@@ -93,6 +97,16 @@ pnpm run backend:openapi
 pnpm run frontend:orval
 ```
 
+## 開発時のデータベースの中身を確認する
+
+Drizzle Studioというものを利用することで、ブラウザ上でデータベースの中身を確認することができる。
+
+以下のコマンドでDrizzle Studioを起動できる。
+
+```sh
+pnpm run backend:studio
+```
+
 ## 本番環境 (Xata Lite) のマイグレーション
 
 1. `products/backend/.env`を本番環境のURLに変更
@@ -104,10 +118,6 @@ pnpm run backend:migrate
 ```
 
 3. `products/backend/.env`を開発環境のURLに戻す
-
-## ドキュメント
-
-https://myxogastria0808.github.io/pay-crew/
 
 ## 技術スタック
 
@@ -148,10 +158,10 @@ https://myxogastria0808.github.io/pay-crew/
 - fetch API (for calling Webhook)
 - Drizzle (ORM)
 
-### [Web UI for OpenAPI](https://pay-crew-api.yukiosada.work/docs)
+#### [Web UI for OpenAPI](https://pay-crew-api.yukiosada.work/docs)
 - https://pay-crew-api.yukiosada.work/docs
 
-### [OpenAPI Spec](https://pay-crew-api.yukiosada.work/openapi)
+#### [OpenAPI Spec](https://pay-crew-api.yukiosada.work/openapi)
 - https://pay-crew-api.yukiosada.work/openapi
 
 #### [Source Code](https://github.com/Myxogastria0808/pay-crew/tree/dev/products/backend/)
@@ -172,6 +182,12 @@ https://myxogastria0808.github.io/pay-crew/
   - PostgreSQL with docker-compose
 - production
   - Xata Lite
+
+### Transfer from Sentry to Discord (products/sentry-proxy)
+
+- TypeScript
+- Hono (Web Framework)
+- fetch API (for calling Webhook)
 
 ### Docs (docs)
 

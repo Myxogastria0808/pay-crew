@@ -2,7 +2,7 @@ import { errorResponseSchema } from 'paycrew-validator';
 import { ApiError } from './apiError';
 import { captureException } from '@sentry/react';
 
-// NOTE: Supports cases where `content-type` is other than `json`
+// NOTE: Content-Type: application/json のレスポンスのみを想定
 const getBody = <T>(c: Response | Request): Promise<T> => {
   const contentType = c.headers.get('content-type');
 
@@ -12,7 +12,7 @@ const getBody = <T>(c: Response | Request): Promise<T> => {
   return c.text() as Promise<T>;
 };
 
-// NOTE: Update just base url
+// NOTE: ベースURLを設定
 const getUrl = (contextUrl: string): string => {
   const baseUrl = import.meta.env.VITE_API_URL as string;
   const url = new URL(contextUrl, baseUrl);
@@ -20,7 +20,7 @@ const getUrl = (contextUrl: string): string => {
   return url.toString();
 };
 
-// NOTE: Add headers
+// NOTE: Headerに追加したい場合はここで追加
 const getHeaders = (headers?: HeadersInit): HeadersInit => {
   return {
     ...headers,

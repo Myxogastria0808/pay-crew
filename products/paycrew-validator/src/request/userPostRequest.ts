@@ -6,6 +6,4 @@ export const userPostRequestSchema = z.object({
   password: z.string().min(6, { message: 'パスワードは6文字以上である必要があります。' }),
 });
 
-export const userPostRequestAPISchema = userPostRequestSchema.openapi('User');
-
 export type UserPostRequestSchemaType = z.infer<typeof userPostRequestSchema>;

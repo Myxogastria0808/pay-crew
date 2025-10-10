@@ -1,11 +1,9 @@
 import { HTTPException } from 'hono/http-exception';
 import { OpenAPIHono } from '@hono/zod-openapi';
-import { drizzle } from 'drizzle-orm/node-postgres';
 import { route } from '../share';
 import type { Bindings } from '../share/binding';
 import { UserService } from '../../application';
-import { users } from '../../db/schema';
-import { userGetResponseAPISchema, userPostRequestAPISchema, userPostResponseAPISchema } from 'paycrew-validator';
+import { userGetResponseSchema, userPostRequestSchema, userPostResponseSchema } from 'paycrew-validator';
 
 const user = new OpenAPIHono<{
   Bindings: Bindings;
@@ -34,7 +32,7 @@ const userGetSchema = route.createSchema(
         description: 'OK',
         content: {
           'application/json': {
-            schema: userGetResponseAPISchema,
+            schema: userGetResponseSchema,
           },
         },
       },
@@ -61,7 +59,7 @@ const userPostSchema = route.createSchema(
         required: true,
         content: {
           'application/json': {
-            schema: userPostRequestAPISchema,
+            schema: userPostRequestSchema,
           },
         },
       },
@@ -71,7 +69,7 @@ const userPostSchema = route.createSchema(
         description: 'Created',
         content: {
           'application/json': {
-            schema: userPostResponseAPISchema,
+            schema: userPostResponseSchema,
           },
         },
       },
