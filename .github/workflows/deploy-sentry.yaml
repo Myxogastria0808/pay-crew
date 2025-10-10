@@ -1,4 +1,4 @@
-name: deploy-backend
+name: deploy-sentry
 
 permissions:
   contents: read
@@ -23,10 +23,6 @@ jobs:
       # Install Dependencies
       - name: Install Dependencies
         run: nix develop --command bash -c "pnpm i"
-      # Inject hyperdrive id in ./products/backend/wrangler.toml
-      - name: Inject hyperdrive id
-        run: |
-          sed -i 's/"id": ""/"id": "${{ secrets.CLOUDFLARE_HYPERDRIVE_ID }}"/' ./products/backend/wrangler.jsonc
       # Build & Deploy Backend to Cloudflare Workers
       - name: Build & Deploy Backend to Cloudflare Workers
         uses: cloudflare/wrangler-action@v3
@@ -34,4 +30,4 @@ jobs:
           wranglerVersion: "4.42.1"
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          workingDirectory: "products/backend"
+          workingDirectory: "products/sentry-proxy"
