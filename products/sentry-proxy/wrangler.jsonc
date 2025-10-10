@@ -1,5 +1,5 @@
 {
   "name": "pay-crew-sentry",
   "main": "src/index.ts",
-  "compatibility_date": "2025-10-08",
+  "compatibility_date": "2025-10-10",
 }

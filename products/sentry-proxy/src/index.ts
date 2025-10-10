@@ -3,6 +3,7 @@ import { HTTPException } from 'hono/http-exception';
 import { cors } from 'hono/cors';
 import type { ErrorResponseSchemaType } from 'paycrew-validator';
 import { Scalar } from '@scalar/hono-api-reference';
+import { default as sentry } from './routes/sentry';
 
 const app = new OpenAPIHono({
   // Open API Honoのインスタンスを生成
@@ -61,5 +62,7 @@ app.doc('/openapi', {
 // References
 // https://guides.scalar.com/scalar/scalar-api-references/integrations/hono
 app.get('/docs', Scalar({ url: '/openapi' }));
+
+app.route('/', sentry);
 
 export default app;
