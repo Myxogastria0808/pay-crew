@@ -7,7 +7,7 @@ setupは、pay-crewのシークレットファイルを
 
 ## 仕組み
 
-0. `pnpm run setup:generate`を実行する
+0. `pnpm run setup:generate`が実行のトリガーになる。
 
 1. プロジェクトのルートにある`.env`を読み込む
 

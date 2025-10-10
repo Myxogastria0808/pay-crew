@@ -4,10 +4,10 @@
   "type": "module",
   "scripts": {
     "dev": "wrangler dev --config wrangler.local.jsonc",
-    "build": "tsc",
     "generate": "drizzle-kit generate",
     "migrate": "drizzle-kit migrate",
     "openapi": "tsx src/openapi/index.ts",
+    "studio": "drizzle-kit studio",
     "test": "vitest run --typecheck",
     "coverage": "vitest run --coverage --typecheck",
     "ui": "vitest run --ui --typecheck"

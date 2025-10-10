@@ -17,6 +17,4 @@ export const errorResponseSchema = z.object({
   }),
 });
 
-export const errorResponseAPISchema = errorResponseSchema.openapi('Error');
-
 export type ErrorResponseSchemaType = z.infer<typeof errorResponseSchema>;
