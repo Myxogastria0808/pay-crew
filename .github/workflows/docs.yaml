@@ -43,6 +43,18 @@ jobs:
         run: |
           mkdir -p ./docs/dist/vitest/frontend/
           mv ./products/frontend/html/* ./docs/dist/vitest/frontend/
+      - name: Move Vitest UI Report (paycrew-validator)
+        run: |
+          mkdir -p ./docs/dist/vitest/paycrew-validator/
+          mv ./products/paycrew-validator/html/* ./docs/dist/vitest/paycrew-validator/
+      - name: Move Vitest UI Report (sentry-proxy)
+        run: |
+          mkdir -p ./docs/dist/vitest/sentry-proxy/
+          mv ./products/sentry-proxy/html/* ./docs/dist/vitest/sentry-proxy/
+      - name: Move Vitest UI Report (setup)
+        run: |
+          mkdir -p ./docs/dist/vitest/setup/
+          mv ./setup/html/* ./docs/dist/vitest/setup/
       # Move Coverage Report
       - name: Move Coverage Report (backend)
         run: |
@@ -52,6 +64,18 @@ jobs:
         run: |
           mkdir -p ./docs/dist/coverage/frontend/
           mv ./products/frontend/coverage/* ./docs/dist/coverage/frontend/
+      - name: Move Coverage Report (paycrew-validator)
+        run: |
+          mkdir -p ./docs/dist/coverage/paycrew-validator/
+          mv ./products/paycrew-validator/coverage/* ./docs/dist/coverage/paycrew-validator/
+      - name: Move Coverage Report (sentry-proxy)
+        run: |
+          mkdir -p ./docs/dist/coverage/sentry-proxy/
+          mv ./products/sentry-proxy/coverage/* ./docs/dist/coverage/sentry-proxy/
+      - name: Move Coverage Report (setup)
+        run: |
+          mkdir -p ./docs/dist/coverage/setup/
+          mv ./setup/coverage/* ./docs/dist/coverage/setup/
       # Move _config.yml
       - name: Move _config.yml
         run: mv ./docs/_config.yml ./docs/dist/_config.yml

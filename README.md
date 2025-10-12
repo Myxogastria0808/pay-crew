@@ -183,11 +183,29 @@ pnpm run backend:migrate
 - production
   - Xata Lite
 
-### Transfer from Sentry to Discord (products/sentry-proxy)
+### Proxy Server from Sentry to Discord (products/sentry-proxy)
 
 - TypeScript
 - Hono (Web Framework)
 - fetch API (for calling Webhook)
+
+#### [Web UI for OpenAPI](https://pay-crew-sentry.yukiosada.work/docs)
+- https://pay-crew-sentry.yukiosada.work/docs
+
+#### [OpenAPI Spec](https://pay-crew-sentry.yukiosada.work/openapi)
+- https://pay-crew-sentry.yukiosada.work/openapi
+
+#### [Source Code](https://github.com/Myxogastria0808/pay-crew/tree/dev/products/sentry-proxy/)
+- https://github.com/Myxogastria0808/pay-crew/tree/dev/products/sentry-proxy/
+
+#### [Details](https://github.com/Myxogastria0808/pay-crew/tree/dev/products/sentry-proxy/README.md)
+- https://github.com/Myxogastria0808/pay-crew/tree/dev/products/sentry-proxy/README.md
+
+#### [Vitest UI Report](https://myxogastria0808.github.io/pay-crew/vitest/sentry-proxy/)
+- https://myxogastria0808.github.io/pay-crew/vitest/sentry-proxy/
+
+#### [Coverage Report](https://myxogastria0808.github.io/pay-crew/coverage/sentry-proxy/)
+- https://myxogastria0808.github.io/pay-crew/coverage/sentry-proxy/
 
 ### Docs (docs)
 
@@ -209,6 +227,12 @@ pnpm run backend:migrate
 #### [Details](https://github.com/Myxogastria0808/pay-crew/tree/dev/setup/README.md)
 - https://github.com/Myxogastria0808/pay-crew/tree/dev/setup/README.md
 
+#### [Vitest UI Report](https://myxogastria0808.github.io/pay-crew/vitest/setup/)
+- https://myxogastria0808.github.io/pay-crew/vitest/setup/
+
+#### [Coverage Report](https://myxogastria0808.github.io/pay-crew/coverage/setup/)
+- https://myxogastria0808.github.io/pay-crew/coverage/setup/
+
 ### Validator (products/paycrew-validator)
 
 - TypeScript
@@ -219,6 +243,12 @@ pnpm run backend:migrate
 
 #### [Details](https://github.com/Myxogastria0808/pay-crew/tree/dev/products/paycrew-validator/README.md)
 - https://github.com/Myxogastria0808/pay-crew/tree/dev/products/paycrew-validator/README.md
+
+#### [Vitest UI Report](https://myxogastria0808.github.io/pay-crew/vitest/paycrew-validator/)
+- https://myxogastria0808.github.io/pay-crew/vitest/paycrew-validator/
+
+#### [Coverage Report](https://myxogastria0808.github.io/pay-crew/coverage/paycrew-validator/)
+- https://myxogastria0808.github.io/pay-crew/coverage/paycrew-validator/
 
 ## CI/CD
 
