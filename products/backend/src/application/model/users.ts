@@ -1,12 +1,6 @@
-import { UserGetResponseSchemaType, UserPostResponseSchemaType } from 'paycrew-validator';
-
-export type UserType = {
-  name: string;
-  email: string;
-  password: string;
-};
+import { UserGetResponseSchemaType, UserPostRequestSchemaType, UserPostResponseSchemaType } from 'paycrew-validator';
 
 export type UserServiceType = {
-  postUserService: (userPostRequestSchema: UserType) => Promise<UserPostResponseSchemaType>;
+  postUserService: (userPostRequestSchema: UserPostRequestSchemaType) => Promise<UserPostResponseSchemaType>;
   getUserService: () => Promise<UserGetResponseSchemaType>;
 };
