@@ -23,9 +23,9 @@ const DeleteHistory = ({ id }: { id: number }) => {
       {
         error
         ? <p>削除に失敗しました: {error.message}</p> 
-        : data != undefined && data.status == 500
+        : data !== undefined && data.status === 500
         ? <p>削除に失敗しました: {data.data.message}</p>
-        : <></>
+        : null
       }
     </>
   );

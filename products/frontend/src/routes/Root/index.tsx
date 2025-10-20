@@ -79,9 +79,9 @@ const Root: FC = () => {
               ? '追加中...'
               : error
                 ? `追加に失敗しました: ${error.message}`
-                : data == undefined
+                : data === undefined
                   ? ''
-                  : data.status == 500
+                  : data.status === 500
                     ? `追加に失敗しました: ${data.data.message}`
                     : '追加しました'}
           </p>

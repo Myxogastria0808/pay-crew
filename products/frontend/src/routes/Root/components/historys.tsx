@@ -12,7 +12,7 @@ const Historys: FC = () => {
         <p>読み込み中</p>
       ) : error ? (
         <p>読み込みエラー: {error.message}</p>
-      ) : data?.status != 200 ? (
+      ) : data?.status !== 200 ? (
         <p>読み込みエラー: {data?.data.message}</p>
       ) : (
         <table className={styles.historyList}>
