@@ -18,9 +18,15 @@ const DeleteHistory = ({ id }: { id: number }) => {
           deleteHistoryById(id);
         }}
       >
-        <img src="../../public/dust-box.png" alt="削除" className={styles.dustBox} />
+        <img src="/dust-box.png" alt="削除" className={styles.dustBox} />
       </button>
-      {error ? <p>削除に失敗しました。</p> : data != undefined && data.status == 500}
+      {
+        error
+        ? <p>削除に失敗しました: {error.message}</p> 
+        : data != undefined && data.status == 500
+        ? <p>削除に失敗しました: {data.data.message}</p>
+        : <></>
+      }
     </>
   );
 };
