@@ -79,6 +79,7 @@ const historysPostSchema = route.createSchema(
 );
 
 historys.openapi(historysPostSchema, async (c) => {
+  c.status(201);
   const data = c.req.valid('json');
   // NOTE: application層のサービスを呼び出す
   const service = new HistorysService(c.env.HYPERDRIVE);
