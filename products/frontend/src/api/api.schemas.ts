@@ -185,6 +185,7 @@ export type PostApiHistorys500 = {
 };
 
 export type DeleteApiHistorysBody = {
+  /** */
   id: number;
 };
 

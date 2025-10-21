@@ -660,7 +660,8 @@
                 "type": "object",
                 "properties": {
                   "id": {
-                    "type": "number"
+                    "type": "number",
+                    "exclusiveMinimum": 0
                   }
                 },
                 "required": ["id"]
@@ -670,7 +671,7 @@
         },
         "responses": {
           "200": {
-            "description": "Created",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
