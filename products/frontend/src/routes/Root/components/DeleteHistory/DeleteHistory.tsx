@@ -20,7 +20,7 @@ const DeleteHistory: FC<Props> = (props: Props) => {
       <button
         className={styles.buttonDelete}
         onClick={async () => {
-          deleteHistoryById(props.id);
+          await deleteHistoryById(props.id);
         }}
       >
         <img src="/dust-box.png" alt="削除" className={styles.dustBox} />
