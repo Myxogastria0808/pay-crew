@@ -109,9 +109,6 @@ button:hover {
 th {
   border-bottom: 2px solid #dcdcdc;
 }
-td {
-  /* border: 2px solid #dcdcdc; */
-}
 
 .historyText {
   width: 85%;

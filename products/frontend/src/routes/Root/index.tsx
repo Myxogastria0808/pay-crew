@@ -1,7 +1,6 @@
+import { HistoryForm, Historys } from './components';
 import styles from './index.module.css';
-import Historys from './components/historys';
 import type { FC } from 'react';
-import HistoryForm from './components/historyForm';
 
 const Root: FC = () => {
   return (
@@ -18,7 +17,7 @@ const Root: FC = () => {
             </p>
           </div>
         </div>
-        
+
         <HistoryForm />
 
         <div className={styles.history}>

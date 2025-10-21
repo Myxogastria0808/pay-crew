@@ -1,12 +1,12 @@
-import { useForm, type SubmitHandler } from "react-hook-form";
-import { usePostApiHistorys } from "../../../api/api";
-import type { ApiError } from "../../../api/apiError";
-import { historysPostRequestSchema, type HistorysPostRequestSchemaType } from "paycrew-validator";
-import { zodResolver } from "@hookform/resolvers/zod";
-import type { PostApiHistorysBody } from "../../../api/api.schemas";
+import type { FC } from 'react';
+import { ErrorMessage } from '@hookform/error-message';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { historysPostRequestSchema, type HistorysPostRequestSchemaType } from 'paycrew-validator';
+import { useForm, type SubmitHandler } from 'react-hook-form';
+import { usePostApiHistorys } from '../../../../api/api';
+import type { ApiError } from '../../../../api/apiError';
+import type { PostApiHistorysBody } from '../../../../api/api.schemas';
 import styles from '../index.module.css';
-import { ErrorMessage } from "@hookform/error-message";
-import type { FC } from "react";
 
 const HistoryForm: FC = () => {
   const { isMutating, trigger, data, error } = usePostApiHistorys<ApiError>();
@@ -33,7 +33,7 @@ const HistoryForm: FC = () => {
     await insertHistory(formData);
   };
 
-  return(
+  return (
     <form id="loan-form" onSubmit={handleSubmit(onSubmit)}>
       <div className={styles.formGroup}>
         <label htmlFor="from">まとめて払った人の名前:</label>
@@ -68,7 +68,7 @@ const HistoryForm: FC = () => {
                 : '追加しました'}
       </p>
     </form>
-  )
-}
+  );
+};
 
 export default HistoryForm;
