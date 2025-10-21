@@ -6,7 +6,7 @@ import { useForm, type SubmitHandler } from 'react-hook-form';
 import { usePostApiHistorys } from '../../../../api/api';
 import type { ApiError } from '../../../../api/apiError';
 import type { PostApiHistorysBody } from '../../../../api/api.schemas';
-import styles from '../index.module.css';
+import styles from '../../index.module.css';
 
 const HistoryForm: FC = () => {
   const { isMutating, trigger, data, error } = usePostApiHistorys<ApiError>();
