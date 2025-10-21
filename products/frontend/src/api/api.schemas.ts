@@ -5,18 +5,19 @@
  * 受け取った入力値をそのまま応答するAPI
  * OpenAPI spec version: 1.0.0
  */
-export type GetApiUsers200Item = {
+export type GetApiHistorys200Item = {
   /** @minimum 1 */
   id: number;
   /** @minLength 1 */
-  name: string;
-  email: string;
-  /** @minLength 6 */
-  password: string;
+  from: string;
+  /** @minLength 1 */
+  to: string;
+  /** @minimum 1 */
+  amount: number;
 };
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const GetApiUsers500Status = {
+export const GetApiHistorys500Status = {
   NUMBER_100: 100,
   NUMBER_102: 102,
   NUMBER_103: 103,
@@ -78,9 +79,9 @@ export const GetApiUsers500Status = {
   NUMBER_511: 511,
   NUMBER_MINUS_1: -1,
 } as const;
-export type GetApiUsers500 = {
+export type GetApiHistorys500 = {
   /** HTTPステータスコード */
-  status: (typeof GetApiUsers500Status)[keyof typeof GetApiUsers500Status];
+  status: (typeof GetApiHistorys500Status)[keyof typeof GetApiHistorys500Status];
   /**
    * エラーメッセージ
    * @minLength 1
@@ -88,26 +89,30 @@ export type GetApiUsers500 = {
   message: string;
 };
 
-export type PostApiUsersBody = {
+export type PostApiHistorysBody = {
   /** @minLength 1 */
-  name: string;
-  email: string;
-  /** @minLength 6 */
-  password: string;
+  from: string;
+  /** @minLength 1 */
+  to: string;
+  /** @minimum 1 */
+  amount: number;
 };
 
-export type PostApiUsers201Item = {
+export type PostApiHistorys201AnyOfItem = {
   /** @minimum 1 */
   id: number;
   /** @minLength 1 */
-  name: string;
-  email: string;
-  /** @minLength 6 */
-  password: string;
+  from: string;
+  /** @minLength 1 */
+  to: string;
+  /** @minimum 1 */
+  amount: number;
 };
 
+export type PostApiHistorys201 = PostApiHistorys201AnyOfItem[] | null | null;
+
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const PostApiUsers500Status = {
+export const PostApiHistorys500Status = {
   NUMBER_100: 100,
   NUMBER_102: 102,
   NUMBER_103: 103,
@@ -169,9 +174,100 @@ export const PostApiUsers500Status = {
   NUMBER_511: 511,
   NUMBER_MINUS_1: -1,
 } as const;
-export type PostApiUsers500 = {
+export type PostApiHistorys500 = {
   /** HTTPステータスコード */
-  status: (typeof PostApiUsers500Status)[keyof typeof PostApiUsers500Status];
+  status: (typeof PostApiHistorys500Status)[keyof typeof PostApiHistorys500Status];
+  /**
+   * エラーメッセージ
+   * @minLength 1
+   */
+  message: string;
+};
+
+export type DeleteApiHistorysBody = {
+  /** */
+  id: number;
+};
+
+export type DeleteApiHistorys200AnyOf = {
+  /** @minimum 1 */
+  id: number;
+  /** @minLength 1 */
+  from: string;
+  /** @minLength 1 */
+  to: string;
+  /** @minimum 1 */
+  amount: number;
+};
+
+export type DeleteApiHistorys200 = DeleteApiHistorys200AnyOf | null | null;
+
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export const DeleteApiHistorys500Status = {
+  NUMBER_100: 100,
+  NUMBER_102: 102,
+  NUMBER_103: 103,
+  NUMBER_200: 200,
+  NUMBER_201: 201,
+  NUMBER_202: 202,
+  NUMBER_203: 203,
+  NUMBER_206: 206,
+  NUMBER_207: 207,
+  NUMBER_208: 208,
+  NUMBER_226: 226,
+  NUMBER_300: 300,
+  NUMBER_301: 301,
+  NUMBER_302: 302,
+  NUMBER_303: 303,
+  NUMBER_305: 305,
+  NUMBER_306: 306,
+  NUMBER_307: 307,
+  NUMBER_308: 308,
+  NUMBER_400: 400,
+  NUMBER_401: 401,
+  NUMBER_402: 402,
+  NUMBER_403: 403,
+  NUMBER_404: 404,
+  NUMBER_405: 405,
+  NUMBER_406: 406,
+  NUMBER_407: 407,
+  NUMBER_408: 408,
+  NUMBER_409: 409,
+  NUMBER_410: 410,
+  NUMBER_411: 411,
+  NUMBER_412: 412,
+  NUMBER_413: 413,
+  NUMBER_414: 414,
+  NUMBER_415: 415,
+  NUMBER_416: 416,
+  NUMBER_417: 417,
+  NUMBER_418: 418,
+  NUMBER_421: 421,
+  NUMBER_422: 422,
+  NUMBER_423: 423,
+  NUMBER_424: 424,
+  NUMBER_425: 425,
+  NUMBER_426: 426,
+  NUMBER_428: 428,
+  NUMBER_429: 429,
+  NUMBER_431: 431,
+  NUMBER_451: 451,
+  NUMBER_500: 500,
+  NUMBER_501: 501,
+  NUMBER_502: 502,
+  NUMBER_503: 503,
+  NUMBER_504: 504,
+  NUMBER_505: 505,
+  NUMBER_506: 506,
+  NUMBER_507: 507,
+  NUMBER_508: 508,
+  NUMBER_510: 510,
+  NUMBER_511: 511,
+  NUMBER_MINUS_1: -1,
+} as const;
+export type DeleteApiHistorys500 = {
+  /** HTTPステータスコード */
+  status: (typeof DeleteApiHistorys500Status)[keyof typeof DeleteApiHistorys500Status];
   /**
    * エラーメッセージ
    * @minLength 1
