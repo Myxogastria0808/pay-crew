@@ -14,5 +14,5 @@ try {
   console.info('OpenAPI document generated successfully');
 } catch (error: unknown) {
   console.error('Failed to generate OpenAPI document');
-  console.error(`Error Message: ${JSON.stringify(error)}`);
+  console.error(`Error Message: ${error instanceof Error ? error.message : JSON.stringify(error)}`);
 }

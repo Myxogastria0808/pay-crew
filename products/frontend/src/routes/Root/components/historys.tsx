@@ -6,6 +6,7 @@ import DeleteHistory from './deleteHistory';
 
 const Historys: FC = () => {
   const { data, error, isLoading } = useGetApiHistorys<ApiError>();
+
   return (
     <>
       {isLoading ? (
