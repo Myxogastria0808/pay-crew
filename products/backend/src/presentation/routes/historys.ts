@@ -111,7 +111,7 @@ const historysDeleteSchema = route.createSchema(
     },
     responses: {
       200: {
-        description: 'Ok',
+        description: 'OK',
         content: {
           'application/json': {
             schema: historysDeleteResponseSchema,
