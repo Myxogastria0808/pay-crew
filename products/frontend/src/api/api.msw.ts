@@ -10,25 +10,34 @@ import { faker } from '@faker-js/faker';
 import { HttpResponse, delay, http } from 'msw';
 import type { RequestHandlerOptions } from 'msw';
 
-import type { GetApiUsers200Item, GetApiUsers500, PostApiUsers201Item, PostApiUsers500 } from './api.schemas';
+import type {
+  DeleteApiHistorys200,
+  DeleteApiHistorys500,
+  GetApiHistorys200Item,
+  GetApiHistorys500,
+  PostApiHistorys201,
+  PostApiHistorys500,
+} from './api.schemas';
 
-export const getGetApiUsersResponseMock = (): GetApiUsers200Item[] =>
+export const getGetApiHistorysResponseMock = (): GetApiHistorys200Item[] =>
   Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({
     id: faker.number.float({ min: 1, max: undefined, fractionDigits: 2 }),
-    name: faker.string.alpha({ length: { min: 1, max: 20 } }),
-    email: faker.internet.email(),
-    password: faker.string.alpha({ length: { min: 6, max: 20 } }),
+    from: faker.string.alpha({ length: { min: 1, max: 20 } }),
+    to: faker.string.alpha({ length: { min: 1, max: 20 } }),
+    amount: faker.number.float({ min: 1, max: undefined, fractionDigits: 2 }),
   }));
 
-export const getGetApiUsersResponseMock200 = (): GetApiUsers200Item[] =>
+export const getGetApiHistorysResponseMock200 = (): GetApiHistorys200Item[] =>
   Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({
     id: faker.number.float({ min: 1, max: undefined, fractionDigits: 2 }),
-    name: faker.string.alpha({ length: { min: 1, max: 20 } }),
-    email: faker.internet.email(),
-    password: faker.string.alpha({ length: { min: 6, max: 20 } }),
+    from: faker.string.alpha({ length: { min: 1, max: 20 } }),
+    to: faker.string.alpha({ length: { min: 1, max: 20 } }),
+    amount: faker.number.float({ min: 1, max: undefined, fractionDigits: 2 }),
   }));
 
-export const getGetApiUsersResponseMock500 = (overrideResponse: Partial<GetApiUsers500> = {}): GetApiUsers500 => ({
+export const getGetApiHistorysResponseMock500 = (
+  overrideResponse: Partial<GetApiHistorys500> = {}
+): GetApiHistorys500 => ({
   status: faker.helpers.arrayElement([
     faker.helpers.arrayElement([100] as const),
     faker.helpers.arrayElement([102] as const),
@@ -95,23 +104,33 @@ export const getGetApiUsersResponseMock500 = (overrideResponse: Partial<GetApiUs
   ...overrideResponse,
 });
 
-export const getPostApiUsersResponseMock = (): PostApiUsers201Item[] =>
-  Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({
-    id: faker.number.float({ min: 1, max: undefined, fractionDigits: 2 }),
-    name: faker.string.alpha({ length: { min: 1, max: 20 } }),
-    email: faker.internet.email(),
-    password: faker.string.alpha({ length: { min: 6, max: 20 } }),
-  }));
+export const getPostApiHistorysResponseMock = (): PostApiHistorys201 =>
+  faker.helpers.arrayElement([
+    Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({
+      id: faker.number.float({ min: 1, max: undefined, fractionDigits: 2 }),
+      from: faker.string.alpha({ length: { min: 1, max: 20 } }),
+      to: faker.string.alpha({ length: { min: 1, max: 20 } }),
+      amount: faker.number.float({ min: 1, max: undefined, fractionDigits: 2 }),
+    })),
+    null,
+    null,
+  ]);
 
-export const getPostApiUsersResponseMock201 = (): PostApiUsers201Item[] =>
-  Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({
-    id: faker.number.float({ min: 1, max: undefined, fractionDigits: 2 }),
-    name: faker.string.alpha({ length: { min: 1, max: 20 } }),
-    email: faker.internet.email(),
-    password: faker.string.alpha({ length: { min: 6, max: 20 } }),
-  }));
+export const getPostApiHistorysResponseMock201 = (): PostApiHistorys201 =>
+  faker.helpers.arrayElement([
+    Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({
+      id: faker.number.float({ min: 1, max: undefined, fractionDigits: 2 }),
+      from: faker.string.alpha({ length: { min: 1, max: 20 } }),
+      to: faker.string.alpha({ length: { min: 1, max: 20 } }),
+      amount: faker.number.float({ min: 1, max: undefined, fractionDigits: 2 }),
+    })),
+    null,
+    null,
+  ]);
 
-export const getPostApiUsersResponseMock500 = (overrideResponse: Partial<PostApiUsers500> = {}): PostApiUsers500 => ({
+export const getPostApiHistorysResponseMock500 = (
+  overrideResponse: Partial<PostApiHistorys500> = {}
+): PostApiHistorys500 => ({
   status: faker.helpers.arrayElement([
     faker.helpers.arrayElement([100] as const),
     faker.helpers.arrayElement([102] as const),
@@ -178,14 +197,109 @@ export const getPostApiUsersResponseMock500 = (overrideResponse: Partial<PostApi
   ...overrideResponse,
 });
 
-export const getGetApiUsersMockHandler = (
+export const getDeleteApiHistorysResponseMock = (): DeleteApiHistorys200 =>
+  faker.helpers.arrayElement([
+    {
+      id: faker.number.float({ min: 1, max: undefined, fractionDigits: 2 }),
+      from: faker.string.alpha({ length: { min: 1, max: 20 } }),
+      to: faker.string.alpha({ length: { min: 1, max: 20 } }),
+      amount: faker.number.float({ min: 1, max: undefined, fractionDigits: 2 }),
+    },
+    null,
+    null,
+  ]);
+
+export const getDeleteApiHistorysResponseMock200 = (): DeleteApiHistorys200 =>
+  faker.helpers.arrayElement([
+    {
+      id: faker.number.float({ min: 1, max: undefined, fractionDigits: 2 }),
+      from: faker.string.alpha({ length: { min: 1, max: 20 } }),
+      to: faker.string.alpha({ length: { min: 1, max: 20 } }),
+      amount: faker.number.float({ min: 1, max: undefined, fractionDigits: 2 }),
+    },
+    null,
+    null,
+  ]);
+
+export const getDeleteApiHistorysResponseMock500 = (
+  overrideResponse: Partial<DeleteApiHistorys500> = {}
+): DeleteApiHistorys500 => ({
+  status: faker.helpers.arrayElement([
+    faker.helpers.arrayElement([100] as const),
+    faker.helpers.arrayElement([102] as const),
+    faker.helpers.arrayElement([103] as const),
+    faker.helpers.arrayElement([200] as const),
+    faker.helpers.arrayElement([201] as const),
+    faker.helpers.arrayElement([202] as const),
+    faker.helpers.arrayElement([203] as const),
+    faker.helpers.arrayElement([206] as const),
+    faker.helpers.arrayElement([207] as const),
+    faker.helpers.arrayElement([208] as const),
+    faker.helpers.arrayElement([226] as const),
+    faker.helpers.arrayElement([300] as const),
+    faker.helpers.arrayElement([301] as const),
+    faker.helpers.arrayElement([302] as const),
+    faker.helpers.arrayElement([303] as const),
+    faker.helpers.arrayElement([305] as const),
+    faker.helpers.arrayElement([306] as const),
+    faker.helpers.arrayElement([307] as const),
+    faker.helpers.arrayElement([308] as const),
+    faker.helpers.arrayElement([400] as const),
+    faker.helpers.arrayElement([401] as const),
+    faker.helpers.arrayElement([402] as const),
+    faker.helpers.arrayElement([403] as const),
+    faker.helpers.arrayElement([404] as const),
+    faker.helpers.arrayElement([405] as const),
+    faker.helpers.arrayElement([406] as const),
+    faker.helpers.arrayElement([407] as const),
+    faker.helpers.arrayElement([408] as const),
+    faker.helpers.arrayElement([409] as const),
+    faker.helpers.arrayElement([410] as const),
+    faker.helpers.arrayElement([411] as const),
+    faker.helpers.arrayElement([412] as const),
+    faker.helpers.arrayElement([413] as const),
+    faker.helpers.arrayElement([414] as const),
+    faker.helpers.arrayElement([415] as const),
+    faker.helpers.arrayElement([416] as const),
+    faker.helpers.arrayElement([417] as const),
+    faker.helpers.arrayElement([418] as const),
+    faker.helpers.arrayElement([421] as const),
+    faker.helpers.arrayElement([422] as const),
+    faker.helpers.arrayElement([423] as const),
+    faker.helpers.arrayElement([424] as const),
+    faker.helpers.arrayElement([425] as const),
+    faker.helpers.arrayElement([426] as const),
+    faker.helpers.arrayElement([428] as const),
+    faker.helpers.arrayElement([429] as const),
+    faker.helpers.arrayElement([431] as const),
+    faker.helpers.arrayElement([451] as const),
+    faker.helpers.arrayElement([500] as const),
+    faker.helpers.arrayElement([501] as const),
+    faker.helpers.arrayElement([502] as const),
+    faker.helpers.arrayElement([503] as const),
+    faker.helpers.arrayElement([504] as const),
+    faker.helpers.arrayElement([505] as const),
+    faker.helpers.arrayElement([506] as const),
+    faker.helpers.arrayElement([507] as const),
+    faker.helpers.arrayElement([508] as const),
+    faker.helpers.arrayElement([510] as const),
+    faker.helpers.arrayElement([511] as const),
+    faker.helpers.arrayElement([-1] as const),
+  ]),
+  message: faker.string.alpha({ length: { min: 1, max: 20 } }),
+  ...overrideResponse,
+});
+
+export const getGetApiHistorysMockHandler = (
   overrideResponse?:
-    | GetApiUsers200Item[]
-    | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<GetApiUsers200Item[]> | GetApiUsers200Item[]),
+    | GetApiHistorys200Item[]
+    | ((
+        info: Parameters<Parameters<typeof http.get>[1]>[0]
+      ) => Promise<GetApiHistorys200Item[]> | GetApiHistorys200Item[]),
   options?: RequestHandlerOptions
 ) => {
   return http.get(
-    '*/api/users',
+    '*/api/historys',
     async (info) => {
       await delay(1000);
 
@@ -195,7 +309,7 @@ export const getGetApiUsersMockHandler = (
             ? typeof overrideResponse === 'function'
               ? await overrideResponse(info)
               : overrideResponse
-            : getGetApiUsersResponseMock()
+            : getGetApiHistorysResponseMock()
         ),
         { status: 200, headers: { 'Content-Type': 'application/json' } }
       );
@@ -204,14 +318,16 @@ export const getGetApiUsersMockHandler = (
   );
 };
 
-export const getGetApiUsersMockHandler200 = (
+export const getGetApiHistorysMockHandler200 = (
   overrideResponse?:
-    | GetApiUsers200Item[]
-    | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<GetApiUsers200Item[]> | GetApiUsers200Item[]),
+    | GetApiHistorys200Item[]
+    | ((
+        info: Parameters<Parameters<typeof http.get>[1]>[0]
+      ) => Promise<GetApiHistorys200Item[]> | GetApiHistorys200Item[]),
   options?: RequestHandlerOptions
 ) => {
   return http.get(
-    '*/api/users',
+    '*/api/historys',
     async (info) => {
       await delay(1000);
 
@@ -221,7 +337,7 @@ export const getGetApiUsersMockHandler200 = (
             ? typeof overrideResponse === 'function'
               ? await overrideResponse(info)
               : overrideResponse
-            : getGetApiUsersResponseMock200()
+            : getGetApiHistorysResponseMock200()
         ),
         { status: 200, headers: { 'Content-Type': 'application/json' } }
       );
@@ -230,14 +346,14 @@ export const getGetApiUsersMockHandler200 = (
   );
 };
 
-export const getGetApiUsersMockHandler500 = (
+export const getGetApiHistorysMockHandler500 = (
   overrideResponse?:
-    | GetApiUsers500
-    | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<GetApiUsers500> | GetApiUsers500),
+    | GetApiHistorys500
+    | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<GetApiHistorys500> | GetApiHistorys500),
   options?: RequestHandlerOptions
 ) => {
   return http.get(
-    '*/api/users',
+    '*/api/historys',
     async (info) => {
       await delay(1000);
 
@@ -247,7 +363,7 @@ export const getGetApiUsersMockHandler500 = (
             ? typeof overrideResponse === 'function'
               ? await overrideResponse(info)
               : overrideResponse
-            : getGetApiUsersResponseMock500()
+            : getGetApiHistorysResponseMock500()
         ),
         { status: 500, headers: { 'Content-Type': 'application/json' } }
       );
@@ -256,16 +372,14 @@ export const getGetApiUsersMockHandler500 = (
   );
 };
 
-export const getPostApiUsersMockHandler = (
+export const getPostApiHistorysMockHandler = (
   overrideResponse?:
-    | PostApiUsers201Item[]
-    | ((
-        info: Parameters<Parameters<typeof http.post>[1]>[0]
-      ) => Promise<PostApiUsers201Item[]> | PostApiUsers201Item[]),
+    | PostApiHistorys201
+    | ((info: Parameters<Parameters<typeof http.post>[1]>[0]) => Promise<PostApiHistorys201> | PostApiHistorys201),
   options?: RequestHandlerOptions
 ) => {
   return http.post(
-    '*/api/users',
+    '*/api/historys',
     async (info) => {
       await delay(1000);
 
@@ -275,7 +389,7 @@ export const getPostApiUsersMockHandler = (
             ? typeof overrideResponse === 'function'
               ? await overrideResponse(info)
               : overrideResponse
-            : getPostApiUsersResponseMock()
+            : getPostApiHistorysResponseMock()
         ),
         { status: 201, headers: { 'Content-Type': 'application/json' } }
       );
@@ -284,16 +398,14 @@ export const getPostApiUsersMockHandler = (
   );
 };
 
-export const getPostApiUsersMockHandler201 = (
+export const getPostApiHistorysMockHandler201 = (
   overrideResponse?:
-    | PostApiUsers201Item[]
-    | ((
-        info: Parameters<Parameters<typeof http.post>[1]>[0]
-      ) => Promise<PostApiUsers201Item[]> | PostApiUsers201Item[]),
+    | PostApiHistorys201
+    | ((info: Parameters<Parameters<typeof http.post>[1]>[0]) => Promise<PostApiHistorys201> | PostApiHistorys201),
   options?: RequestHandlerOptions
 ) => {
   return http.post(
-    '*/api/users',
+    '*/api/historys',
     async (info) => {
       await delay(1000);
 
@@ -303,7 +415,7 @@ export const getPostApiUsersMockHandler201 = (
             ? typeof overrideResponse === 'function'
               ? await overrideResponse(info)
               : overrideResponse
-            : getPostApiUsersResponseMock201()
+            : getPostApiHistorysResponseMock201()
         ),
         { status: 201, headers: { 'Content-Type': 'application/json' } }
       );
@@ -312,14 +424,14 @@ export const getPostApiUsersMockHandler201 = (
   );
 };
 
-export const getPostApiUsersMockHandler500 = (
+export const getPostApiHistorysMockHandler500 = (
   overrideResponse?:
-    | PostApiUsers500
-    | ((info: Parameters<Parameters<typeof http.post>[1]>[0]) => Promise<PostApiUsers500> | PostApiUsers500),
+    | PostApiHistorys500
+    | ((info: Parameters<Parameters<typeof http.post>[1]>[0]) => Promise<PostApiHistorys500> | PostApiHistorys500),
   options?: RequestHandlerOptions
 ) => {
   return http.post(
-    '*/api/users',
+    '*/api/historys',
     async (info) => {
       await delay(1000);
 
@@ -329,7 +441,7 @@ export const getPostApiUsersMockHandler500 = (
             ? typeof overrideResponse === 'function'
               ? await overrideResponse(info)
               : overrideResponse
-            : getPostApiUsersResponseMock500()
+            : getPostApiHistorysResponseMock500()
         ),
         { status: 500, headers: { 'Content-Type': 'application/json' } }
       );
@@ -337,4 +449,92 @@ export const getPostApiUsersMockHandler500 = (
     options
   );
 };
-export const getEchoAPIMock = () => [getGetApiUsersMockHandler(), getPostApiUsersMockHandler()];
+
+export const getDeleteApiHistorysMockHandler = (
+  overrideResponse?:
+    | DeleteApiHistorys200
+    | ((
+        info: Parameters<Parameters<typeof http.delete>[1]>[0]
+      ) => Promise<DeleteApiHistorys200> | DeleteApiHistorys200),
+  options?: RequestHandlerOptions
+) => {
+  return http.delete(
+    '*/api/historys',
+    async (info) => {
+      await delay(1000);
+
+      return new HttpResponse(
+        JSON.stringify(
+          overrideResponse !== undefined
+            ? typeof overrideResponse === 'function'
+              ? await overrideResponse(info)
+              : overrideResponse
+            : getDeleteApiHistorysResponseMock()
+        ),
+        { status: 200, headers: { 'Content-Type': 'application/json' } }
+      );
+    },
+    options
+  );
+};
+
+export const getDeleteApiHistorysMockHandler200 = (
+  overrideResponse?:
+    | DeleteApiHistorys200
+    | ((
+        info: Parameters<Parameters<typeof http.delete>[1]>[0]
+      ) => Promise<DeleteApiHistorys200> | DeleteApiHistorys200),
+  options?: RequestHandlerOptions
+) => {
+  return http.delete(
+    '*/api/historys',
+    async (info) => {
+      await delay(1000);
+
+      return new HttpResponse(
+        JSON.stringify(
+          overrideResponse !== undefined
+            ? typeof overrideResponse === 'function'
+              ? await overrideResponse(info)
+              : overrideResponse
+            : getDeleteApiHistorysResponseMock200()
+        ),
+        { status: 200, headers: { 'Content-Type': 'application/json' } }
+      );
+    },
+    options
+  );
+};
+
+export const getDeleteApiHistorysMockHandler500 = (
+  overrideResponse?:
+    | DeleteApiHistorys500
+    | ((
+        info: Parameters<Parameters<typeof http.delete>[1]>[0]
+      ) => Promise<DeleteApiHistorys500> | DeleteApiHistorys500),
+  options?: RequestHandlerOptions
+) => {
+  return http.delete(
+    '*/api/historys',
+    async (info) => {
+      await delay(1000);
+
+      return new HttpResponse(
+        JSON.stringify(
+          overrideResponse !== undefined
+            ? typeof overrideResponse === 'function'
+              ? await overrideResponse(info)
+              : overrideResponse
+            : getDeleteApiHistorysResponseMock500()
+        ),
+        { status: 500, headers: { 'Content-Type': 'application/json' } }
+      );
+    },
+    options
+  );
+};
+export const getEchoAPIMock = () => [
+  getGetApiHistorysMockHandler(),
+  getPostApiHistorysMockHandler(),
+  getDeleteApiHistorysMockHandler(),
+];

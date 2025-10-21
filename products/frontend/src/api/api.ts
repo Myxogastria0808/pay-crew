@@ -12,11 +12,14 @@ import useSWRMutation from 'swr/mutation';
 import type { SWRMutationConfiguration } from 'swr/mutation';
 
 import type {
-  GetApiUsers200Item,
-  GetApiUsers500,
-  PostApiUsers201Item,
-  PostApiUsers500,
-  PostApiUsersBody,
+  DeleteApiHistorys200,
+  DeleteApiHistorys500,
+  DeleteApiHistorysBody,
+  GetApiHistorys200Item,
+  GetApiHistorys500,
+  PostApiHistorys201,
+  PostApiHistorys500,
+  PostApiHistorysBody,
 } from './api.schemas';
 
 import { customFetch } from './customFetch';
@@ -24,52 +27,52 @@ import { customFetch } from './customFetch';
 type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 
 /**
- * ユーザーの取得
+ * 履歴の取得
  */
-export type getApiUsersResponse200 = {
-  data: GetApiUsers200Item[];
+export type getApiHistorysResponse200 = {
+  data: GetApiHistorys200Item[];
   status: 200;
 };
 
-export type getApiUsersResponse500 = {
-  data: GetApiUsers500;
+export type getApiHistorysResponse500 = {
+  data: GetApiHistorys500;
   status: 500;
 };
 
-export type getApiUsersResponseSuccess = getApiUsersResponse200 & {
+export type getApiHistorysResponseSuccess = getApiHistorysResponse200 & {
   headers: Headers;
 };
-export type getApiUsersResponseError = getApiUsersResponse500 & {
+export type getApiHistorysResponseError = getApiHistorysResponse500 & {
   headers: Headers;
 };
 
-export type getApiUsersResponse = getApiUsersResponseSuccess | getApiUsersResponseError;
+export type getApiHistorysResponse = getApiHistorysResponseSuccess | getApiHistorysResponseError;
 
-export const getGetApiUsersUrl = () => {
-  return `/api/users`;
+export const getGetApiHistorysUrl = () => {
+  return `/api/historys`;
 };
 
-export const getApiUsers = async (options?: RequestInit): Promise<getApiUsersResponse> => {
-  return customFetch<getApiUsersResponse>(getGetApiUsersUrl(), {
+export const getApiHistorys = async (options?: RequestInit): Promise<getApiHistorysResponse> => {
+  return customFetch<getApiHistorysResponse>(getGetApiHistorysUrl(), {
     ...options,
     method: 'GET',
   });
 };
 
-export const getGetApiUsersKey = () => [`/api/users`] as const;
+export const getGetApiHistorysKey = () => [`/api/historys`] as const;
 
-export type GetApiUsersQueryResult = NonNullable<Awaited<ReturnType<typeof getApiUsers>>>;
-export type GetApiUsersQueryError = GetApiUsers500;
+export type GetApiHistorysQueryResult = NonNullable<Awaited<ReturnType<typeof getApiHistorys>>>;
+export type GetApiHistorysQueryError = GetApiHistorys500;
 
-export const useGetApiUsers = <TError = GetApiUsers500>(options?: {
-  swr?: SWRConfiguration<Awaited<ReturnType<typeof getApiUsers>>, TError> & { swrKey?: Key; enabled?: boolean };
+export const useGetApiHistorys = <TError = GetApiHistorys500>(options?: {
+  swr?: SWRConfiguration<Awaited<ReturnType<typeof getApiHistorys>>, TError> & { swrKey?: Key; enabled?: boolean };
   request?: SecondParameter<typeof customFetch>;
 }) => {
   const { swr: swrOptions, request: requestOptions } = options ?? {};
 
   const isEnabled = swrOptions?.enabled !== false;
-  const swrKey = swrOptions?.swrKey ?? (() => (isEnabled ? getGetApiUsersKey() : null));
-  const swrFn = () => getApiUsers(requestOptions);
+  const swrKey = swrOptions?.swrKey ?? (() => (isEnabled ? getGetApiHistorysKey() : null));
+  const swrFn = () => getApiHistorys(requestOptions);
 
   const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions);
 
@@ -80,67 +83,138 @@ export const useGetApiUsers = <TError = GetApiUsers500>(options?: {
 };
 
 /**
- * ユーザーの作成
+ * 履歴の追加
  */
-export type postApiUsersResponse201 = {
-  data: PostApiUsers201Item[];
+export type postApiHistorysResponse201 = {
+  data: PostApiHistorys201;
   status: 201;
 };
 
-export type postApiUsersResponse500 = {
-  data: PostApiUsers500;
+export type postApiHistorysResponse500 = {
+  data: PostApiHistorys500;
   status: 500;
 };
 
-export type postApiUsersResponseSuccess = postApiUsersResponse201 & {
+export type postApiHistorysResponseSuccess = postApiHistorysResponse201 & {
   headers: Headers;
 };
-export type postApiUsersResponseError = postApiUsersResponse500 & {
+export type postApiHistorysResponseError = postApiHistorysResponse500 & {
   headers: Headers;
 };
 
-export type postApiUsersResponse = postApiUsersResponseSuccess | postApiUsersResponseError;
+export type postApiHistorysResponse = postApiHistorysResponseSuccess | postApiHistorysResponseError;
 
-export const getPostApiUsersUrl = () => {
-  return `/api/users`;
+export const getPostApiHistorysUrl = () => {
+  return `/api/historys`;
 };
 
-export const postApiUsers = async (
-  postApiUsersBody: PostApiUsersBody,
+export const postApiHistorys = async (
+  postApiHistorysBody: PostApiHistorysBody,
   options?: RequestInit
-): Promise<postApiUsersResponse> => {
-  return customFetch<postApiUsersResponse>(getPostApiUsersUrl(), {
+): Promise<postApiHistorysResponse> => {
+  return customFetch<postApiHistorysResponse>(getPostApiHistorysUrl(), {
     ...options,
     method: 'POST',
     headers: { 'Content-Type': 'application/json', ...options?.headers },
-    body: JSON.stringify(postApiUsersBody),
+    body: JSON.stringify(postApiHistorysBody),
   });
 };
 
-export const getPostApiUsersMutationFetcher = (options?: SecondParameter<typeof customFetch>) => {
-  return (_: Key, { arg }: { arg: PostApiUsersBody }) => {
-    return postApiUsers(arg, options);
+export const getPostApiHistorysMutationFetcher = (options?: SecondParameter<typeof customFetch>) => {
+  return (_: Key, { arg }: { arg: PostApiHistorysBody }) => {
+    return postApiHistorys(arg, options);
   };
 };
-export const getPostApiUsersMutationKey = () => [`/api/users`] as const;
+export const getPostApiHistorysMutationKey = () => [`/api/historys`] as const;
 
-export type PostApiUsersMutationResult = NonNullable<Awaited<ReturnType<typeof postApiUsers>>>;
-export type PostApiUsersMutationError = PostApiUsers500;
+export type PostApiHistorysMutationResult = NonNullable<Awaited<ReturnType<typeof postApiHistorys>>>;
+export type PostApiHistorysMutationError = PostApiHistorys500;
 
-export const usePostApiUsers = <TError = PostApiUsers500>(options?: {
+export const usePostApiHistorys = <TError = PostApiHistorys500>(options?: {
   swr?: SWRMutationConfiguration<
-    Awaited<ReturnType<typeof postApiUsers>>,
+    Awaited<ReturnType<typeof postApiHistorys>>,
     TError,
     Key,
-    PostApiUsersBody,
-    Awaited<ReturnType<typeof postApiUsers>>
+    PostApiHistorysBody,
+    Awaited<ReturnType<typeof postApiHistorys>>
   > & { swrKey?: string };
   request?: SecondParameter<typeof customFetch>;
 }) => {
   const { swr: swrOptions, request: requestOptions } = options ?? {};
 
-  const swrKey = swrOptions?.swrKey ?? getPostApiUsersMutationKey();
-  const swrFn = getPostApiUsersMutationFetcher(requestOptions);
+  const swrKey = swrOptions?.swrKey ?? getPostApiHistorysMutationKey();
+  const swrFn = getPostApiHistorysMutationFetcher(requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions);
+
+  return {
+    swrKey,
+    ...query,
+  };
+};
+
+/**
+ * 履歴の削除
+ */
+export type deleteApiHistorysResponse200 = {
+  data: DeleteApiHistorys200;
+  status: 200;
+};
+
+export type deleteApiHistorysResponse500 = {
+  data: DeleteApiHistorys500;
+  status: 500;
+};
+
+export type deleteApiHistorysResponseSuccess = deleteApiHistorysResponse200 & {
+  headers: Headers;
+};
+export type deleteApiHistorysResponseError = deleteApiHistorysResponse500 & {
+  headers: Headers;
+};
+
+export type deleteApiHistorysResponse = deleteApiHistorysResponseSuccess | deleteApiHistorysResponseError;
+
+export const getDeleteApiHistorysUrl = () => {
+  return `/api/historys`;
+};
+
+export const deleteApiHistorys = async (
+  deleteApiHistorysBody: DeleteApiHistorysBody,
+  options?: RequestInit
+): Promise<deleteApiHistorysResponse> => {
+  return customFetch<deleteApiHistorysResponse>(getDeleteApiHistorysUrl(), {
+    ...options,
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(deleteApiHistorysBody),
+  });
+};
+
+export const getDeleteApiHistorysMutationFetcher = (options?: SecondParameter<typeof customFetch>) => {
+  return (_: Key, { arg }: { arg: DeleteApiHistorysBody }) => {
+    return deleteApiHistorys(arg, options);
+  };
+};
+export const getDeleteApiHistorysMutationKey = () => [`/api/historys`] as const;
+
+export type DeleteApiHistorysMutationResult = NonNullable<Awaited<ReturnType<typeof deleteApiHistorys>>>;
+export type DeleteApiHistorysMutationError = DeleteApiHistorys500;
+
+export const useDeleteApiHistorys = <TError = DeleteApiHistorys500>(options?: {
+  swr?: SWRMutationConfiguration<
+    Awaited<ReturnType<typeof deleteApiHistorys>>,
+    TError,
+    Key,
+    DeleteApiHistorysBody,
+    Awaited<ReturnType<typeof deleteApiHistorys>>
+  > & { swrKey?: string };
+  request?: SecondParameter<typeof customFetch>;
+}) => {
+  const { swr: swrOptions, request: requestOptions } = options ?? {};
+
+  const swrKey = swrOptions?.swrKey ?? getDeleteApiHistorysMutationKey();
+  const swrFn = getDeleteApiHistorysMutationFetcher(requestOptions);
 
   const query = useSWRMutation(swrKey, swrFn, swrOptions);
 
