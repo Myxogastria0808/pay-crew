@@ -20,7 +20,7 @@ const HistoryForm: FC = () => {
     defaultValues: {
       from: '',
       to: '',
-      amount: 0,
+      amount: 1,
     },
   });
 

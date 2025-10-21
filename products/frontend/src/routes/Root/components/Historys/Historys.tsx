@@ -29,8 +29,8 @@ const Historys: FC = () => {
             {data.data
               .slice()
               .reverse()
-              .map((v, i) => (
-                <tr className={styles.historyItem} key={i}>
+              .map((v) => (
+                <tr className={styles.historyItem} key={v.id}>
                   <td className={styles.historyFromText}>{v.from}</td>
                   <td className={styles.historyToText}>{v.to}</td>
                   <td className={styles.historyAmountText}>{v.amount}</td>
