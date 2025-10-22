@@ -622,7 +622,7 @@
  * 受け取った入力値をそのまま応答するAPI
  * OpenAPI spec version: 1.0.0
 <span class="cstat-no" title="statement not covered" > */</span>
-export type GetApiHistorys200Item = {
+export type GetApiHistory200Item = {
   /** @minimum 1 */
   id: number;
   /** @minLength 1 */
@@ -634,7 +634,7 @@ export type GetApiHistorys200Item = {
 };
 &nbsp;
 <span class="cstat-no" title="statement not covered" >// eslint-disable-next-line @typescript-eslint/no-redeclare</span>
-<span class="cstat-no" title="statement not covered" >export const GetApiHistorys500Status = {</span>
+<span class="cstat-no" title="statement not covered" >export const GetApiHistory500Status = {</span>
 <span class="cstat-no" title="statement not covered" >  NUMBER_100: 100,</span>
 <span class="cstat-no" title="statement not covered" >  NUMBER_102: 102,</span>
 <span class="cstat-no" title="statement not covered" >  NUMBER_103: 103,</span>
@@ -696,9 +696,9 @@ export type GetApiHistorys200Item = {
 <span class="cstat-no" title="statement not covered" >  NUMBER_511: 511,</span>
 <span class="cstat-no" title="statement not covered" >  NUMBER_MINUS_1: -1,</span>
 <span class="cstat-no" title="statement not covered" >} as const;</span>
-export type GetApiHistorys500 = {
+export type GetApiHistory500 = {
   /** HTTPステータスコード */
-  status: (typeof GetApiHistorys500Status)[keyof typeof GetApiHistorys500Status];
+  status: (typeof GetApiHistory500Status)[keyof typeof GetApiHistory500Status];
   /**
    * エラーメッセージ
    * @minLength 1
@@ -706,7 +706,7 @@ export type GetApiHistorys500 = {
   message: string;
 };
 &nbsp;
-export type PostApiHistorysBody = {
+export type PostApiHistoryBody = {
   /** @minLength 1 */
   from: string;
   /** @minLength 1 */
@@ -715,7 +715,7 @@ export type PostApiHistorysBody = {
   amount: number;
 };
 &nbsp;
-export type PostApiHistorys201AnyOfItem = {
+export type PostApiHistory201AnyOfItem = {
   /** @minimum 1 */
   id: number;
   /** @minLength 1 */
@@ -726,10 +726,10 @@ export type PostApiHistorys201AnyOfItem = {
   amount: number;
 };
 &nbsp;
-export type PostApiHistorys201 = PostApiHistorys201AnyOfItem[] | null | null;
+export type PostApiHistory201 = PostApiHistory201AnyOfItem[] | null | null;
 &nbsp;
 <span class="cstat-no" title="statement not covered" >// eslint-disable-next-line @typescript-eslint/no-redeclare</span>
-<span class="cstat-no" title="statement not covered" >export const PostApiHistorys500Status = {</span>
+<span class="cstat-no" title="statement not covered" >export const PostApiHistory500Status = {</span>
 <span class="cstat-no" title="statement not covered" >  NUMBER_100: 100,</span>
 <span class="cstat-no" title="statement not covered" >  NUMBER_102: 102,</span>
 <span class="cstat-no" title="statement not covered" >  NUMBER_103: 103,</span>
@@ -791,9 +791,9 @@ export type PostApiHistorys201 = PostApiHistorys201AnyOfItem[] | null | null;
 <span class="cstat-no" title="statement not covered" >  NUMBER_511: 511,</span>
 <span class="cstat-no" title="statement not covered" >  NUMBER_MINUS_1: -1,</span>
 <span class="cstat-no" title="statement not covered" >} as const;</span>
-export type PostApiHistorys500 = {
+export type PostApiHistory500 = {
   /** HTTPステータスコード */
-  status: (typeof PostApiHistorys500Status)[keyof typeof PostApiHistorys500Status];
+  status: (typeof PostApiHistory500Status)[keyof typeof PostApiHistory500Status];
   /**
    * エラーメッセージ
    * @minLength 1
@@ -801,12 +801,12 @@ export type PostApiHistorys500 = {
   message: string;
 };
 &nbsp;
-export type DeleteApiHistorysBody = {
+export type DeleteApiHistoryBody = {
   /** */
   id: number;
 };
 &nbsp;
-export type DeleteApiHistorys200AnyOf = {
+export type DeleteApiHistory200AnyOf = {
   /** @minimum 1 */
   id: number;
   /** @minLength 1 */
@@ -817,10 +817,10 @@ export type DeleteApiHistorys200AnyOf = {
   amount: number;
 };
 &nbsp;
-export type DeleteApiHistorys200 = DeleteApiHistorys200AnyOf | null | null;
+export type DeleteApiHistory200 = DeleteApiHistory200AnyOf | null | null;
 &nbsp;
 <span class="cstat-no" title="statement not covered" >// eslint-disable-next-line @typescript-eslint/no-redeclare</span>
-<span class="cstat-no" title="statement not covered" >export const DeleteApiHistorys500Status = {</span>
+<span class="cstat-no" title="statement not covered" >export const DeleteApiHistory500Status = {</span>
 <span class="cstat-no" title="statement not covered" >  NUMBER_100: 100,</span>
 <span class="cstat-no" title="statement not covered" >  NUMBER_102: 102,</span>
 <span class="cstat-no" title="statement not covered" >  NUMBER_103: 103,</span>
@@ -882,9 +882,9 @@ export type DeleteApiHistorys200 = DeleteApiHistorys200AnyOf | null | null;
 <span class="cstat-no" title="statement not covered" >  NUMBER_511: 511,</span>
 <span class="cstat-no" title="statement not covered" >  NUMBER_MINUS_1: -1,</span>
 <span class="cstat-no" title="statement not covered" >} as const;</span>
-export type DeleteApiHistorys500 = {
+export type DeleteApiHistory500 = {
   /** HTTPステータスコード */
-  status: (typeof DeleteApiHistorys500Status)[keyof typeof DeleteApiHistorys500Status];
+  status: (typeof DeleteApiHistory500Status)[keyof typeof DeleteApiHistory500Status];
   /**
    * エラーメッセージ
    * @minLength 1
@@ -898,7 +898,7 @@ export type DeleteApiHistorys500 = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-10-21T20:50:16.672Z
+                at 2025-10-22T04:25:36.958Z
             </div>
         <script src="../prettify.js"></script>
         <script>

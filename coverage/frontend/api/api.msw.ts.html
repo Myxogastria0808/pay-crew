@@ -597,13 +597,7 @@
 <a name='L532'></a><a href='#L532'>532</a>
 <a name='L533'></a><a href='#L533'>533</a>
 <a name='L534'></a><a href='#L534'>534</a>
-<a name='L535'></a><a href='#L535'>535</a>
-<a name='L536'></a><a href='#L536'>536</a>
-<a name='L537'></a><a href='#L537'>537</a>
-<a name='L538'></a><a href='#L538'>538</a>
-<a name='L539'></a><a href='#L539'>539</a>
-<a name='L540'></a><a href='#L540'>540</a>
-<a name='L541'></a><a href='#L541'>541</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L535'></a><a href='#L535'>535</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1059,8 +1053,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1085,10 +1077,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1113,8 +1103,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1156,15 +1144,15 @@
 import type { RequestHandlerOptions } from 'msw';
 &nbsp;
 import type {
-  DeleteApiHistorys200,
-  DeleteApiHistorys500,
-  GetApiHistorys200Item,
-  GetApiHistorys500,
-  PostApiHistorys201,
-  PostApiHistorys500,
+  DeleteApiHistory200,
+  DeleteApiHistory500,
+  GetApiHistory200Item,
+  GetApiHistory500,
+  PostApiHistory201,
+  PostApiHistory500,
 } from './api.schemas';
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export const getGetApiHistorysResponseMock = (): GetApiHistorys200Item[] =&gt;</span>
+<span class="cstat-no" title="statement not covered" >export const getGetApiHistoryResponseMock = (): GetApiHistory200Item[] =&gt;</span>
 <span class="cstat-no" title="statement not covered" >  Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) =&gt; i + 1).map(() =&gt; ({</span>
 <span class="cstat-no" title="statement not covered" >    id: faker.number.float({ min: 1, max: undefined, fractionDigits: 2 }),</span>
 <span class="cstat-no" title="statement not covered" >    from: faker.string.alpha({ length: { min: 1, max: 20 } }),</span>
@@ -1172,7 +1160,7 @@ import type {
 <span class="cstat-no" title="statement not covered" >    amount: faker.number.float({ min: 1, max: undefined, fractionDigits: 2 }),</span>
 <span class="cstat-no" title="statement not covered" >  }));</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export const getGetApiHistorysResponseMock200 = (): GetApiHistorys200Item[] =&gt;</span>
+<span class="cstat-no" title="statement not covered" >export const getGetApiHistoryResponseMock200 = (): GetApiHistory200Item[] =&gt;</span>
 <span class="cstat-no" title="statement not covered" >  Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) =&gt; i + 1).map(() =&gt; ({</span>
 <span class="cstat-no" title="statement not covered" >    id: faker.number.float({ min: 1, max: undefined, fractionDigits: 2 }),</span>
 <span class="cstat-no" title="statement not covered" >    from: faker.string.alpha({ length: { min: 1, max: 20 } }),</span>
@@ -1180,9 +1168,9 @@ import type {
 <span class="cstat-no" title="statement not covered" >    amount: faker.number.float({ min: 1, max: undefined, fractionDigits: 2 }),</span>
 <span class="cstat-no" title="statement not covered" >  }));</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export const getGetApiHistorysResponseMock500 = (</span>
-<span class="cstat-no" title="statement not covered" >  overrideResponse: Partial&lt;GetApiHistorys500&gt; = {}</span>
-<span class="cstat-no" title="statement not covered" >): GetApiHistorys500 =&gt; ({</span>
+<span class="cstat-no" title="statement not covered" >export const getGetApiHistoryResponseMock500 = (</span>
+<span class="cstat-no" title="statement not covered" >  overrideResponse: Partial&lt;GetApiHistory500&gt; = {}</span>
+<span class="cstat-no" title="statement not covered" >): GetApiHistory500 =&gt; ({</span>
 <span class="cstat-no" title="statement not covered" >  status: faker.helpers.arrayElement([</span>
 <span class="cstat-no" title="statement not covered" >    faker.helpers.arrayElement([100] as const),</span>
 <span class="cstat-no" title="statement not covered" >    faker.helpers.arrayElement([102] as const),</span>
@@ -1249,7 +1237,7 @@ import type {
 <span class="cstat-no" title="statement not covered" >  ...overrideResponse,</span>
 <span class="cstat-no" title="statement not covered" >});</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export const getPostApiHistorysResponseMock = (): PostApiHistorys201 =&gt;</span>
+<span class="cstat-no" title="statement not covered" >export const getPostApiHistoryResponseMock = (): PostApiHistory201 =&gt;</span>
 <span class="cstat-no" title="statement not covered" >  faker.helpers.arrayElement([</span>
 <span class="cstat-no" title="statement not covered" >    Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) =&gt; i + 1).map(() =&gt; ({</span>
 <span class="cstat-no" title="statement not covered" >      id: faker.number.float({ min: 1, max: undefined, fractionDigits: 2 }),</span>
@@ -1261,7 +1249,7 @@ import type {
 <span class="cstat-no" title="statement not covered" >    null,</span>
 <span class="cstat-no" title="statement not covered" >  ]);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export const getPostApiHistorysResponseMock201 = (): PostApiHistorys201 =&gt;</span>
+<span class="cstat-no" title="statement not covered" >export const getPostApiHistoryResponseMock201 = (): PostApiHistory201 =&gt;</span>
 <span class="cstat-no" title="statement not covered" >  faker.helpers.arrayElement([</span>
 <span class="cstat-no" title="statement not covered" >    Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) =&gt; i + 1).map(() =&gt; ({</span>
 <span class="cstat-no" title="statement not covered" >      id: faker.number.float({ min: 1, max: undefined, fractionDigits: 2 }),</span>
@@ -1273,9 +1261,9 @@ import type {
 <span class="cstat-no" title="statement not covered" >    null,</span>
 <span class="cstat-no" title="statement not covered" >  ]);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export const getPostApiHistorysResponseMock500 = (</span>
-<span class="cstat-no" title="statement not covered" >  overrideResponse: Partial&lt;PostApiHistorys500&gt; = {}</span>
-<span class="cstat-no" title="statement not covered" >): PostApiHistorys500 =&gt; ({</span>
+<span class="cstat-no" title="statement not covered" >export const getPostApiHistoryResponseMock500 = (</span>
+<span class="cstat-no" title="statement not covered" >  overrideResponse: Partial&lt;PostApiHistory500&gt; = {}</span>
+<span class="cstat-no" title="statement not covered" >): PostApiHistory500 =&gt; ({</span>
 <span class="cstat-no" title="statement not covered" >  status: faker.helpers.arrayElement([</span>
 <span class="cstat-no" title="statement not covered" >    faker.helpers.arrayElement([100] as const),</span>
 <span class="cstat-no" title="statement not covered" >    faker.helpers.arrayElement([102] as const),</span>
@@ -1342,7 +1330,7 @@ import type {
 <span class="cstat-no" title="statement not covered" >  ...overrideResponse,</span>
 <span class="cstat-no" title="statement not covered" >});</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export const getDeleteApiHistorysResponseMock = (): DeleteApiHistorys200 =&gt;</span>
+<span class="cstat-no" title="statement not covered" >export const getDeleteApiHistoryResponseMock = (): DeleteApiHistory200 =&gt;</span>
 <span class="cstat-no" title="statement not covered" >  faker.helpers.arrayElement([</span>
 <span class="cstat-no" title="statement not covered" >    {</span>
 <span class="cstat-no" title="statement not covered" >      id: faker.number.float({ min: 1, max: undefined, fractionDigits: 2 }),</span>
@@ -1354,7 +1342,7 @@ import type {
 <span class="cstat-no" title="statement not covered" >    null,</span>
 <span class="cstat-no" title="statement not covered" >  ]);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export const getDeleteApiHistorysResponseMock200 = (): DeleteApiHistorys200 =&gt;</span>
+<span class="cstat-no" title="statement not covered" >export const getDeleteApiHistoryResponseMock200 = (): DeleteApiHistory200 =&gt;</span>
 <span class="cstat-no" title="statement not covered" >  faker.helpers.arrayElement([</span>
 <span class="cstat-no" title="statement not covered" >    {</span>
 <span class="cstat-no" title="statement not covered" >      id: faker.number.float({ min: 1, max: undefined, fractionDigits: 2 }),</span>
@@ -1366,9 +1354,9 @@ import type {
 <span class="cstat-no" title="statement not covered" >    null,</span>
 <span class="cstat-no" title="statement not covered" >  ]);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export const getDeleteApiHistorysResponseMock500 = (</span>
-<span class="cstat-no" title="statement not covered" >  overrideResponse: Partial&lt;DeleteApiHistorys500&gt; = {}</span>
-<span class="cstat-no" title="statement not covered" >): DeleteApiHistorys500 =&gt; ({</span>
+<span class="cstat-no" title="statement not covered" >export const getDeleteApiHistoryResponseMock500 = (</span>
+<span class="cstat-no" title="statement not covered" >  overrideResponse: Partial&lt;DeleteApiHistory500&gt; = {}</span>
+<span class="cstat-no" title="statement not covered" >): DeleteApiHistory500 =&gt; ({</span>
 <span class="cstat-no" title="statement not covered" >  status: faker.helpers.arrayElement([</span>
 <span class="cstat-no" title="statement not covered" >    faker.helpers.arrayElement([100] as const),</span>
 <span class="cstat-no" title="statement not covered" >    faker.helpers.arrayElement([102] as const),</span>
@@ -1435,16 +1423,16 @@ import type {
 <span class="cstat-no" title="statement not covered" >  ...overrideResponse,</span>
 <span class="cstat-no" title="statement not covered" >});</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export const getGetApiHistorysMockHandler = (</span>
+<span class="cstat-no" title="statement not covered" >export const getGetApiHistoryMockHandler = (</span>
 <span class="cstat-no" title="statement not covered" >  overrideResponse?:</span>
-    | GetApiHistorys200Item[]
+    | GetApiHistory200Item[]
     | ((
         info: Parameters&lt;Parameters&lt;typeof http.get&gt;[1]&gt;[0]
-      ) =&gt; Promise&lt;GetApiHistorys200Item[]&gt; | GetApiHistorys200Item[]),
+      ) =&gt; Promise&lt;GetApiHistory200Item[]&gt; | GetApiHistory200Item[]),
 <span class="cstat-no" title="statement not covered" >  options?: RequestHandlerOptions</span>
 ) =&gt; {
 <span class="cstat-no" title="statement not covered" >  return http.get(</span>
-<span class="cstat-no" title="statement not covered" >    '*/api/historys',</span>
+<span class="cstat-no" title="statement not covered" >    '*/api/history',</span>
 <span class="cstat-no" title="statement not covered" >    async (info) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >      await delay(1000);</span>
 &nbsp;
@@ -1454,7 +1442,7 @@ import type {
 <span class="cstat-no" title="statement not covered" >            ? typeof overrideResponse === 'function'</span>
 <span class="cstat-no" title="statement not covered" >              ? await overrideResponse(info)</span>
 <span class="cstat-no" title="statement not covered" >              : overrideResponse</span>
-<span class="cstat-no" title="statement not covered" >            : getGetApiHistorysResponseMock()</span>
+<span class="cstat-no" title="statement not covered" >            : getGetApiHistoryResponseMock()</span>
         ),
 <span class="cstat-no" title="statement not covered" >        { status: 200, headers: { 'Content-Type': 'application/json' } }</span>
       );
@@ -1463,16 +1451,16 @@ import type {
   );
 <span class="cstat-no" title="statement not covered" >};</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export const getGetApiHistorysMockHandler200 = (</span>
+<span class="cstat-no" title="statement not covered" >export const getGetApiHistoryMockHandler200 = (</span>
 <span class="cstat-no" title="statement not covered" >  overrideResponse?:</span>
-    | GetApiHistorys200Item[]
+    | GetApiHistory200Item[]
     | ((
         info: Parameters&lt;Parameters&lt;typeof http.get&gt;[1]&gt;[0]
-      ) =&gt; Promise&lt;GetApiHistorys200Item[]&gt; | GetApiHistorys200Item[]),
+      ) =&gt; Promise&lt;GetApiHistory200Item[]&gt; | GetApiHistory200Item[]),
 <span class="cstat-no" title="statement not covered" >  options?: RequestHandlerOptions</span>
 ) =&gt; {
 <span class="cstat-no" title="statement not covered" >  return http.get(</span>
-<span class="cstat-no" title="statement not covered" >    '*/api/historys',</span>
+<span class="cstat-no" title="statement not covered" >    '*/api/history',</span>
 <span class="cstat-no" title="statement not covered" >    async (info) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >      await delay(1000);</span>
 &nbsp;
@@ -1482,7 +1470,7 @@ import type {
 <span class="cstat-no" title="statement not covered" >            ? typeof overrideResponse === 'function'</span>
 <span class="cstat-no" title="statement not covered" >              ? await overrideResponse(info)</span>
 <span class="cstat-no" title="statement not covered" >              : overrideResponse</span>
-<span class="cstat-no" title="statement not covered" >            : getGetApiHistorysResponseMock200()</span>
+<span class="cstat-no" title="statement not covered" >            : getGetApiHistoryResponseMock200()</span>
         ),
 <span class="cstat-no" title="statement not covered" >        { status: 200, headers: { 'Content-Type': 'application/json' } }</span>
       );
@@ -1491,14 +1479,14 @@ import type {
   );
 <span class="cstat-no" title="statement not covered" >};</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export const getGetApiHistorysMockHandler500 = (</span>
+<span class="cstat-no" title="statement not covered" >export const getGetApiHistoryMockHandler500 = (</span>
 <span class="cstat-no" title="statement not covered" >  overrideResponse?:</span>
-    | GetApiHistorys500
-    | ((info: Parameters&lt;Parameters&lt;typeof http.get&gt;[1]&gt;[0]) =&gt; Promise&lt;GetApiHistorys500&gt; | GetApiHistorys500),
+    | GetApiHistory500
+    | ((info: Parameters&lt;Parameters&lt;typeof http.get&gt;[1]&gt;[0]) =&gt; Promise&lt;GetApiHistory500&gt; | GetApiHistory500),
 <span class="cstat-no" title="statement not covered" >  options?: RequestHandlerOptions</span>
 ) =&gt; {
 <span class="cstat-no" title="statement not covered" >  return http.get(</span>
-<span class="cstat-no" title="statement not covered" >    '*/api/historys',</span>
+<span class="cstat-no" title="statement not covered" >    '*/api/history',</span>
 <span class="cstat-no" title="statement not covered" >    async (info) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >      await delay(1000);</span>
 &nbsp;
@@ -1508,7 +1496,7 @@ import type {
 <span class="cstat-no" title="statement not covered" >            ? typeof overrideResponse === 'function'</span>
 <span class="cstat-no" title="statement not covered" >              ? await overrideResponse(info)</span>
 <span class="cstat-no" title="statement not covered" >              : overrideResponse</span>
-<span class="cstat-no" title="statement not covered" >            : getGetApiHistorysResponseMock500()</span>
+<span class="cstat-no" title="statement not covered" >            : getGetApiHistoryResponseMock500()</span>
         ),
 <span class="cstat-no" title="statement not covered" >        { status: 500, headers: { 'Content-Type': 'application/json' } }</span>
       );
@@ -1517,14 +1505,14 @@ import type {
   );
 <span class="cstat-no" title="statement not covered" >};</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export const getPostApiHistorysMockHandler = (</span>
+<span class="cstat-no" title="statement not covered" >export const getPostApiHistoryMockHandler = (</span>
 <span class="cstat-no" title="statement not covered" >  overrideResponse?:</span>
-    | PostApiHistorys201
-    | ((info: Parameters&lt;Parameters&lt;typeof http.post&gt;[1]&gt;[0]) =&gt; Promise&lt;PostApiHistorys201&gt; | PostApiHistorys201),
+    | PostApiHistory201
+    | ((info: Parameters&lt;Parameters&lt;typeof http.post&gt;[1]&gt;[0]) =&gt; Promise&lt;PostApiHistory201&gt; | PostApiHistory201),
 <span class="cstat-no" title="statement not covered" >  options?: RequestHandlerOptions</span>
 ) =&gt; {
 <span class="cstat-no" title="statement not covered" >  return http.post(</span>
-<span class="cstat-no" title="statement not covered" >    '*/api/historys',</span>
+<span class="cstat-no" title="statement not covered" >    '*/api/history',</span>
 <span class="cstat-no" title="statement not covered" >    async (info) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >      await delay(1000);</span>
 &nbsp;
@@ -1534,7 +1522,7 @@ import type {
 <span class="cstat-no" title="statement not covered" >            ? typeof overrideResponse === 'function'</span>
 <span class="cstat-no" title="statement not covered" >              ? await overrideResponse(info)</span>
 <span class="cstat-no" title="statement not covered" >              : overrideResponse</span>
-<span class="cstat-no" title="statement not covered" >            : getPostApiHistorysResponseMock()</span>
+<span class="cstat-no" title="statement not covered" >            : getPostApiHistoryResponseMock()</span>
         ),
 <span class="cstat-no" title="statement not covered" >        { status: 201, headers: { 'Content-Type': 'application/json' } }</span>
       );
@@ -1543,14 +1531,14 @@ import type {
   );
 <span class="cstat-no" title="statement not covered" >};</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export const getPostApiHistorysMockHandler201 = (</span>
+<span class="cstat-no" title="statement not covered" >export const getPostApiHistoryMockHandler201 = (</span>
 <span class="cstat-no" title="statement not covered" >  overrideResponse?:</span>
-    | PostApiHistorys201
-    | ((info: Parameters&lt;Parameters&lt;typeof http.post&gt;[1]&gt;[0]) =&gt; Promise&lt;PostApiHistorys201&gt; | PostApiHistorys201),
+    | PostApiHistory201
+    | ((info: Parameters&lt;Parameters&lt;typeof http.post&gt;[1]&gt;[0]) =&gt; Promise&lt;PostApiHistory201&gt; | PostApiHistory201),
 <span class="cstat-no" title="statement not covered" >  options?: RequestHandlerOptions</span>
 ) =&gt; {
 <span class="cstat-no" title="statement not covered" >  return http.post(</span>
-<span class="cstat-no" title="statement not covered" >    '*/api/historys',</span>
+<span class="cstat-no" title="statement not covered" >    '*/api/history',</span>
 <span class="cstat-no" title="statement not covered" >    async (info) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >      await delay(1000);</span>
 &nbsp;
@@ -1560,7 +1548,7 @@ import type {
 <span class="cstat-no" title="statement not covered" >            ? typeof overrideResponse === 'function'</span>
 <span class="cstat-no" title="statement not covered" >              ? await overrideResponse(info)</span>
 <span class="cstat-no" title="statement not covered" >              : overrideResponse</span>
-<span class="cstat-no" title="statement not covered" >            : getPostApiHistorysResponseMock201()</span>
+<span class="cstat-no" title="statement not covered" >            : getPostApiHistoryResponseMock201()</span>
         ),
 <span class="cstat-no" title="statement not covered" >        { status: 201, headers: { 'Content-Type': 'application/json' } }</span>
       );
@@ -1569,14 +1557,14 @@ import type {
   );
 <span class="cstat-no" title="statement not covered" >};</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export const getPostApiHistorysMockHandler500 = (</span>
+<span class="cstat-no" title="statement not covered" >export const getPostApiHistoryMockHandler500 = (</span>
 <span class="cstat-no" title="statement not covered" >  overrideResponse?:</span>
-    | PostApiHistorys500
-    | ((info: Parameters&lt;Parameters&lt;typeof http.post&gt;[1]&gt;[0]) =&gt; Promise&lt;PostApiHistorys500&gt; | PostApiHistorys500),
+    | PostApiHistory500
+    | ((info: Parameters&lt;Parameters&lt;typeof http.post&gt;[1]&gt;[0]) =&gt; Promise&lt;PostApiHistory500&gt; | PostApiHistory500),
 <span class="cstat-no" title="statement not covered" >  options?: RequestHandlerOptions</span>
 ) =&gt; {
 <span class="cstat-no" title="statement not covered" >  return http.post(</span>
-<span class="cstat-no" title="statement not covered" >    '*/api/historys',</span>
+<span class="cstat-no" title="statement not covered" >    '*/api/history',</span>
 <span class="cstat-no" title="statement not covered" >    async (info) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >      await delay(1000);</span>
 &nbsp;
@@ -1586,7 +1574,7 @@ import type {
 <span class="cstat-no" title="statement not covered" >            ? typeof overrideResponse === 'function'</span>
 <span class="cstat-no" title="statement not covered" >              ? await overrideResponse(info)</span>
 <span class="cstat-no" title="statement not covered" >              : overrideResponse</span>
-<span class="cstat-no" title="statement not covered" >            : getPostApiHistorysResponseMock500()</span>
+<span class="cstat-no" title="statement not covered" >            : getPostApiHistoryResponseMock500()</span>
         ),
 <span class="cstat-no" title="statement not covered" >        { status: 500, headers: { 'Content-Type': 'application/json' } }</span>
       );
@@ -1595,16 +1583,14 @@ import type {
   );
 <span class="cstat-no" title="statement not covered" >};</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export const getDeleteApiHistorysMockHandler = (</span>
+<span class="cstat-no" title="statement not covered" >export const getDeleteApiHistoryMockHandler = (</span>
 <span class="cstat-no" title="statement not covered" >  overrideResponse?:</span>
-    | DeleteApiHistorys200
-    | ((
-        info: Parameters&lt;Parameters&lt;typeof http.delete&gt;[1]&gt;[0]
-      ) =&gt; Promise&lt;DeleteApiHistorys200&gt; | DeleteApiHistorys200),
+    | DeleteApiHistory200
+    | ((info: Parameters&lt;Parameters&lt;typeof http.delete&gt;[1]&gt;[0]) =&gt; Promise&lt;DeleteApiHistory200&gt; | DeleteApiHistory200),
 <span class="cstat-no" title="statement not covered" >  options?: RequestHandlerOptions</span>
 ) =&gt; {
 <span class="cstat-no" title="statement not covered" >  return http.delete(</span>
-<span class="cstat-no" title="statement not covered" >    '*/api/historys',</span>
+<span class="cstat-no" title="statement not covered" >    '*/api/history',</span>
 <span class="cstat-no" title="statement not covered" >    async (info) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >      await delay(1000);</span>
 &nbsp;
@@ -1614,7 +1600,7 @@ import type {
 <span class="cstat-no" title="statement not covered" >            ? typeof overrideResponse === 'function'</span>
 <span class="cstat-no" title="statement not covered" >              ? await overrideResponse(info)</span>
 <span class="cstat-no" title="statement not covered" >              : overrideResponse</span>
-<span class="cstat-no" title="statement not covered" >            : getDeleteApiHistorysResponseMock()</span>
+<span class="cstat-no" title="statement not covered" >            : getDeleteApiHistoryResponseMock()</span>
         ),
 <span class="cstat-no" title="statement not covered" >        { status: 200, headers: { 'Content-Type': 'application/json' } }</span>
       );
@@ -1623,16 +1609,14 @@ import type {
   );
 <span class="cstat-no" title="statement not covered" >};</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export const getDeleteApiHistorysMockHandler200 = (</span>
+<span class="cstat-no" title="statement not covered" >export const getDeleteApiHistoryMockHandler200 = (</span>
 <span class="cstat-no" title="statement not covered" >  overrideResponse?:</span>
-    | DeleteApiHistorys200
-    | ((
-        info: Parameters&lt;Parameters&lt;typeof http.delete&gt;[1]&gt;[0]
-      ) =&gt; Promise&lt;DeleteApiHistorys200&gt; | DeleteApiHistorys200),
+    | DeleteApiHistory200
+    | ((info: Parameters&lt;Parameters&lt;typeof http.delete&gt;[1]&gt;[0]) =&gt; Promise&lt;DeleteApiHistory200&gt; | DeleteApiHistory200),
 <span class="cstat-no" title="statement not covered" >  options?: RequestHandlerOptions</span>
 ) =&gt; {
 <span class="cstat-no" title="statement not covered" >  return http.delete(</span>
-<span class="cstat-no" title="statement not covered" >    '*/api/historys',</span>
+<span class="cstat-no" title="statement not covered" >    '*/api/history',</span>
 <span class="cstat-no" title="statement not covered" >    async (info) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >      await delay(1000);</span>
 &nbsp;
@@ -1642,7 +1626,7 @@ import type {
 <span class="cstat-no" title="statement not covered" >            ? typeof overrideResponse === 'function'</span>
 <span class="cstat-no" title="statement not covered" >              ? await overrideResponse(info)</span>
 <span class="cstat-no" title="statement not covered" >              : overrideResponse</span>
-<span class="cstat-no" title="statement not covered" >            : getDeleteApiHistorysResponseMock200()</span>
+<span class="cstat-no" title="statement not covered" >            : getDeleteApiHistoryResponseMock200()</span>
         ),
 <span class="cstat-no" title="statement not covered" >        { status: 200, headers: { 'Content-Type': 'application/json' } }</span>
       );
@@ -1651,16 +1635,14 @@ import type {
   );
 <span class="cstat-no" title="statement not covered" >};</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export const getDeleteApiHistorysMockHandler500 = (</span>
+<span class="cstat-no" title="statement not covered" >export const getDeleteApiHistoryMockHandler500 = (</span>
 <span class="cstat-no" title="statement not covered" >  overrideResponse?:</span>
-    | DeleteApiHistorys500
-    | ((
-        info: Parameters&lt;Parameters&lt;typeof http.delete&gt;[1]&gt;[0]
-      ) =&gt; Promise&lt;DeleteApiHistorys500&gt; | DeleteApiHistorys500),
+    | DeleteApiHistory500
+    | ((info: Parameters&lt;Parameters&lt;typeof http.delete&gt;[1]&gt;[0]) =&gt; Promise&lt;DeleteApiHistory500&gt; | DeleteApiHistory500),
 <span class="cstat-no" title="statement not covered" >  options?: RequestHandlerOptions</span>
 ) =&gt; {
 <span class="cstat-no" title="statement not covered" >  return http.delete(</span>
-<span class="cstat-no" title="statement not covered" >    '*/api/historys',</span>
+<span class="cstat-no" title="statement not covered" >    '*/api/history',</span>
 <span class="cstat-no" title="statement not covered" >    async (info) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >      await delay(1000);</span>
 &nbsp;
@@ -1670,7 +1652,7 @@ import type {
 <span class="cstat-no" title="statement not covered" >            ? typeof overrideResponse === 'function'</span>
 <span class="cstat-no" title="statement not covered" >              ? await overrideResponse(info)</span>
 <span class="cstat-no" title="statement not covered" >              : overrideResponse</span>
-<span class="cstat-no" title="statement not covered" >            : getDeleteApiHistorysResponseMock500()</span>
+<span class="cstat-no" title="statement not covered" >            : getDeleteApiHistoryResponseMock500()</span>
         ),
 <span class="cstat-no" title="statement not covered" >        { status: 500, headers: { 'Content-Type': 'application/json' } }</span>
       );
@@ -1679,9 +1661,9 @@ import type {
   );
 <span class="cstat-no" title="statement not covered" >};</span>
 <span class="cstat-no" title="statement not covered" >export const getEchoAPIMock = () =&gt; [</span>
-<span class="cstat-no" title="statement not covered" >  getGetApiHistorysMockHandler(),</span>
-<span class="cstat-no" title="statement not covered" >  getPostApiHistorysMockHandler(),</span>
-<span class="cstat-no" title="statement not covered" >  getDeleteApiHistorysMockHandler(),</span>
+<span class="cstat-no" title="statement not covered" >  getGetApiHistoryMockHandler(),</span>
+<span class="cstat-no" title="statement not covered" >  getPostApiHistoryMockHandler(),</span>
+<span class="cstat-no" title="statement not covered" >  getDeleteApiHistoryMockHandler(),</span>
 <span class="cstat-no" title="statement not covered" >];</span>
 &nbsp;</pre></td></tr></table></pre>
 
@@ -1690,7 +1672,7 @@ import type {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-10-21T20:50:16.672Z
+                at 2025-10-22T04:25:36.958Z
             </div>
         <script src="../prettify.js"></script>
         <script>

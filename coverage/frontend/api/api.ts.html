@@ -527,14 +527,14 @@ import type { Key, SWRConfiguration } from 'swr';
 import type { SWRMutationConfiguration } from 'swr/mutation';
 &nbsp;
 import type {
-  DeleteApiHistorys200,
-  DeleteApiHistorys500,
-  DeleteApiHistorysBody,
-  GetApiHistorys200Item,
-  GetApiHistorys500,
-  PostApiHistorys201,
-  PostApiHistorys500,
-  PostApiHistorysBody,
+  DeleteApiHistory200,
+  DeleteApiHistory500,
+  DeleteApiHistoryBody,
+  GetApiHistory200Item,
+  GetApiHistory500,
+  PostApiHistory201,
+  PostApiHistory500,
+  PostApiHistoryBody,
 } from './api.schemas';
 &nbsp;
 <span class="cstat-no" title="statement not covered" >import { customFetch } from './customFetch';</span>
@@ -544,50 +544,50 @@ type SecondParameter&lt;T extends (...args: never) =&gt; unknown&gt; = Parameter
 /**
  * 履歴の取得
  */
-export type getApiHistorysResponse200 = {
-  data: GetApiHistorys200Item[];
+export type getApiHistoryResponse200 = {
+  data: GetApiHistory200Item[];
   status: 200;
 };
 &nbsp;
-export type getApiHistorysResponse500 = {
-  data: GetApiHistorys500;
+export type getApiHistoryResponse500 = {
+  data: GetApiHistory500;
   status: 500;
 };
 &nbsp;
-export type getApiHistorysResponseSuccess = getApiHistorysResponse200 &amp; {
+export type getApiHistoryResponseSuccess = getApiHistoryResponse200 &amp; {
   headers: Headers;
 };
-export type getApiHistorysResponseError = getApiHistorysResponse500 &amp; {
+export type getApiHistoryResponseError = getApiHistoryResponse500 &amp; {
   headers: Headers;
 };
 &nbsp;
-export type getApiHistorysResponse = getApiHistorysResponseSuccess | getApiHistorysResponseError;
+export type getApiHistoryResponse = getApiHistoryResponseSuccess | getApiHistoryResponseError;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export const getGetApiHistorysUrl = () =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  return `/api/historys`;</span>
+<span class="cstat-no" title="statement not covered" >export const getGetApiHistoryUrl = () =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  return `/api/history`;</span>
 <span class="cstat-no" title="statement not covered" >};</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export const getApiHistorys = async (options?: RequestInit): Promise&lt;getApiHistorysResponse&gt; =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  return customFetch&lt;getApiHistorysResponse&gt;(getGetApiHistorysUrl(), {</span>
+<span class="cstat-no" title="statement not covered" >export const getApiHistory = async (options?: RequestInit): Promise&lt;getApiHistoryResponse&gt; =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  return customFetch&lt;getApiHistoryResponse&gt;(getGetApiHistoryUrl(), {</span>
 <span class="cstat-no" title="statement not covered" >    ...options,</span>
 <span class="cstat-no" title="statement not covered" >    method: 'GET',</span>
 <span class="cstat-no" title="statement not covered" >  });</span>
 <span class="cstat-no" title="statement not covered" >};</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export const getGetApiHistorysKey = () =&gt; [`/api/historys`] as const;</span>
+<span class="cstat-no" title="statement not covered" >export const getGetApiHistoryKey = () =&gt; [`/api/history`] as const;</span>
 &nbsp;
-export type GetApiHistorysQueryResult = NonNullable&lt;Awaited&lt;ReturnType&lt;typeof getApiHistorys&gt;&gt;&gt;;
-export type GetApiHistorysQueryError = GetApiHistorys500;
+export type GetApiHistoryQueryResult = NonNullable&lt;Awaited&lt;ReturnType&lt;typeof getApiHistory&gt;&gt;&gt;;
+export type GetApiHistoryQueryError = GetApiHistory500;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export const useGetApiHistorys = &lt;TError = GetApiHistorys500&gt;(options?: {</span>
-  swr?: SWRConfiguration&lt;Awaited&lt;ReturnType&lt;typeof getApiHistorys&gt;&gt;, TError&gt; &amp; { swrKey?: Key; enabled?: boolean };
+<span class="cstat-no" title="statement not covered" >export const useGetApiHistory = &lt;TError = GetApiHistory500&gt;(options?: {</span>
+  swr?: SWRConfiguration&lt;Awaited&lt;ReturnType&lt;typeof getApiHistory&gt;&gt;, TError&gt; &amp; { swrKey?: Key; enabled?: boolean };
   request?: SecondParameter&lt;typeof customFetch&gt;;
 }) =&gt; {
 <span class="cstat-no" title="statement not covered" >  const { swr: swrOptions, request: requestOptions } = options ?? {};</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  const isEnabled = swrOptions?.enabled !== false;</span>
-<span class="cstat-no" title="statement not covered" >  const swrKey = swrOptions?.swrKey ?? (() =&gt; (isEnabled ? getGetApiHistorysKey() : null));</span>
-<span class="cstat-no" title="statement not covered" >  const swrFn = () =&gt; getApiHistorys(requestOptions);</span>
+<span class="cstat-no" title="statement not covered" >  const swrKey = swrOptions?.swrKey ?? (() =&gt; (isEnabled ? getGetApiHistoryKey() : null));</span>
+<span class="cstat-no" title="statement not covered" >  const swrFn = () =&gt; getApiHistory(requestOptions);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  const query = useSwr&lt;Awaited&lt;ReturnType&lt;typeof swrFn&gt;&gt;, TError&gt;(swrKey, swrFn, swrOptions);</span>
 &nbsp;
@@ -600,65 +600,65 @@ export type GetApiHistorysQueryError = GetApiHistorys500;
 /**
  * 履歴の追加
  */
-export type postApiHistorysResponse201 = {
-  data: PostApiHistorys201;
+export type postApiHistoryResponse201 = {
+  data: PostApiHistory201;
   status: 201;
 };
 &nbsp;
-export type postApiHistorysResponse500 = {
-  data: PostApiHistorys500;
+export type postApiHistoryResponse500 = {
+  data: PostApiHistory500;
   status: 500;
 };
 &nbsp;
-export type postApiHistorysResponseSuccess = postApiHistorysResponse201 &amp; {
+export type postApiHistoryResponseSuccess = postApiHistoryResponse201 &amp; {
   headers: Headers;
 };
-export type postApiHistorysResponseError = postApiHistorysResponse500 &amp; {
+export type postApiHistoryResponseError = postApiHistoryResponse500 &amp; {
   headers: Headers;
 };
 &nbsp;
-export type postApiHistorysResponse = postApiHistorysResponseSuccess | postApiHistorysResponseError;
+export type postApiHistoryResponse = postApiHistoryResponseSuccess | postApiHistoryResponseError;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export const getPostApiHistorysUrl = () =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  return `/api/historys`;</span>
+<span class="cstat-no" title="statement not covered" >export const getPostApiHistoryUrl = () =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  return `/api/history`;</span>
 <span class="cstat-no" title="statement not covered" >};</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export const postApiHistorys = async (</span>
-<span class="cstat-no" title="statement not covered" >  postApiHistorysBody: PostApiHistorysBody,</span>
+<span class="cstat-no" title="statement not covered" >export const postApiHistory = async (</span>
+<span class="cstat-no" title="statement not covered" >  postApiHistoryBody: PostApiHistoryBody,</span>
 <span class="cstat-no" title="statement not covered" >  options?: RequestInit</span>
-): Promise&lt;postApiHistorysResponse&gt; =&gt; {
-<span class="cstat-no" title="statement not covered" >  return customFetch&lt;postApiHistorysResponse&gt;(getPostApiHistorysUrl(), {</span>
+): Promise&lt;postApiHistoryResponse&gt; =&gt; {
+<span class="cstat-no" title="statement not covered" >  return customFetch&lt;postApiHistoryResponse&gt;(getPostApiHistoryUrl(), {</span>
 <span class="cstat-no" title="statement not covered" >    ...options,</span>
 <span class="cstat-no" title="statement not covered" >    method: 'POST',</span>
 <span class="cstat-no" title="statement not covered" >    headers: { 'Content-Type': 'application/json', ...options?.headers },</span>
-<span class="cstat-no" title="statement not covered" >    body: JSON.stringify(postApiHistorysBody),</span>
+<span class="cstat-no" title="statement not covered" >    body: JSON.stringify(postApiHistoryBody),</span>
 <span class="cstat-no" title="statement not covered" >  });</span>
 <span class="cstat-no" title="statement not covered" >};</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export const getPostApiHistorysMutationFetcher = (options?: SecondParameter&lt;typeof customFetch&gt;) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  return (_: Key, { arg }: { arg: PostApiHistorysBody }) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    return postApiHistorys(arg, options);</span>
+<span class="cstat-no" title="statement not covered" >export const getPostApiHistoryMutationFetcher = (options?: SecondParameter&lt;typeof customFetch&gt;) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  return (_: Key, { arg }: { arg: PostApiHistoryBody }) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    return postApiHistory(arg, options);</span>
 <span class="cstat-no" title="statement not covered" >  };</span>
 <span class="cstat-no" title="statement not covered" >};</span>
-<span class="cstat-no" title="statement not covered" >export const getPostApiHistorysMutationKey = () =&gt; [`/api/historys`] as const;</span>
+<span class="cstat-no" title="statement not covered" >export const getPostApiHistoryMutationKey = () =&gt; [`/api/history`] as const;</span>
 &nbsp;
-export type PostApiHistorysMutationResult = NonNullable&lt;Awaited&lt;ReturnType&lt;typeof postApiHistorys&gt;&gt;&gt;;
-export type PostApiHistorysMutationError = PostApiHistorys500;
+export type PostApiHistoryMutationResult = NonNullable&lt;Awaited&lt;ReturnType&lt;typeof postApiHistory&gt;&gt;&gt;;
+export type PostApiHistoryMutationError = PostApiHistory500;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export const usePostApiHistorys = &lt;TError = PostApiHistorys500&gt;(options?: {</span>
+<span class="cstat-no" title="statement not covered" >export const usePostApiHistory = &lt;TError = PostApiHistory500&gt;(options?: {</span>
   swr?: SWRMutationConfiguration&lt;
-    Awaited&lt;ReturnType&lt;typeof postApiHistorys&gt;&gt;,
+    Awaited&lt;ReturnType&lt;typeof postApiHistory&gt;&gt;,
     TError,
     Key,
-    PostApiHistorysBody,
-    Awaited&lt;ReturnType&lt;typeof postApiHistorys&gt;&gt;
+    PostApiHistoryBody,
+    Awaited&lt;ReturnType&lt;typeof postApiHistory&gt;&gt;
   &gt; &amp; { swrKey?: string };
   request?: SecondParameter&lt;typeof customFetch&gt;;
 }) =&gt; {
 <span class="cstat-no" title="statement not covered" >  const { swr: swrOptions, request: requestOptions } = options ?? {};</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  const swrKey = swrOptions?.swrKey ?? getPostApiHistorysMutationKey();</span>
-<span class="cstat-no" title="statement not covered" >  const swrFn = getPostApiHistorysMutationFetcher(requestOptions);</span>
+<span class="cstat-no" title="statement not covered" >  const swrKey = swrOptions?.swrKey ?? getPostApiHistoryMutationKey();</span>
+<span class="cstat-no" title="statement not covered" >  const swrFn = getPostApiHistoryMutationFetcher(requestOptions);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  const query = useSWRMutation(swrKey, swrFn, swrOptions);</span>
 &nbsp;
@@ -671,65 +671,65 @@ export type PostApiHistorysMutationError = PostApiHistorys500;
 /**
  * 履歴の削除
  */
-export type deleteApiHistorysResponse200 = {
-  data: DeleteApiHistorys200;
+export type deleteApiHistoryResponse200 = {
+  data: DeleteApiHistory200;
   status: 200;
 };
 &nbsp;
-export type deleteApiHistorysResponse500 = {
-  data: DeleteApiHistorys500;
+export type deleteApiHistoryResponse500 = {
+  data: DeleteApiHistory500;
   status: 500;
 };
 &nbsp;
-export type deleteApiHistorysResponseSuccess = deleteApiHistorysResponse200 &amp; {
+export type deleteApiHistoryResponseSuccess = deleteApiHistoryResponse200 &amp; {
   headers: Headers;
 };
-export type deleteApiHistorysResponseError = deleteApiHistorysResponse500 &amp; {
+export type deleteApiHistoryResponseError = deleteApiHistoryResponse500 &amp; {
   headers: Headers;
 };
 &nbsp;
-export type deleteApiHistorysResponse = deleteApiHistorysResponseSuccess | deleteApiHistorysResponseError;
+export type deleteApiHistoryResponse = deleteApiHistoryResponseSuccess | deleteApiHistoryResponseError;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export const getDeleteApiHistorysUrl = () =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  return `/api/historys`;</span>
+<span class="cstat-no" title="statement not covered" >export const getDeleteApiHistoryUrl = () =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  return `/api/history`;</span>
 <span class="cstat-no" title="statement not covered" >};</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export const deleteApiHistorys = async (</span>
-<span class="cstat-no" title="statement not covered" >  deleteApiHistorysBody: DeleteApiHistorysBody,</span>
+<span class="cstat-no" title="statement not covered" >export const deleteApiHistory = async (</span>
+<span class="cstat-no" title="statement not covered" >  deleteApiHistoryBody: DeleteApiHistoryBody,</span>
 <span class="cstat-no" title="statement not covered" >  options?: RequestInit</span>
-): Promise&lt;deleteApiHistorysResponse&gt; =&gt; {
-<span class="cstat-no" title="statement not covered" >  return customFetch&lt;deleteApiHistorysResponse&gt;(getDeleteApiHistorysUrl(), {</span>
+): Promise&lt;deleteApiHistoryResponse&gt; =&gt; {
+<span class="cstat-no" title="statement not covered" >  return customFetch&lt;deleteApiHistoryResponse&gt;(getDeleteApiHistoryUrl(), {</span>
 <span class="cstat-no" title="statement not covered" >    ...options,</span>
 <span class="cstat-no" title="statement not covered" >    method: 'DELETE',</span>
 <span class="cstat-no" title="statement not covered" >    headers: { 'Content-Type': 'application/json', ...options?.headers },</span>
-<span class="cstat-no" title="statement not covered" >    body: JSON.stringify(deleteApiHistorysBody),</span>
+<span class="cstat-no" title="statement not covered" >    body: JSON.stringify(deleteApiHistoryBody),</span>
 <span class="cstat-no" title="statement not covered" >  });</span>
 <span class="cstat-no" title="statement not covered" >};</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export const getDeleteApiHistorysMutationFetcher = (options?: SecondParameter&lt;typeof customFetch&gt;) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  return (_: Key, { arg }: { arg: DeleteApiHistorysBody }) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    return deleteApiHistorys(arg, options);</span>
+<span class="cstat-no" title="statement not covered" >export const getDeleteApiHistoryMutationFetcher = (options?: SecondParameter&lt;typeof customFetch&gt;) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  return (_: Key, { arg }: { arg: DeleteApiHistoryBody }) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    return deleteApiHistory(arg, options);</span>
 <span class="cstat-no" title="statement not covered" >  };</span>
 <span class="cstat-no" title="statement not covered" >};</span>
-<span class="cstat-no" title="statement not covered" >export const getDeleteApiHistorysMutationKey = () =&gt; [`/api/historys`] as const;</span>
+<span class="cstat-no" title="statement not covered" >export const getDeleteApiHistoryMutationKey = () =&gt; [`/api/history`] as const;</span>
 &nbsp;
-export type DeleteApiHistorysMutationResult = NonNullable&lt;Awaited&lt;ReturnType&lt;typeof deleteApiHistorys&gt;&gt;&gt;;
-export type DeleteApiHistorysMutationError = DeleteApiHistorys500;
+export type DeleteApiHistoryMutationResult = NonNullable&lt;Awaited&lt;ReturnType&lt;typeof deleteApiHistory&gt;&gt;&gt;;
+export type DeleteApiHistoryMutationError = DeleteApiHistory500;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export const useDeleteApiHistorys = &lt;TError = DeleteApiHistorys500&gt;(options?: {</span>
+<span class="cstat-no" title="statement not covered" >export const useDeleteApiHistory = &lt;TError = DeleteApiHistory500&gt;(options?: {</span>
   swr?: SWRMutationConfiguration&lt;
-    Awaited&lt;ReturnType&lt;typeof deleteApiHistorys&gt;&gt;,
+    Awaited&lt;ReturnType&lt;typeof deleteApiHistory&gt;&gt;,
     TError,
     Key,
-    DeleteApiHistorysBody,
-    Awaited&lt;ReturnType&lt;typeof deleteApiHistorys&gt;&gt;
+    DeleteApiHistoryBody,
+    Awaited&lt;ReturnType&lt;typeof deleteApiHistory&gt;&gt;
   &gt; &amp; { swrKey?: string };
   request?: SecondParameter&lt;typeof customFetch&gt;;
 }) =&gt; {
 <span class="cstat-no" title="statement not covered" >  const { swr: swrOptions, request: requestOptions } = options ?? {};</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  const swrKey = swrOptions?.swrKey ?? getDeleteApiHistorysMutationKey();</span>
-<span class="cstat-no" title="statement not covered" >  const swrFn = getDeleteApiHistorysMutationFetcher(requestOptions);</span>
+<span class="cstat-no" title="statement not covered" >  const swrKey = swrOptions?.swrKey ?? getDeleteApiHistoryMutationKey();</span>
+<span class="cstat-no" title="statement not covered" >  const swrFn = getDeleteApiHistoryMutationFetcher(requestOptions);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  const query = useSWRMutation(swrKey, swrFn, swrOptions);</span>
 &nbsp;
@@ -745,7 +745,7 @@ export type DeleteApiHistorysMutationError = DeleteApiHistorys500;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-10-21T20:50:16.672Z
+                at 2025-10-22T04:25:36.958Z
             </div>
         <script src="../prettify.js"></script>
         <script>

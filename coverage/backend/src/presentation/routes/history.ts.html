@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/presentation/routes/historys.ts</title>
+    <title>Code coverage report for src/presentation/routes/history.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">src/presentation/routes</a> historys.ts</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">src/presentation/routes</a> history.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -337,16 +337,16 @@
 <span class="cstat-no" title="statement not covered" >import { OpenAPIHono } from '@hono/zod-openapi';</span>
 <span class="cstat-no" title="statement not covered" >import { route } from '../share';</span>
 import type { Bindings } from '../share/binding';
-<span class="cstat-no" title="statement not covered" >import { HistorysService } from '../../application';</span>
+<span class="cstat-no" title="statement not covered" >import { HistoryService } from '../../application';</span>
 <span class="cstat-no" title="statement not covered" >import {</span>
-  historysGetResponseSchema,
-  historysPostResponseSchema,
-  historysPostRequestSchema,
-  historysDeleteRequestSchema,
-  historysDeleteResponseSchema,
+  historyGetResponseSchema,
+  historyPostResponseSchema,
+  historyPostRequestSchema,
+  historyDeleteRequestSchema,
+  historyDeleteResponseSchema,
 } from 'paycrew-validator';
 &nbsp;
-<span class="cstat-no" title="statement not covered" >const historys = new OpenAPIHono&lt;{</span>
+<span class="cstat-no" title="statement not covered" >const history = new OpenAPIHono&lt;{</span>
   Bindings: Bindings;
 <span class="cstat-no" title="statement not covered" >}&gt;({</span>
   // Open API Honoのインスタンスを生成
@@ -362,9 +362,9 @@ import type { Bindings } from '../share/binding';
 <span class="cstat-no" title="statement not covered" >  },</span>
 <span class="cstat-no" title="statement not covered" >});</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >const historysGetSchema = route.createSchema(</span>
+<span class="cstat-no" title="statement not covered" >const historyGetSchema = route.createSchema(</span>
 <span class="cstat-no" title="statement not covered" >  {</span>
-<span class="cstat-no" title="statement not covered" >    path: '/api/historys',</span>
+<span class="cstat-no" title="statement not covered" >    path: '/api/history',</span>
 <span class="cstat-no" title="statement not covered" >    method: 'get',</span>
 <span class="cstat-no" title="statement not covered" >    description: '履歴の取得',</span>
 <span class="cstat-no" title="statement not covered" >    request: {},</span>
@@ -373,7 +373,7 @@ import type { Bindings } from '../share/binding';
 <span class="cstat-no" title="statement not covered" >        description: 'OK',</span>
 <span class="cstat-no" title="statement not covered" >        content: {</span>
 <span class="cstat-no" title="statement not covered" >          'application/json': {</span>
-<span class="cstat-no" title="statement not covered" >            schema: historysGetResponseSchema,</span>
+<span class="cstat-no" title="statement not covered" >            schema: historyGetResponseSchema,</span>
 <span class="cstat-no" title="statement not covered" >          },</span>
 <span class="cstat-no" title="statement not covered" >        },</span>
 <span class="cstat-no" title="statement not covered" >      },</span>
@@ -382,17 +382,17 @@ import type { Bindings } from '../share/binding';
 <span class="cstat-no" title="statement not covered" >  [500]</span>
 <span class="cstat-no" title="statement not covered" >);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >historys.openapi(historysGetSchema, async (c) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >history.openapi(historyGetSchema, async (c) =&gt; {</span>
   // NOTE: application層のサービスを呼び出す
-<span class="cstat-no" title="statement not covered" >  const service = new HistorysService(c.env.HYPERDRIVE);</span>
-<span class="cstat-no" title="statement not covered" >  const result = await service.getHistorysService();</span>
+<span class="cstat-no" title="statement not covered" >  const service = new HistoryService(c.env.HYPERDRIVE);</span>
+<span class="cstat-no" title="statement not covered" >  const result = await service.getHistoryService();</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  return c.json(result);</span>
 <span class="cstat-no" title="statement not covered" >});</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >const historysPostSchema = route.createSchema(</span>
+<span class="cstat-no" title="statement not covered" >const historyPostSchema = route.createSchema(</span>
 <span class="cstat-no" title="statement not covered" >  {</span>
-<span class="cstat-no" title="statement not covered" >    path: '/api/historys',</span>
+<span class="cstat-no" title="statement not covered" >    path: '/api/history',</span>
 <span class="cstat-no" title="statement not covered" >    method: 'post',</span>
 <span class="cstat-no" title="statement not covered" >    description: '履歴の追加',</span>
 <span class="cstat-no" title="statement not covered" >    request: {</span>
@@ -400,7 +400,7 @@ import type { Bindings } from '../share/binding';
 <span class="cstat-no" title="statement not covered" >        required: true,</span>
 <span class="cstat-no" title="statement not covered" >        content: {</span>
 <span class="cstat-no" title="statement not covered" >          'application/json': {</span>
-<span class="cstat-no" title="statement not covered" >            schema: historysPostRequestSchema,</span>
+<span class="cstat-no" title="statement not covered" >            schema: historyPostRequestSchema,</span>
 <span class="cstat-no" title="statement not covered" >          },</span>
 <span class="cstat-no" title="statement not covered" >        },</span>
 <span class="cstat-no" title="statement not covered" >      },</span>
@@ -410,7 +410,7 @@ import type { Bindings } from '../share/binding';
 <span class="cstat-no" title="statement not covered" >        description: 'Created',</span>
 <span class="cstat-no" title="statement not covered" >        content: {</span>
 <span class="cstat-no" title="statement not covered" >          'application/json': {</span>
-<span class="cstat-no" title="statement not covered" >            schema: historysPostResponseSchema,</span>
+<span class="cstat-no" title="statement not covered" >            schema: historyPostResponseSchema,</span>
 <span class="cstat-no" title="statement not covered" >          },</span>
 <span class="cstat-no" title="statement not covered" >        },</span>
 <span class="cstat-no" title="statement not covered" >      },</span>
@@ -419,19 +419,19 @@ import type { Bindings } from '../share/binding';
 <span class="cstat-no" title="statement not covered" >  [500]</span>
 <span class="cstat-no" title="statement not covered" >);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >historys.openapi(historysPostSchema, async (c) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >history.openapi(historyPostSchema, async (c) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >  c.status(201);</span>
 <span class="cstat-no" title="statement not covered" >  const data = c.req.valid('json');</span>
   // NOTE: application層のサービスを呼び出す
-<span class="cstat-no" title="statement not covered" >  const service = new HistorysService(c.env.HYPERDRIVE);</span>
-<span class="cstat-no" title="statement not covered" >  const result = await service.postHistorysService(data);</span>
+<span class="cstat-no" title="statement not covered" >  const service = new HistoryService(c.env.HYPERDRIVE);</span>
+<span class="cstat-no" title="statement not covered" >  const result = await service.postHistoryService(data);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  return c.json(result);</span>
 <span class="cstat-no" title="statement not covered" >});</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >const historysDeleteSchema = route.createSchema(</span>
+<span class="cstat-no" title="statement not covered" >const historyDeleteSchema = route.createSchema(</span>
 <span class="cstat-no" title="statement not covered" >  {</span>
-<span class="cstat-no" title="statement not covered" >    path: '/api/historys',</span>
+<span class="cstat-no" title="statement not covered" >    path: '/api/history',</span>
 <span class="cstat-no" title="statement not covered" >    method: 'delete',</span>
 <span class="cstat-no" title="statement not covered" >    description: '履歴の削除',</span>
 <span class="cstat-no" title="statement not covered" >    request: {</span>
@@ -439,7 +439,7 @@ import type { Bindings } from '../share/binding';
 <span class="cstat-no" title="statement not covered" >        required: true,</span>
 <span class="cstat-no" title="statement not covered" >        content: {</span>
 <span class="cstat-no" title="statement not covered" >          'application/json': {</span>
-<span class="cstat-no" title="statement not covered" >            schema: historysDeleteRequestSchema,</span>
+<span class="cstat-no" title="statement not covered" >            schema: historyDeleteRequestSchema,</span>
 <span class="cstat-no" title="statement not covered" >          },</span>
 <span class="cstat-no" title="statement not covered" >        },</span>
 <span class="cstat-no" title="statement not covered" >      },</span>
@@ -449,7 +449,7 @@ import type { Bindings } from '../share/binding';
 <span class="cstat-no" title="statement not covered" >        description: 'OK',</span>
 <span class="cstat-no" title="statement not covered" >        content: {</span>
 <span class="cstat-no" title="statement not covered" >          'application/json': {</span>
-<span class="cstat-no" title="statement not covered" >            schema: historysDeleteResponseSchema,</span>
+<span class="cstat-no" title="statement not covered" >            schema: historyDeleteResponseSchema,</span>
 <span class="cstat-no" title="statement not covered" >          },</span>
 <span class="cstat-no" title="statement not covered" >        },</span>
 <span class="cstat-no" title="statement not covered" >      },</span>
@@ -458,16 +458,16 @@ import type { Bindings } from '../share/binding';
 <span class="cstat-no" title="statement not covered" >  [500]</span>
 <span class="cstat-no" title="statement not covered" >);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >historys.openapi(historysDeleteSchema, async (c) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >history.openapi(historyDeleteSchema, async (c) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >  const data = c.req.valid('json');</span>
   // NOTE: application層のサービスを呼び出す
-<span class="cstat-no" title="statement not covered" >  const service = new HistorysService(c.env.HYPERDRIVE);</span>
-<span class="cstat-no" title="statement not covered" >  const result = await service.deleteHistorysService(data);</span>
+<span class="cstat-no" title="statement not covered" >  const service = new HistoryService(c.env.HYPERDRIVE);</span>
+<span class="cstat-no" title="statement not covered" >  const result = await service.deleteHistoryService(data);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  return c.json(result);</span>
 <span class="cstat-no" title="statement not covered" >});</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export default historys;</span>
+<span class="cstat-no" title="statement not covered" >export default history;</span>
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -475,7 +475,7 @@ import type { Bindings } from '../share/binding';
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-10-21T20:50:16.230Z
+                at 2025-10-22T04:25:36.149Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
