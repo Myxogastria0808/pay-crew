@@ -1,7 +1,7 @@
 export { errorResponseSchema, type ErrorResponseSchemaType } from './response/error';
 
-export { historysGetResponseSchema, type HistorysGetResponseSchemaType } from './response/historysGetResponse';
-export { historysPostRequestSchema, type HistorysPostRequestSchemaType } from './request/historysPostRequest';
-export { historysPostResponseSchema, type HistorysPostResponseSchemaType } from './response/historysPostResponse';
-export { historysDeleteRequestSchema, type HistorysDeleteRequestSchemaType } from './request/historysDeleteRequest';
-export { historysDeleteResponseSchema, type HistorysDeleteResponseSchemaType } from './response/historysDeleteResponse';
+export { historyGetResponseSchema, type HistoryGetResponseSchemaType } from './response/historyGetResponse';
+export { historyPostRequestSchema, type HistoryPostRequestSchemaType } from './request/historyPostRequest';
+export { historyPostResponseSchema, type HistoryPostResponseSchemaType } from './response/historyPostResponse';
+export { historyDeleteRequestSchema, type HistoryDeleteRequestSchemaType } from './request/historyDeleteRequest';
+export { historyDeleteResponseSchema, type HistoryDeleteResponseSchemaType } from './response/historyDeleteResponse';

@@ -10,7 +10,7 @@
     "parameters": {}
   },
   "paths": {
-    "/api/historys": {
+    "/api/history": {
       "get": {
         "description": "履歴の取得",
         "responses": {

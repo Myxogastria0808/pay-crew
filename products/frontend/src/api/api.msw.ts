@@ -11,15 +11,15 @@ import { HttpResponse, delay, http } from 'msw';
 import type { RequestHandlerOptions } from 'msw';
 
 import type {
-  DeleteApiHistorys200,
-  DeleteApiHistorys500,
-  GetApiHistorys200Item,
-  GetApiHistorys500,
-  PostApiHistorys201,
-  PostApiHistorys500,
+  DeleteApiHistory200,
+  DeleteApiHistory500,
+  GetApiHistory200Item,
+  GetApiHistory500,
+  PostApiHistory201,
+  PostApiHistory500,
 } from './api.schemas';
 
-export const getGetApiHistorysResponseMock = (): GetApiHistorys200Item[] =>
+export const getGetApiHistoryResponseMock = (): GetApiHistory200Item[] =>
   Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({
     id: faker.number.float({ min: 1, max: undefined, fractionDigits: 2 }),
     from: faker.string.alpha({ length: { min: 1, max: 20 } }),
@@ -27,7 +27,7 @@ export const getGetApiHistorysResponseMock = (): GetApiHistorys200Item[] =>
     amount: faker.number.float({ min: 1, max: undefined, fractionDigits: 2 }),
   }));
 
-export const getGetApiHistorysResponseMock200 = (): GetApiHistorys200Item[] =>
+export const getGetApiHistoryResponseMock200 = (): GetApiHistory200Item[] =>
   Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({
     id: faker.number.float({ min: 1, max: undefined, fractionDigits: 2 }),
     from: faker.string.alpha({ length: { min: 1, max: 20 } }),
@@ -35,9 +35,9 @@ export const getGetApiHistorysResponseMock200 = (): GetApiHistorys200Item[] =>
     amount: faker.number.float({ min: 1, max: undefined, fractionDigits: 2 }),
   }));
 
-export const getGetApiHistorysResponseMock500 = (
-  overrideResponse: Partial<GetApiHistorys500> = {}
-): GetApiHistorys500 => ({
+export const getGetApiHistoryResponseMock500 = (
+  overrideResponse: Partial<GetApiHistory500> = {}
+): GetApiHistory500 => ({
   status: faker.helpers.arrayElement([
     faker.helpers.arrayElement([100] as const),
     faker.helpers.arrayElement([102] as const),
@@ -104,7 +104,7 @@ export const getGetApiHistorysResponseMock500 = (
   ...overrideResponse,
 });
 
-export const getPostApiHistorysResponseMock = (): PostApiHistorys201 =>
+export const getPostApiHistoryResponseMock = (): PostApiHistory201 =>
   faker.helpers.arrayElement([
     Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({
       id: faker.number.float({ min: 1, max: undefined, fractionDigits: 2 }),
@@ -116,7 +116,7 @@ export const getPostApiHistorysResponseMock = (): PostApiHistorys201 =>
     null,
   ]);
 
-export const getPostApiHistorysResponseMock201 = (): PostApiHistorys201 =>
+export const getPostApiHistoryResponseMock201 = (): PostApiHistory201 =>
   faker.helpers.arrayElement([
     Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({
       id: faker.number.float({ min: 1, max: undefined, fractionDigits: 2 }),
@@ -128,9 +128,9 @@ export const getPostApiHistorysResponseMock201 = (): PostApiHistorys201 =>
     null,
   ]);
 
-export const getPostApiHistorysResponseMock500 = (
-  overrideResponse: Partial<PostApiHistorys500> = {}
-): PostApiHistorys500 => ({
+export const getPostApiHistoryResponseMock500 = (
+  overrideResponse: Partial<PostApiHistory500> = {}
+): PostApiHistory500 => ({
   status: faker.helpers.arrayElement([
     faker.helpers.arrayElement([100] as const),
     faker.helpers.arrayElement([102] as const),
@@ -197,7 +197,7 @@ export const getPostApiHistorysResponseMock500 = (
   ...overrideResponse,
 });
 
-export const getDeleteApiHistorysResponseMock = (): DeleteApiHistorys200 =>
+export const getDeleteApiHistoryResponseMock = (): DeleteApiHistory200 =>
   faker.helpers.arrayElement([
     {
       id: faker.number.float({ min: 1, max: undefined, fractionDigits: 2 }),
@@ -209,7 +209,7 @@ export const getDeleteApiHistorysResponseMock = (): DeleteApiHistorys200 =>
     null,
   ]);
 
-export const getDeleteApiHistorysResponseMock200 = (): DeleteApiHistorys200 =>
+export const getDeleteApiHistoryResponseMock200 = (): DeleteApiHistory200 =>
   faker.helpers.arrayElement([
     {
       id: faker.number.float({ min: 1, max: undefined, fractionDigits: 2 }),
@@ -221,9 +221,9 @@ export const getDeleteApiHistorysResponseMock200 = (): DeleteApiHistorys200 =>
     null,
   ]);
 
-export const getDeleteApiHistorysResponseMock500 = (
-  overrideResponse: Partial<DeleteApiHistorys500> = {}
-): DeleteApiHistorys500 => ({
+export const getDeleteApiHistoryResponseMock500 = (
+  overrideResponse: Partial<DeleteApiHistory500> = {}
+): DeleteApiHistory500 => ({
   status: faker.helpers.arrayElement([
     faker.helpers.arrayElement([100] as const),
     faker.helpers.arrayElement([102] as const),
@@ -290,16 +290,16 @@ export const getDeleteApiHistorysResponseMock500 = (
   ...overrideResponse,
 });
 
-export const getGetApiHistorysMockHandler = (
+export const getGetApiHistoryMockHandler = (
   overrideResponse?:
-    | GetApiHistorys200Item[]
+    | GetApiHistory200Item[]
     | ((
         info: Parameters<Parameters<typeof http.get>[1]>[0]
-      ) => Promise<GetApiHistorys200Item[]> | GetApiHistorys200Item[]),
+      ) => Promise<GetApiHistory200Item[]> | GetApiHistory200Item[]),
   options?: RequestHandlerOptions
 ) => {
   return http.get(
-    '*/api/historys',
+    '*/api/history',
     async (info) => {
       await delay(1000);
 
@@ -309,7 +309,7 @@ export const getGetApiHistorysMockHandler = (
             ? typeof overrideResponse === 'function'
               ? await overrideResponse(info)
               : overrideResponse
-            : getGetApiHistorysResponseMock()
+            : getGetApiHistoryResponseMock()
         ),
         { status: 200, headers: { 'Content-Type': 'application/json' } }
       );
@@ -318,16 +318,16 @@ export const getGetApiHistorysMockHandler = (
   );
 };
 
-export const getGetApiHistorysMockHandler200 = (
+export const getGetApiHistoryMockHandler200 = (
   overrideResponse?:
-    | GetApiHistorys200Item[]
+    | GetApiHistory200Item[]
     | ((
         info: Parameters<Parameters<typeof http.get>[1]>[0]
-      ) => Promise<GetApiHistorys200Item[]> | GetApiHistorys200Item[]),
+      ) => Promise<GetApiHistory200Item[]> | GetApiHistory200Item[]),
   options?: RequestHandlerOptions
 ) => {
   return http.get(
-    '*/api/historys',
+    '*/api/history',
     async (info) => {
       await delay(1000);
 
@@ -337,7 +337,7 @@ export const getGetApiHistorysMockHandler200 = (
             ? typeof overrideResponse === 'function'
               ? await overrideResponse(info)
               : overrideResponse
-            : getGetApiHistorysResponseMock200()
+            : getGetApiHistoryResponseMock200()
         ),
         { status: 200, headers: { 'Content-Type': 'application/json' } }
       );
@@ -346,14 +346,14 @@ export const getGetApiHistorysMockHandler200 = (
   );
 };
 
-export const getGetApiHistorysMockHandler500 = (
+export const getGetApiHistoryMockHandler500 = (
   overrideResponse?:
-    | GetApiHistorys500
-    | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<GetApiHistorys500> | GetApiHistorys500),
+    | GetApiHistory500
+    | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<GetApiHistory500> | GetApiHistory500),
   options?: RequestHandlerOptions
 ) => {
   return http.get(
-    '*/api/historys',
+    '*/api/history',
     async (info) => {
       await delay(1000);
 
@@ -363,7 +363,7 @@ export const getGetApiHistorysMockHandler500 = (
             ? typeof overrideResponse === 'function'
               ? await overrideResponse(info)
               : overrideResponse
-            : getGetApiHistorysResponseMock500()
+            : getGetApiHistoryResponseMock500()
         ),
         { status: 500, headers: { 'Content-Type': 'application/json' } }
       );
@@ -372,14 +372,14 @@ export const getGetApiHistorysMockHandler500 = (
   );
 };
 
-export const getPostApiHistorysMockHandler = (
+export const getPostApiHistoryMockHandler = (
   overrideResponse?:
-    | PostApiHistorys201
-    | ((info: Parameters<Parameters<typeof http.post>[1]>[0]) => Promise<PostApiHistorys201> | PostApiHistorys201),
+    | PostApiHistory201
+    | ((info: Parameters<Parameters<typeof http.post>[1]>[0]) => Promise<PostApiHistory201> | PostApiHistory201),
   options?: RequestHandlerOptions
 ) => {
   return http.post(
-    '*/api/historys',
+    '*/api/history',
     async (info) => {
       await delay(1000);
 
@@ -389,7 +389,7 @@ export const getPostApiHistorysMockHandler = (
             ? typeof overrideResponse === 'function'
               ? await overrideResponse(info)
               : overrideResponse
-            : getPostApiHistorysResponseMock()
+            : getPostApiHistoryResponseMock()
         ),
         { status: 201, headers: { 'Content-Type': 'application/json' } }
       );
@@ -398,14 +398,14 @@ export const getPostApiHistorysMockHandler = (
   );
 };
 
-export const getPostApiHistorysMockHandler201 = (
+export const getPostApiHistoryMockHandler201 = (
   overrideResponse?:
-    | PostApiHistorys201
-    | ((info: Parameters<Parameters<typeof http.post>[1]>[0]) => Promise<PostApiHistorys201> | PostApiHistorys201),
+    | PostApiHistory201
+    | ((info: Parameters<Parameters<typeof http.post>[1]>[0]) => Promise<PostApiHistory201> | PostApiHistory201),
   options?: RequestHandlerOptions
 ) => {
   return http.post(
-    '*/api/historys',
+    '*/api/history',
     async (info) => {
       await delay(1000);
 
@@ -415,7 +415,7 @@ export const getPostApiHistorysMockHandler201 = (
             ? typeof overrideResponse === 'function'
               ? await overrideResponse(info)
               : overrideResponse
-            : getPostApiHistorysResponseMock201()
+            : getPostApiHistoryResponseMock201()
         ),
         { status: 201, headers: { 'Content-Type': 'application/json' } }
       );
@@ -424,14 +424,14 @@ export const getPostApiHistorysMockHandler201 = (
   );
 };
 
-export const getPostApiHistorysMockHandler500 = (
+export const getPostApiHistoryMockHandler500 = (
   overrideResponse?:
-    | PostApiHistorys500
-    | ((info: Parameters<Parameters<typeof http.post>[1]>[0]) => Promise<PostApiHistorys500> | PostApiHistorys500),
+    | PostApiHistory500
+    | ((info: Parameters<Parameters<typeof http.post>[1]>[0]) => Promise<PostApiHistory500> | PostApiHistory500),
   options?: RequestHandlerOptions
 ) => {
   return http.post(
-    '*/api/historys',
+    '*/api/history',
     async (info) => {
       await delay(1000);
 
@@ -441,7 +441,7 @@ export const getPostApiHistorysMockHandler500 = (
             ? typeof overrideResponse === 'function'
               ? await overrideResponse(info)
               : overrideResponse
-            : getPostApiHistorysResponseMock500()
+            : getPostApiHistoryResponseMock500()
         ),
         { status: 500, headers: { 'Content-Type': 'application/json' } }
       );
@@ -450,16 +450,14 @@ export const getPostApiHistorysMockHandler500 = (
   );
 };
 
-export const getDeleteApiHistorysMockHandler = (
+export const getDeleteApiHistoryMockHandler = (
   overrideResponse?:
-    | DeleteApiHistorys200
-    | ((
-        info: Parameters<Parameters<typeof http.delete>[1]>[0]
-      ) => Promise<DeleteApiHistorys200> | DeleteApiHistorys200),
+    | DeleteApiHistory200
+    | ((info: Parameters<Parameters<typeof http.delete>[1]>[0]) => Promise<DeleteApiHistory200> | DeleteApiHistory200),
   options?: RequestHandlerOptions
 ) => {
   return http.delete(
-    '*/api/historys',
+    '*/api/history',
     async (info) => {
       await delay(1000);
 
@@ -469,7 +467,7 @@ export const getDeleteApiHistorysMockHandler = (
             ? typeof overrideResponse === 'function'
               ? await overrideResponse(info)
               : overrideResponse
-            : getDeleteApiHistorysResponseMock()
+            : getDeleteApiHistoryResponseMock()
         ),
         { status: 200, headers: { 'Content-Type': 'application/json' } }
       );
@@ -478,16 +476,14 @@ export const getDeleteApiHistorysMockHandler = (
   );
 };
 
-export const getDeleteApiHistorysMockHandler200 = (
+export const getDeleteApiHistoryMockHandler200 = (
   overrideResponse?:
-    | DeleteApiHistorys200
-    | ((
-        info: Parameters<Parameters<typeof http.delete>[1]>[0]
-      ) => Promise<DeleteApiHistorys200> | DeleteApiHistorys200),
+    | DeleteApiHistory200
+    | ((info: Parameters<Parameters<typeof http.delete>[1]>[0]) => Promise<DeleteApiHistory200> | DeleteApiHistory200),
   options?: RequestHandlerOptions
 ) => {
   return http.delete(
-    '*/api/historys',
+    '*/api/history',
     async (info) => {
       await delay(1000);
 
@@ -497,7 +493,7 @@ export const getDeleteApiHistorysMockHandler200 = (
             ? typeof overrideResponse === 'function'
               ? await overrideResponse(info)
               : overrideResponse
-            : getDeleteApiHistorysResponseMock200()
+            : getDeleteApiHistoryResponseMock200()
         ),
         { status: 200, headers: { 'Content-Type': 'application/json' } }
       );
@@ -506,16 +502,14 @@ export const getDeleteApiHistorysMockHandler200 = (
   );
 };
 
-export const getDeleteApiHistorysMockHandler500 = (
+export const getDeleteApiHistoryMockHandler500 = (
   overrideResponse?:
-    | DeleteApiHistorys500
-    | ((
-        info: Parameters<Parameters<typeof http.delete>[1]>[0]
-      ) => Promise<DeleteApiHistorys500> | DeleteApiHistorys500),
+    | DeleteApiHistory500
+    | ((info: Parameters<Parameters<typeof http.delete>[1]>[0]) => Promise<DeleteApiHistory500> | DeleteApiHistory500),
   options?: RequestHandlerOptions
 ) => {
   return http.delete(
-    '*/api/historys',
+    '*/api/history',
     async (info) => {
       await delay(1000);
 
@@ -525,7 +519,7 @@ export const getDeleteApiHistorysMockHandler500 = (
             ? typeof overrideResponse === 'function'
               ? await overrideResponse(info)
               : overrideResponse
-            : getDeleteApiHistorysResponseMock500()
+            : getDeleteApiHistoryResponseMock500()
         ),
         { status: 500, headers: { 'Content-Type': 'application/json' } }
       );
@@ -534,7 +528,7 @@ export const getDeleteApiHistorysMockHandler500 = (
   );
 };
 export const getEchoAPIMock = () => [
-  getGetApiHistorysMockHandler(),
-  getPostApiHistorysMockHandler(),
-  getDeleteApiHistorysMockHandler(),
+  getGetApiHistoryMockHandler(),
+  getPostApiHistoryMockHandler(),
+  getDeleteApiHistoryMockHandler(),
 ];

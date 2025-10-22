@@ -1,11 +1,11 @@
 import { type FC } from 'react';
-import { useGetApiHistorys } from '../../../../api/api';
+import { useGetApiHistory } from '../../../../api/api';
 import { type ApiError } from '../../../../api/apiError';
 import { DeleteHistory } from '..';
 import styles from '../../index.module.css';
 
-const Historys: FC = () => {
-  const { data, error, isLoading } = useGetApiHistorys<ApiError>();
+const History: FC = () => {
+  const { data, error, isLoading } = useGetApiHistory<ApiError>();
 
   return (
     <>
@@ -46,4 +46,4 @@ const Historys: FC = () => {
   );
 };
 
-export default Historys;
+export default History;

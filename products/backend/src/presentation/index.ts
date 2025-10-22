@@ -1,8 +1,8 @@
 import { OpenAPIHono } from '@hono/zod-openapi';
 import { Bindings } from './share/binding';
 import { HTTPException } from 'hono/http-exception';
-import historys from './routes/historys';
-export { default as historys } from './routes/historys';
+import history from './routes/history';
+export { default as history } from './routes/history';
 
 const root = new OpenAPIHono<{
   Bindings: Bindings;
@@ -21,6 +21,6 @@ const root = new OpenAPIHono<{
 });
 
 // エンドポイントの登録
-root.route('/', historys);
+root.route('/', history);
 
 export default root;
