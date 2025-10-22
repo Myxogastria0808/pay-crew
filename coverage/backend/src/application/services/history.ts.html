@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/91</span>
+                <span class='fraction'>0/71</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/91</span>
+                <span class='fraction'>0/71</span>
             </div>
         
             
@@ -271,16 +271,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -291,16 +291,16 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -392,16 +392,16 @@ import { HistoryServiceType } from '../model/history';
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    const result = await this.insertHistoryDB(historyPostRequest);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    fetch(</span>
-<span class="cstat-no" title="statement not covered" >      'https://discord.com/api/webhooks/1430405385671671858/EZZlF3vrhVw-zwhBg9OVVuINsOJHSc-NneYRfVKzR-V32Ng76lYLcByOnVKCkNuVrIfG',</span>
-<span class="cstat-no" title="statement not covered" >      {</span>
-<span class="cstat-no" title="statement not covered" >        method: 'POST',</span>
-<span class="cstat-no" title="statement not covered" >        headers: { 'Content-Type': 'application/json' },</span>
-<span class="cstat-no" title="statement not covered" >        body: JSON.stringify({</span>
-<span class="cstat-no" title="statement not covered" >          content: `${result[0].from}さんが${result[0].to}さんに${result[0].amount}円借りました。`,</span>
-<span class="cstat-no" title="statement not covered" >        }),</span>
-<span class="cstat-no" title="statement not covered" >      }</span>
-<span class="cstat-no" title="statement not covered" >    );</span>
+    // fetch(
+    //   'https://discord.com/api/webhooks/1430405385671671858/EZZlF3vrhVw-zwhBg9OVVuINsOJHSc-NneYRfVKzR-V32Ng76lYLcByOnVKCkNuVrIfG',
+    //   {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify({
+    //       content: `${result[0].from}さんが${result[0].to}さんに${result[0].amount}円借りました。`,
+    //     }),
+    //   }
+    // );
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return result;</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
@@ -412,16 +412,16 @@ import { HistoryServiceType } from '../model/history';
 <span class="cstat-no" title="statement not covered" >  ): Promise&lt;HistoryDeleteResponseSchemaType&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    const result = await this.deleteHistoryDBById({ id: historyDeleteRequest.id });</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    fetch(</span>
-<span class="cstat-no" title="statement not covered" >      'https://discord.com/api/webhooks/1430405385671671858/EZZlF3vrhVw-zwhBg9OVVuINsOJHSc-NneYRfVKzR-V32Ng76lYLcByOnVKCkNuVrIfG',</span>
-<span class="cstat-no" title="statement not covered" >      {</span>
-<span class="cstat-no" title="statement not covered" >        method: 'POST',</span>
-<span class="cstat-no" title="statement not covered" >        headers: { 'Content-Type': 'application/json' },</span>
-<span class="cstat-no" title="statement not covered" >        body: JSON.stringify({</span>
-<span class="cstat-no" title="statement not covered" >          content: `${result[0].from}さんが${result[0].to}さんに${result[0].amount}円返金しました。`,</span>
-<span class="cstat-no" title="statement not covered" >        }),</span>
-<span class="cstat-no" title="statement not covered" >      }</span>
-<span class="cstat-no" title="statement not covered" >    );</span>
+    // fetch(
+    //   'https://discord.com/api/webhooks/1430405385671671858/EZZlF3vrhVw-zwhBg9OVVuINsOJHSc-NneYRfVKzR-V32Ng76lYLcByOnVKCkNuVrIfG',
+    //   {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify({
+    //       content: `${result[0].from}さんが${result[0].to}さんに${result[0].amount}円返金しました。`,
+    //     }),
+    //   }
+    // );
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return result.length &gt; 0 ? result[0] : null;</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
@@ -433,7 +433,7 @@ import { HistoryServiceType } from '../model/history';
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-10-22T06:51:49.680Z
+                at 2025-10-22T07:04:11.036Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
