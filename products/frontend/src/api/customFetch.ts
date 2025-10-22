@@ -37,10 +37,14 @@ export const customFetch = async <T>(url: string, options: RequestInit): Promise
 
   // fetch API
   const response = await fetch(requestUrl, requestInit);
+
+  console.log('customFetch: response:', response.headers.get('content-type'));
   // error handling
   if (!response.ok) {
     try {
       const contentType = response.headers.get('content-type');
+
+      console.log('customFetch: content-type:', contentType);
 
       if (contentType && contentType.includes('application/json')) {
         // content-type is 'application/json'
@@ -59,6 +63,7 @@ export const customFetch = async <T>(url: string, options: RequestInit): Promise
         throw apiError;
       } else {
         // content-type is not 'application/json'
+        console.error('customFetch: unexpected content-type in error response');
         const apiError = new ApiError({
           headers: response.headers,
           status: response.status,
@@ -72,6 +77,7 @@ export const customFetch = async <T>(url: string, options: RequestInit): Promise
         throw apiError;
       }
     } catch {
+      console.error('customFetch: failed to parse error response');
       const apiError = new ApiError({
         headers: response.headers,
         status: response.status,
