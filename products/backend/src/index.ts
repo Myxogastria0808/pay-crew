@@ -23,7 +23,14 @@ const app = new OpenAPIHono<{
 });
 
 // CORSの設定
-app.use('*', cors());
+app.use(
+  '*',
+  cors({
+    origin: ['https://pay-crew.yukiosada.work', 'http://localhost:5173'],
+    allowHeaders: ['Content-Type', 'baggage', 'sentry-trace'],
+    allowMethods: ['POST', 'PUT', 'GET', 'DELETE', 'OPTIONS'],
+  })
+);
 
 // 404のエラーハンドリング
 app.notFound((c) => {
