@@ -2,16 +2,16 @@ import { HTTPException } from 'hono/http-exception';
 import { OpenAPIHono } from '@hono/zod-openapi';
 import { route } from '../share';
 import type { Bindings } from '../share/binding';
-import { HistorysService } from '../../application';
+import { HistoryService } from '../../application';
 import {
-  historysGetResponseSchema,
-  historysPostResponseSchema,
-  historysPostRequestSchema,
-  historysDeleteRequestSchema,
-  historysDeleteResponseSchema,
+  historyGetResponseSchema,
+  historyPostResponseSchema,
+  historyPostRequestSchema,
+  historyDeleteRequestSchema,
+  historyDeleteResponseSchema,
 } from 'paycrew-validator';
 
-const historys = new OpenAPIHono<{
+const history = new OpenAPIHono<{
   Bindings: Bindings;
 }>({
   // Open API Honoのインスタンスを生成
@@ -27,9 +27,9 @@ const historys = new OpenAPIHono<{
   },
 });
 
-const historysGetSchema = route.createSchema(
+const historyGetSchema = route.createSchema(
   {
-    path: '/api/historys',
+    path: '/api/history',
     method: 'get',
     description: '履歴の取得',
     request: {},
@@ -38,7 +38,7 @@ const historysGetSchema = route.createSchema(
         description: 'OK',
         content: {
           'application/json': {
-            schema: historysGetResponseSchema,
+            schema: historyGetResponseSchema,
           },
         },
       },
@@ -47,17 +47,17 @@ const historysGetSchema = route.createSchema(
   [500]
 );
 
-historys.openapi(historysGetSchema, async (c) => {
+history.openapi(historyGetSchema, async (c) => {
   // NOTE: application層のサービスを呼び出す
-  const service = new HistorysService(c.env.HYPERDRIVE);
-  const result = await service.getHistorysService();
+  const service = new HistoryService(c.env.HYPERDRIVE);
+  const result = await service.getHistoryService();
 
   return c.json(result);
 });
 
-const historysPostSchema = route.createSchema(
+const historyPostSchema = route.createSchema(
   {
-    path: '/api/historys',
+    path: '/api/history',
     method: 'post',
     description: '履歴の追加',
     request: {
@@ -65,7 +65,7 @@ const historysPostSchema = route.createSchema(
         required: true,
         content: {
           'application/json': {
-            schema: historysPostRequestSchema,
+            schema: historyPostRequestSchema,
           },
         },
       },
@@ -75,7 +75,7 @@ const historysPostSchema = route.createSchema(
         description: 'Created',
         content: {
           'application/json': {
-            schema: historysPostResponseSchema,
+            schema: historyPostResponseSchema,
           },
         },
       },
@@ -84,19 +84,19 @@ const historysPostSchema = route.createSchema(
   [500]
 );
 
-historys.openapi(historysPostSchema, async (c) => {
+history.openapi(historyPostSchema, async (c) => {
   c.status(201);
   const data = c.req.valid('json');
   // NOTE: application層のサービスを呼び出す
-  const service = new HistorysService(c.env.HYPERDRIVE);
-  const result = await service.postHistorysService(data);
+  const service = new HistoryService(c.env.HYPERDRIVE);
+  const result = await service.postHistoryService(data);
 
   return c.json(result);
 });
 
-const historysDeleteSchema = route.createSchema(
+const historyDeleteSchema = route.createSchema(
   {
-    path: '/api/historys',
+    path: '/api/history',
     method: 'delete',
     description: '履歴の削除',
     request: {
@@ -104,7 +104,7 @@ const historysDeleteSchema = route.createSchema(
         required: true,
         content: {
           'application/json': {
-            schema: historysDeleteRequestSchema,
+            schema: historyDeleteRequestSchema,
           },
         },
       },
@@ -114,7 +114,7 @@ const historysDeleteSchema = route.createSchema(
         description: 'OK',
         content: {
           'application/json': {
-            schema: historysDeleteResponseSchema,
+            schema: historyDeleteResponseSchema,
           },
         },
       },
@@ -123,13 +123,13 @@ const historysDeleteSchema = route.createSchema(
   [500]
 );
 
-historys.openapi(historysDeleteSchema, async (c) => {
+history.openapi(historyDeleteSchema, async (c) => {
   const data = c.req.valid('json');
   // NOTE: application層のサービスを呼び出す
-  const service = new HistorysService(c.env.HYPERDRIVE);
-  const result = await service.deleteHistorysService(data);
+  const service = new HistoryService(c.env.HYPERDRIVE);
+  const result = await service.deleteHistoryService(data);
 
   return c.json(result);
 });
 
-export default historys;
+export default history;

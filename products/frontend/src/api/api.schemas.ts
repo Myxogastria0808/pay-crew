@@ -5,7 +5,7 @@
  * 受け取った入力値をそのまま応答するAPI
  * OpenAPI spec version: 1.0.0
  */
-export type GetApiHistorys200Item = {
+export type GetApiHistory200Item = {
   /** @minimum 1 */
   id: number;
   /** @minLength 1 */
@@ -17,7 +17,7 @@ export type GetApiHistorys200Item = {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const GetApiHistorys500Status = {
+export const GetApiHistory500Status = {
   NUMBER_100: 100,
   NUMBER_102: 102,
   NUMBER_103: 103,
@@ -79,9 +79,9 @@ export const GetApiHistorys500Status = {
   NUMBER_511: 511,
   NUMBER_MINUS_1: -1,
 } as const;
-export type GetApiHistorys500 = {
+export type GetApiHistory500 = {
   /** HTTPステータスコード */
-  status: (typeof GetApiHistorys500Status)[keyof typeof GetApiHistorys500Status];
+  status: (typeof GetApiHistory500Status)[keyof typeof GetApiHistory500Status];
   /**
    * エラーメッセージ
    * @minLength 1
@@ -89,7 +89,7 @@ export type GetApiHistorys500 = {
   message: string;
 };
 
-export type PostApiHistorysBody = {
+export type PostApiHistoryBody = {
   /** @minLength 1 */
   from: string;
   /** @minLength 1 */
@@ -98,7 +98,7 @@ export type PostApiHistorysBody = {
   amount: number;
 };
 
-export type PostApiHistorys201AnyOfItem = {
+export type PostApiHistory201AnyOfItem = {
   /** @minimum 1 */
   id: number;
   /** @minLength 1 */
@@ -109,10 +109,10 @@ export type PostApiHistorys201AnyOfItem = {
   amount: number;
 };
 
-export type PostApiHistorys201 = PostApiHistorys201AnyOfItem[] | null | null;
+export type PostApiHistory201 = PostApiHistory201AnyOfItem[] | null | null;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const PostApiHistorys500Status = {
+export const PostApiHistory500Status = {
   NUMBER_100: 100,
   NUMBER_102: 102,
   NUMBER_103: 103,
@@ -174,9 +174,9 @@ export const PostApiHistorys500Status = {
   NUMBER_511: 511,
   NUMBER_MINUS_1: -1,
 } as const;
-export type PostApiHistorys500 = {
+export type PostApiHistory500 = {
   /** HTTPステータスコード */
-  status: (typeof PostApiHistorys500Status)[keyof typeof PostApiHistorys500Status];
+  status: (typeof PostApiHistory500Status)[keyof typeof PostApiHistory500Status];
   /**
    * エラーメッセージ
    * @minLength 1
@@ -184,12 +184,12 @@ export type PostApiHistorys500 = {
   message: string;
 };
 
-export type DeleteApiHistorysBody = {
+export type DeleteApiHistoryBody = {
   /** */
   id: number;
 };
 
-export type DeleteApiHistorys200AnyOf = {
+export type DeleteApiHistory200AnyOf = {
   /** @minimum 1 */
   id: number;
   /** @minLength 1 */
@@ -200,10 +200,10 @@ export type DeleteApiHistorys200AnyOf = {
   amount: number;
 };
 
-export type DeleteApiHistorys200 = DeleteApiHistorys200AnyOf | null | null;
+export type DeleteApiHistory200 = DeleteApiHistory200AnyOf | null | null;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const DeleteApiHistorys500Status = {
+export const DeleteApiHistory500Status = {
   NUMBER_100: 100,
   NUMBER_102: 102,
   NUMBER_103: 103,
@@ -265,9 +265,9 @@ export const DeleteApiHistorys500Status = {
   NUMBER_511: 511,
   NUMBER_MINUS_1: -1,
 } as const;
-export type DeleteApiHistorys500 = {
+export type DeleteApiHistory500 = {
   /** HTTPステータスコード */
-  status: (typeof DeleteApiHistorys500Status)[keyof typeof DeleteApiHistorys500Status];
+  status: (typeof DeleteApiHistory500Status)[keyof typeof DeleteApiHistory500Status];
   /**
    * エラーメッセージ
    * @minLength 1

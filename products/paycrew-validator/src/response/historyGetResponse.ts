@@ -1,6 +1,6 @@
 import { z } from '@hono/zod-openapi';
 
-export const historysGetResponseSchema = z.array(
+export const historyGetResponseSchema = z.array(
   z.object({
     id: z.number().min(1),
     from: z.string().min(1),
@@ -9,4 +9,4 @@ export const historysGetResponseSchema = z.array(
   })
 );
 
-export type HistorysGetResponseSchemaType = z.infer<typeof historysGetResponseSchema>;
+export type HistoryGetResponseSchemaType = z.infer<typeof historyGetResponseSchema>;
