@@ -85,16 +85,16 @@ export class HistoryService implements HistoryServiceType {
 
     const result = await this.insertHistoryDB(historyPostRequest);
 
-    fetch(
-      'https://discord.com/api/webhooks/1430405385671671858/EZZlF3vrhVw-zwhBg9OVVuINsOJHSc-NneYRfVKzR-V32Ng76lYLcByOnVKCkNuVrIfG',
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          content: `${result[0].from}さんが${result[0].to}さんに${result[0].amount}円借りました。`,
-        }),
-      }
-    );
+    // fetch(
+    //   'https://discord.com/api/webhooks/1430405385671671858/EZZlF3vrhVw-zwhBg9OVVuINsOJHSc-NneYRfVKzR-V32Ng76lYLcByOnVKCkNuVrIfG',
+    //   {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify({
+    //       content: `${result[0].from}さんが${result[0].to}さんに${result[0].amount}円借りました。`,
+    //     }),
+    //   }
+    // );
 
     return result;
   }
@@ -105,16 +105,16 @@ export class HistoryService implements HistoryServiceType {
   ): Promise<HistoryDeleteResponseSchemaType> {
     const result = await this.deleteHistoryDBById({ id: historyDeleteRequest.id });
 
-    fetch(
-      'https://discord.com/api/webhooks/1430405385671671858/EZZlF3vrhVw-zwhBg9OVVuINsOJHSc-NneYRfVKzR-V32Ng76lYLcByOnVKCkNuVrIfG',
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          content: `${result[0].from}さんが${result[0].to}さんに${result[0].amount}円返金しました。`,
-        }),
-      }
-    );
+    // fetch(
+    //   'https://discord.com/api/webhooks/1430405385671671858/EZZlF3vrhVw-zwhBg9OVVuINsOJHSc-NneYRfVKzR-V32Ng76lYLcByOnVKCkNuVrIfG',
+    //   {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify({
+    //       content: `${result[0].from}さんが${result[0].to}さんに${result[0].amount}円返金しました。`,
+    //     }),
+    //   }
+    // );
 
     return result.length > 0 ? result[0] : null;
   }

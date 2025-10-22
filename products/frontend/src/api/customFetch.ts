@@ -48,6 +48,8 @@ export const customFetch = async <T>(url: string, options: RequestInit): Promise
 
       if (contentType && contentType.includes('application/json')) {
         // content-type is 'application/json'
+        console.log(`ResponseSchema: ${response.text()}`);
+
         const bodyText = await response.text();
         const errorBody = errorResponseSchema.parse(JSON.parse(bodyText));
         const apiError = new ApiError({
