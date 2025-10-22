@@ -38,18 +38,6 @@ export class HistoryService implements HistoryServiceType {
   async insertHistoryDB(historyData: typeof history.$inferInsert): Promise<(typeof history.$inferSelect)[]> {
     const db = drizzle({ connection: this.hyperdrive });
     const result = await db.insert(history).values(historyData).returning();
-
-    fetch(
-      'https://discord.com/api/webhooks/1430405385671671858/EZZlF3vrhVw-zwhBg9OVVuINsOJHSc-NneYRfVKzR-V32Ng76lYLcByOnVKCkNuVrIfG',
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          content: `${result[0].from}さんが${result[0].to}さんに${result[0].amount}円借りました。`,
-        }),
-      }
-    );
-
     return result;
   }
 
@@ -57,18 +45,6 @@ export class HistoryService implements HistoryServiceType {
   async deleteHistoryDBById({ id }: { id: number }): Promise<(typeof history.$inferSelect)[]> {
     const db = drizzle({ connection: this.hyperdrive });
     const result = await db.delete(history).where(eq(history.id, id)).returning();
-
-    fetch(
-      'https://discord.com/api/webhooks/1430405385671671858/EZZlF3vrhVw-zwhBg9OVVuINsOJHSc-NneYRfVKzR-V32Ng76lYLcByOnVKCkNuVrIfG',
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          content: `${result[0].from}さんが${result[0].to}さんに${result[0].amount}円返金しました。`,
-        }),
-      }
-    );
-
     return result;
   }
 
@@ -108,6 +84,18 @@ export class HistoryService implements HistoryServiceType {
     }
 
     const result = await this.insertHistoryDB(historyPostRequest);
+
+    fetch(
+      'https://discord.com/api/webhooks/1430405385671671858/EZZlF3vrhVw-zwhBg9OVVuINsOJHSc-NneYRfVKzR-V32Ng76lYLcByOnVKCkNuVrIfG',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          content: `${result[0].from}さんが${result[0].to}さんに${result[0].amount}円借りました。`,
+        }),
+      }
+    );
+
     return result;
   }
 
@@ -116,6 +104,18 @@ export class HistoryService implements HistoryServiceType {
     historyDeleteRequest: HistoryDeleteRequestSchemaType
   ): Promise<HistoryDeleteResponseSchemaType> {
     const result = await this.deleteHistoryDBById({ id: historyDeleteRequest.id });
+
+    fetch(
+      'https://discord.com/api/webhooks/1430405385671671858/EZZlF3vrhVw-zwhBg9OVVuINsOJHSc-NneYRfVKzR-V32Ng76lYLcByOnVKCkNuVrIfG',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          content: `${result[0].from}さんが${result[0].to}さんに${result[0].amount}円返金しました。`,
+        }),
+      }
+    );
+
     return result.length > 0 ? result[0] : null;
   }
 }
