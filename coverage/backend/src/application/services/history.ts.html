@@ -224,18 +224,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -243,18 +231,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -294,6 +270,18 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -302,6 +290,18 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -345,18 +345,6 @@ import { HistoryServiceType } from '../model/history';
 <span class="cstat-no" title="statement not covered" >  async insertHistoryDB(historyData: typeof history.$inferInsert): Promise&lt;(typeof history.$inferSelect)[]&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    const db = drizzle({ connection: this.hyperdrive });</span>
 <span class="cstat-no" title="statement not covered" >    const result = await db.insert(history).values(historyData).returning();</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >    fetch(</span>
-<span class="cstat-no" title="statement not covered" >      'https://discord.com/api/webhooks/1430405385671671858/EZZlF3vrhVw-zwhBg9OVVuINsOJHSc-NneYRfVKzR-V32Ng76lYLcByOnVKCkNuVrIfG',</span>
-<span class="cstat-no" title="statement not covered" >      {</span>
-<span class="cstat-no" title="statement not covered" >        method: 'POST',</span>
-<span class="cstat-no" title="statement not covered" >        headers: { 'Content-Type': 'application/json' },</span>
-<span class="cstat-no" title="statement not covered" >        body: JSON.stringify({</span>
-<span class="cstat-no" title="statement not covered" >          content: `${result[0].from}さんが${result[0].to}さんに${result[0].amount}円借りました。`,</span>
-<span class="cstat-no" title="statement not covered" >        }),</span>
-<span class="cstat-no" title="statement not covered" >      }</span>
-<span class="cstat-no" title="statement not covered" >    );</span>
-&nbsp;
 <span class="cstat-no" title="statement not covered" >    return result;</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
 &nbsp;
@@ -364,18 +352,6 @@ import { HistoryServiceType } from '../model/history';
 <span class="cstat-no" title="statement not covered" >  async deleteHistoryDBById({ id }: { id: number }): Promise&lt;(typeof history.$inferSelect)[]&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    const db = drizzle({ connection: this.hyperdrive });</span>
 <span class="cstat-no" title="statement not covered" >    const result = await db.delete(history).where(eq(history.id, id)).returning();</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >    fetch(</span>
-<span class="cstat-no" title="statement not covered" >      'https://discord.com/api/webhooks/1430405385671671858/EZZlF3vrhVw-zwhBg9OVVuINsOJHSc-NneYRfVKzR-V32Ng76lYLcByOnVKCkNuVrIfG',</span>
-<span class="cstat-no" title="statement not covered" >      {</span>
-<span class="cstat-no" title="statement not covered" >        method: 'POST',</span>
-<span class="cstat-no" title="statement not covered" >        headers: { 'Content-Type': 'application/json' },</span>
-<span class="cstat-no" title="statement not covered" >        body: JSON.stringify({</span>
-<span class="cstat-no" title="statement not covered" >          content: `${result[0].from}さんが${result[0].to}さんに${result[0].amount}円返金しました。`,</span>
-<span class="cstat-no" title="statement not covered" >        }),</span>
-<span class="cstat-no" title="statement not covered" >      }</span>
-<span class="cstat-no" title="statement not covered" >    );</span>
-&nbsp;
 <span class="cstat-no" title="statement not covered" >    return result;</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
 &nbsp;
@@ -415,6 +391,18 @@ import { HistoryServiceType } from '../model/history';
 <span class="cstat-no" title="statement not covered" >    }</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    const result = await this.insertHistoryDB(historyPostRequest);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    fetch(</span>
+<span class="cstat-no" title="statement not covered" >      'https://discord.com/api/webhooks/1430405385671671858/EZZlF3vrhVw-zwhBg9OVVuINsOJHSc-NneYRfVKzR-V32Ng76lYLcByOnVKCkNuVrIfG',</span>
+<span class="cstat-no" title="statement not covered" >      {</span>
+<span class="cstat-no" title="statement not covered" >        method: 'POST',</span>
+<span class="cstat-no" title="statement not covered" >        headers: { 'Content-Type': 'application/json' },</span>
+<span class="cstat-no" title="statement not covered" >        body: JSON.stringify({</span>
+<span class="cstat-no" title="statement not covered" >          content: `${result[0].from}さんが${result[0].to}さんに${result[0].amount}円借りました。`,</span>
+<span class="cstat-no" title="statement not covered" >        }),</span>
+<span class="cstat-no" title="statement not covered" >      }</span>
+<span class="cstat-no" title="statement not covered" >    );</span>
+&nbsp;
 <span class="cstat-no" title="statement not covered" >    return result;</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
 &nbsp;
@@ -423,6 +411,18 @@ import { HistoryServiceType } from '../model/history';
 <span class="cstat-no" title="statement not covered" >    historyDeleteRequest: HistoryDeleteRequestSchemaType</span>
 <span class="cstat-no" title="statement not covered" >  ): Promise&lt;HistoryDeleteResponseSchemaType&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    const result = await this.deleteHistoryDBById({ id: historyDeleteRequest.id });</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    fetch(</span>
+<span class="cstat-no" title="statement not covered" >      'https://discord.com/api/webhooks/1430405385671671858/EZZlF3vrhVw-zwhBg9OVVuINsOJHSc-NneYRfVKzR-V32Ng76lYLcByOnVKCkNuVrIfG',</span>
+<span class="cstat-no" title="statement not covered" >      {</span>
+<span class="cstat-no" title="statement not covered" >        method: 'POST',</span>
+<span class="cstat-no" title="statement not covered" >        headers: { 'Content-Type': 'application/json' },</span>
+<span class="cstat-no" title="statement not covered" >        body: JSON.stringify({</span>
+<span class="cstat-no" title="statement not covered" >          content: `${result[0].from}さんが${result[0].to}さんに${result[0].amount}円返金しました。`,</span>
+<span class="cstat-no" title="statement not covered" >        }),</span>
+<span class="cstat-no" title="statement not covered" >      }</span>
+<span class="cstat-no" title="statement not covered" >    );</span>
+&nbsp;
 <span class="cstat-no" title="statement not covered" >    return result.length &gt; 0 ? result[0] : null;</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
 <span class="cstat-no" title="statement not covered" >}</span>
@@ -433,7 +433,7 @@ import { HistoryServiceType } from '../model/history';
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-10-22T04:32:04.585Z
+                at 2025-10-22T06:30:14.895Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
