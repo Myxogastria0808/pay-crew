@@ -2,7 +2,7 @@ import { type FC } from 'react';
 import { useGetApiHistorys } from '../../../../api/api';
 import { type ApiError } from '../../../../api/apiError';
 import { DeleteHistory } from '..';
-import styles from '../../index.module.css';
+import styles from './Historys.module.css';
 
 const Historys: FC = () => {
   const { data, error, isLoading } = useGetApiHistorys<ApiError>();

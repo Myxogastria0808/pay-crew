@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import { useDeleteApiHistorys } from '../../../../api/api';
 import type { DeleteApiHistorysBody } from '../../../../api/api.schemas';
 import type { ApiError } from '../../../../api/apiError';
-import styles from '../../index.module.css';
+import styles from './DeleteHistory.module.css';
 
 type Props = {
   id: number;
