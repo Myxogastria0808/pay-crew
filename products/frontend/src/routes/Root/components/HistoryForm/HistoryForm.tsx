@@ -1,22 +1,22 @@
 import type { FC } from 'react';
 import { ErrorMessage } from '@hookform/error-message';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { historysPostRequestSchema, type HistorysPostRequestSchemaType } from 'paycrew-validator';
+import { historyPostRequestSchema, type HistoryPostRequestSchemaType } from 'paycrew-validator';
 import { useForm, type SubmitHandler } from 'react-hook-form';
-import { usePostApiHistorys } from '../../../../api/api';
+import { usePostApiHistory } from '../../../../api/api';
 import type { ApiError } from '../../../../api/apiError';
-import type { PostApiHistorysBody } from '../../../../api/api.schemas';
+import type { PostApiHistoryBody } from '../../../../api/api.schemas';
 import styles from './HistoryForm.module.css';
 
 const HistoryForm: FC = () => {
-  const { isMutating, trigger, data, error } = usePostApiHistorys<ApiError>();
+  const { isMutating, trigger, data, error } = usePostApiHistory<ApiError>();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<HistorysPostRequestSchemaType>({
-    resolver: zodResolver(historysPostRequestSchema),
+  } = useForm<HistoryPostRequestSchemaType>({
+    resolver: zodResolver(historyPostRequestSchema),
     defaultValues: {
       from: '',
       to: '',
@@ -24,11 +24,11 @@ const HistoryForm: FC = () => {
     },
   });
 
-  const insertHistory = async (data: HistorysPostRequestSchemaType) => {
-    await trigger(data satisfies PostApiHistorysBody);
+  const insertHistory = async (data: HistoryPostRequestSchemaType) => {
+    await trigger(data satisfies PostApiHistoryBody);
   };
 
-  const onSubmit: SubmitHandler<HistorysPostRequestSchemaType> = async (formData) => {
+  const onSubmit: SubmitHandler<HistoryPostRequestSchemaType> = async (formData) => {
     // 送信のフックを発火させる
     await insertHistory(formData);
   };

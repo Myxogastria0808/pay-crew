@@ -1,6 +1,6 @@
 import type { FC } from 'react';
-import { useDeleteApiHistorys } from '../../../../api/api';
-import type { DeleteApiHistorysBody } from '../../../../api/api.schemas';
+import { useDeleteApiHistory } from '../../../../api/api';
+import type { DeleteApiHistoryBody } from '../../../../api/api.schemas';
 import type { ApiError } from '../../../../api/apiError';
 import styles from './DeleteHistory.module.css';
 
@@ -9,10 +9,10 @@ type Props = {
 };
 
 const DeleteHistory: FC<Props> = (props: Props) => {
-  const { trigger, data, error } = useDeleteApiHistorys<ApiError>();
+  const { trigger, data, error } = useDeleteApiHistory<ApiError>();
 
   const deleteHistoryById = async (id: number) => {
-    await trigger({ id: id } satisfies DeleteApiHistorysBody);
+    await trigger({ id: id } satisfies DeleteApiHistoryBody);
   };
 
   return (

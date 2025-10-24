@@ -12,10 +12,10 @@ modelやserviceを更新したら、このファイルからexportし直す。�
 例
 
 ```typescript
-export type HistorysServiceType = {
-  getHistorysService: () => Promise<HistorysGetResponseSchemaType>;
-  postHistorysService: (historysPostRequest: HistorysPostRequestSchemaType) => Promise<HistorysPostResponseSchemaType>;
-  deleteHistorysService: (historysDeleteRequest: HistorysDeleteRequestSchemaType) => Promise<HistorysDeleteResponseSchemaType>
+export type HistoryServiceType = {
+  getHistoryService: () => Promise<HistoryGetResponseSchemaType>;
+  postHistoryService: (HistoryPostRequest: HistoryPostRequestSchemaType) => Promise<HistoryPostResponseSchemaType>;
+  deleteHistoryService: (historyDeleteRequest: HistoryDeleteRequestSchemaType) => Promise<HistoryDeleteResponseSchemaType>
 };
 ```
 APIのGET,POST,DELETEなどそれぞれに対応する関数の型定義。引数の型と返り値の型は"paycrew-validator"で定義されたものをimportする。
@@ -25,22 +25,22 @@ APIのGET,POST,DELETEなどそれぞれに対応する関数の型定義。引�
 例
 
 ```typescript
-export class HistorysService implements HistorysServiceType {
+export class HistoryService implements HistoryServiceType {
   private hyperdrive: Readonly<Hyperdrive>;
 
   constructor(hyperdrive: Hyperdrive) {
     this.hyperdrive = hyperdrive;
   }
 
-  async getHistorysService() {
+  async getHistoryService() {
     // 略
   }
 
-  async postHistorysService(historysPostRequest: HistorysPostRequestSchemaType) {
+  async postHistoryService(historyPostRequest: HistoryPostRequestSchemaType) {
     // 略
   }
 
-  async deleteHistorysService(historysDeleteRequest: HistorysDeleteRequestSchemaType) {
+  async deleteHistoryService(historyDeleteRequest: HistoryDeleteRequestSchemaType) {
     // 略
   }
 }
@@ -55,21 +55,21 @@ const db = drizzle({ connection: this.hyperdrive });
 drizzleのデータベースの接続。
 
 ```typescript
-const result = await db.select().from(historys).where(
+const result = await db.select().from(history).where(
     and(
-        eq(historys.from, from),
-        eq(historys.to, to)
+        eq(history.from, from),
+        eq(history.to, to)
     )
 );
 ```
 
 ```typescript
-const result = await db.insert(historys).values(history).returning();
+const result = await db.insert(history).values(history).returning();
 ```
 
 ```typescript
-const result = await db.delete(historys).where(eq(historys.id, id)).returning();
+const result = await db.delete(history).where(eq(history.id, id)).returning();
 ```
-データベースの選択、挿入、削除。`historys`は表の指定で、"../../db/schema"からimportする。`where`メソッドは条件の指定で、`and`や`eq`関数を用いる("drizzle-orm"からimport)。`returning`メソッドは挿入や削除、更新時に使えて、対象となった表の行の内容をすべて返す。
+データベースの選択、挿入、削除。`history`は表の指定で、"../../db/schema"からimportする。`where`メソッドは条件の指定で、`and`や`eq`関数を用いる("drizzle-orm"からimport)。`returning`メソッドは挿入や削除、更新時に使えて、対象となった表の行の内容をすべて返す。
 
 その他詳しいことはhttps://orm.drizzle.team/docs/data-querying参照。

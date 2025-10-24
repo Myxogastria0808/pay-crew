@@ -1,6 +1,6 @@
 import { z } from '@hono/zod-openapi';
 
-export const historysPostResponseSchema = z
+export const historyPostResponseSchema = z
   .array(
     z.object({
       id: z.number().min(1),
@@ -11,4 +11,4 @@ export const historysPostResponseSchema = z
   )
   .or(z.null());
 
-export type HistorysPostResponseSchemaType = z.infer<typeof historysPostResponseSchema>;
+export type HistoryPostResponseSchemaType = z.infer<typeof historyPostResponseSchema>;

@@ -1,4 +1,4 @@
-import { HistoryForm, Historys } from './components';
+import { HistoryForm, History } from './components';
 import styles from './index.module.css';
 import type { FC } from 'react';
 
@@ -22,7 +22,7 @@ const Root: FC = () => {
 
         <div className={styles.history}>
           <h2>現在の状況</h2>
-          <Historys />
+          <History />
         </div>
 
         <div className={styles.reminder}>
