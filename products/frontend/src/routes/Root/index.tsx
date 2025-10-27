@@ -29,15 +29,6 @@ const Root: FC = () => {
           <h2>リマインダー通知</h2>
           <p className={styles.reminderMessage}>現在通知はありません。</p>
         </div>
-
-        <div className={styles.reminderForm}>
-          <h2>リマインダー入力</h2>
-          <form>
-            <input id="to" type="" {...register('to')} />
-            <input id="to" type="" {...register('to')} />
-            <input id="to" type="" {...register('to')} />
-          </form>
-        </div>
       </div>
     </main>
   );
