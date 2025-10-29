@@ -25,7 +25,13 @@ export class HistoryService implements HistoryServiceType {
   }
 
   // データベースのhistoryの行の取得(fromとtoを指定)
-  async selectHistoryDBByFromTo({ from, to }: { from: string; to: string }): Promise<(typeof history.$inferSelect)[]> {
+  async selectHistoryDBByFromTo({
+    from,
+    to,
+  }: {
+    from: string;
+    to: string;
+  }): Promise<(typeof history.$inferSelect)[]> {
     const db = drizzle({ connection: this.hyperdrive });
     const result = await db
       .select()
@@ -55,7 +61,9 @@ export class HistoryService implements HistoryServiceType {
   }
 
   // /api/historyのPOST
-  async postHistoryService(historyPostRequest: HistoryPostRequestSchemaType): Promise<HistoryPostResponseSchemaType> {
+  async postHistoryService(
+    historyPostRequest: HistoryPostRequestSchemaType
+  ): Promise<HistoryPostResponseSchemaType> {
     const match_data = await this.selectHistoryDBByFromTo({
       from: historyPostRequest.from,
       to: historyPostRequest.to,
@@ -84,18 +92,6 @@ export class HistoryService implements HistoryServiceType {
     }
 
     const result = await this.insertHistoryDB(historyPostRequest);
-
-    // fetch(
-    //   'https://discord.com/api/webhooks/1430405385671671858/EZZlF3vrhVw-zwhBg9OVVuINsOJHSc-NneYRfVKzR-V32Ng76lYLcByOnVKCkNuVrIfG',
-    //   {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify({
-    //       content: `${result[0].from}さんが${result[0].to}さんに${result[0].amount}円借りました。`,
-    //     }),
-    //   }
-    // );
-
     return result;
   }
 
@@ -104,18 +100,6 @@ export class HistoryService implements HistoryServiceType {
     historyDeleteRequest: HistoryDeleteRequestSchemaType
   ): Promise<HistoryDeleteResponseSchemaType> {
     const result = await this.deleteHistoryDBById({ id: historyDeleteRequest.id });
-
-    // fetch(
-    //   'https://discord.com/api/webhooks/1430405385671671858/EZZlF3vrhVw-zwhBg9OVVuINsOJHSc-NneYRfVKzR-V32Ng76lYLcByOnVKCkNuVrIfG',
-    //   {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify({
-    //       content: `${result[0].from}さんが${result[0].to}さんに${result[0].amount}円返金しました。`,
-    //     }),
-    //   }
-    // );
-
     return result.length > 0 ? result[0] : null;
   }
 }
