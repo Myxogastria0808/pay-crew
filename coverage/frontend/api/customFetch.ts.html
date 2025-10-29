@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/88</span>
+                <span class='fraction'>0/83</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/88</span>
+                <span class='fraction'>0/83</span>
             </div>
         
             
@@ -155,15 +155,7 @@
 <a name='L90'></a><a href='#L90'>90</a>
 <a name='L91'></a><a href='#L91'>91</a>
 <a name='L92'></a><a href='#L92'>92</a>
-<a name='L93'></a><a href='#L93'>93</a>
-<a name='L94'></a><a href='#L94'>94</a>
-<a name='L95'></a><a href='#L95'>95</a>
-<a name='L96'></a><a href='#L96'>96</a>
-<a name='L97'></a><a href='#L97'>97</a>
-<a name='L98'></a><a href='#L98'>98</a>
-<a name='L99'></a><a href='#L99'>99</a>
-<a name='L100'></a><a href='#L100'>100</a>
-<a name='L101'></a><a href='#L101'>101</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L93'></a><a href='#L93'>93</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -202,15 +194,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -302,19 +286,13 @@
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  // fetch API</span>
 <span class="cstat-no" title="statement not covered" >  const response = await fetch(requestUrl, requestInit);</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >  console.log('customFetch: response:', response.headers.get('content-type'));</span>
 <span class="cstat-no" title="statement not covered" >  // error handling</span>
 <span class="cstat-no" title="statement not covered" >  if (!response.ok) {</span>
 <span class="cstat-no" title="statement not covered" >    try {</span>
 <span class="cstat-no" title="statement not covered" >      const contentType = response.headers.get('content-type');</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >      console.log('customFetch: content-type:', contentType);</span>
-&nbsp;
 <span class="cstat-no" title="statement not covered" >      if (contentType &amp;&amp; contentType.includes('application/json')) {</span>
 <span class="cstat-no" title="statement not covered" >        // content-type is 'application/json'</span>
-<span class="cstat-no" title="statement not covered" >        console.log(`ResponseSchema: ${response.text()}`);</span>
-&nbsp;
 <span class="cstat-no" title="statement not covered" >        const bodyText = await response.text();</span>
 <span class="cstat-no" title="statement not covered" >        const errorBody = errorResponseSchema.parse(JSON.parse(bodyText));</span>
 <span class="cstat-no" title="statement not covered" >        const apiError = new ApiError({</span>
@@ -330,7 +308,6 @@
 <span class="cstat-no" title="statement not covered" >        throw apiError;</span>
 <span class="cstat-no" title="statement not covered" >      } else {</span>
 <span class="cstat-no" title="statement not covered" >        // content-type is not 'application/json'</span>
-<span class="cstat-no" title="statement not covered" >        console.error('customFetch: unexpected content-type in error response');</span>
 <span class="cstat-no" title="statement not covered" >        const apiError = new ApiError({</span>
 <span class="cstat-no" title="statement not covered" >          headers: response.headers,</span>
 <span class="cstat-no" title="statement not covered" >          status: response.status,</span>
@@ -344,7 +321,6 @@
 <span class="cstat-no" title="statement not covered" >        throw apiError;</span>
 <span class="cstat-no" title="statement not covered" >      }</span>
 <span class="cstat-no" title="statement not covered" >    } catch {</span>
-<span class="cstat-no" title="statement not covered" >      console.error('customFetch: failed to parse error response');</span>
 <span class="cstat-no" title="statement not covered" >      const apiError = new ApiError({</span>
 <span class="cstat-no" title="statement not covered" >        headers: response.headers,</span>
 <span class="cstat-no" title="statement not covered" >        status: response.status,</span>
@@ -370,7 +346,7 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-10-27T04:04:06.847Z
+                at 2025-10-29T05:37:43.889Z
             </div>
         <script src="../prettify.js"></script>
         <script>
