@@ -200,3 +200,22 @@ th {
 .dustBox {
   width: 25%;
 }
+
+.ReceiptLink {
+  display: block;
+  padding: 12px;
+  margin: auto;
+  background-color: #4caf50;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px 0;
+}
+
+.ReceiptLink:hover {
+  background-color: #45a049;
+}
