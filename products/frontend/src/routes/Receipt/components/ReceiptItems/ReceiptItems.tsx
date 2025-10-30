@@ -138,6 +138,10 @@ const ReceiptItems: FC<Props> = (props) => {
           </tbody>
         </table>
       }
+      
+      <div className={styles.inputButton}>
+        <button className={styles.buttonAdd}>追加</button>
+      </div>
     </div>
   )
 }

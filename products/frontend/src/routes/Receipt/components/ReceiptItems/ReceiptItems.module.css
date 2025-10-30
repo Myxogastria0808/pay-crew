@@ -89,3 +89,23 @@
   color: white;
   font-weight: bold;
 }
+
+.inputButton {
+  text-align: center;
+}
+
+.buttonAdd:hover {
+  background-color: #45a049;
+}
+
+.buttonAdd {
+  padding: 12px;
+  background-color: #4caf50;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 50%;
+  margin-top: 5px;
+}
