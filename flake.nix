@@ -17,6 +17,8 @@
           packages = with pkgs; [
             nodejs
             corepack
+            openssl
+            cacert
           ];
         };
       }

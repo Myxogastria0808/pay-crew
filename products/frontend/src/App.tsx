@@ -1,12 +1,13 @@
 import type { FC } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router';
-import { NotFound, Root } from './routes';
+import { NotFound, Root, Receipt } from './routes';
 
 const App: FC = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Root />} />
+        <Route path="/receipt" element={<Receipt />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
