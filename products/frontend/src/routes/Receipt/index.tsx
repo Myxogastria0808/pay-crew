@@ -24,7 +24,7 @@ const Receipt: FC = () => {
         </div>
 
         <div className={styles.itemCard}>
-          <input type="checkbox" className="item-checkbox" />
+          <input type="checkbox" className={styles.itemCheckbox} />
           <div className={styles.itemInfo}>
             <span className={styles.itemName}>ドリンクバー</span>
             <span className={styles.itemPrice}>¥200</span>
@@ -32,7 +32,7 @@ const Receipt: FC = () => {
         </div>
 
         <div className={styles.itemCard}>
-          <input type="checkbox" className="item-checkbox" />
+          <input type="checkbox" className={styles.itemCheckbox} />
           <div className={styles.itemInfo}>
             <span className={styles.itemName}>デザートプレート</span>
             <span className={styles.itemPrice}>¥450</span>
@@ -40,7 +40,7 @@ const Receipt: FC = () => {
         </div>
 
         <div className={styles.itemCard}>
-          <input type="checkbox" className="item-checkbox" />
+          <input type="checkbox" className={styles.itemCheckbox} />
           <div className={styles.itemInfo}>
             <span className={styles.itemName}>チーズトッピング</span>
             <span className={styles.itemPrice}>¥120</span>
