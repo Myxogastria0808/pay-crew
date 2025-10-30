@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 import { HistoryForm, History } from './components';
 import styles from './index.module.css';
 import type { FC } from 'react';
@@ -17,6 +18,8 @@ const Root: FC = () => {
             </p>
           </div>
         </div>
+
+        <Link to="/receipt" className={styles.ReceiptLink}>レシートから入力</Link>
 
         <HistoryForm />
 
