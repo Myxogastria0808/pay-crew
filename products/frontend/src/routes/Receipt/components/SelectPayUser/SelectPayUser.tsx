@@ -1,7 +1,6 @@
 import { type FC } from "react";
 import styles from './SelectPayUser.module.css';
 import type { InputStep } from "../../logic";
-import type React from "react";
 
 interface Props {
   users: string[],
@@ -29,7 +28,7 @@ const SelectPayUser: FC<Props> = (props) => {
               className={`${styles.personButton} ${props.payUser === i ? styles.personButtonSelected : ""}`}
               key={i}
               disabled={props.inputStep === "ReceiptItems"}
-              onClick={(_: React.MouseEvent<HTMLButtonElement>) => (handleSelectUser(i))}
+              onClick={() => (handleSelectUser(i))}
             >
               {v}
             </button>

@@ -24,7 +24,7 @@ const ReceiptItems: FC<Props> = (props) => {
   useEffect(() => {
     const repayAmountSum: number[] = Array(props.users.length).fill(0);
     for (let item = 0; item < props.receiptItems.length; item++) {
-      let repayUsers: number[] = [];
+      const repayUsers: number[] = [];
       for (let user = 0; user < props.users.length; user++) {
         if (repay[user][item]) {
           repayUsers.push(user);
@@ -58,7 +58,7 @@ const ReceiptItems: FC<Props> = (props) => {
   }
 
   const joinRepayName = (user: number): string => {
-    let result: string[] = [];
+    const result: string[] = [];
     repay[user].forEach((isRepayTarget, item) => {
       if (isRepayTarget) {
         result.push(props.receiptItems[item].name);
@@ -95,7 +95,7 @@ const ReceiptItems: FC<Props> = (props) => {
               : <button 
                 className={styles.personButton}
                 key={i}
-                onClick={(_: React.MouseEvent<HTMLButtonElement>) => handleReturn(i)}
+                onClick={() => handleReturn(i)}
               >
                 {v}
               </button>
@@ -103,7 +103,7 @@ const ReceiptItems: FC<Props> = (props) => {
           }
           <button 
             className={styles.personButton}
-            onClick={(_: React.MouseEvent<HTMLButtonElement>) => handleReturn("割り勘")}
+            onClick={() => handleReturn("割り勘")}
           >
             割り勘
           </button>
