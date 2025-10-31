@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import { ErrorMessage } from '@hookform/error-message';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { historyPostRequestSchema, type HistoryPostRequestSchemaType } from 'paycrew-validator';
+import { historyPostRequestSchema, type HistoryPostRequestSchemaType } from 'validator';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { usePostApiHistory } from '../../../../api/api';
 import type { ApiError } from '../../../../api/apiError';

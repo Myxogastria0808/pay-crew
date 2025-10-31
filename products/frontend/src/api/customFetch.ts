@@ -1,4 +1,4 @@
-import { errorResponseSchema } from 'paycrew-validator';
+import { errorResponseSchema } from 'validator';
 import { ApiError } from './apiError';
 import { captureException } from '@sentry/react';
 
