@@ -233,22 +233,22 @@ pnpm run backend:migrate
 #### [Coverage Report](https://myxogastria0808.github.io/pay-crew/coverage/setup/)
 - https://myxogastria0808.github.io/pay-crew/coverage/setup/
 
-### Validator (products/paycrew-validator)
+### Validator (products/validator)
 
 - TypeScript
 - Zod
 
-#### [Source Code](https://github.com/Myxogastria0808/pay-crew/tree/dev/products/paycrew-validator/)
-- https://github.com/Myxogastria0808/pay-crew/tree/dev/products/paycrew-validator/
+#### [Source Code](https://github.com/Myxogastria0808/pay-crew/tree/dev/products/validator/)
+- https://github.com/Myxogastria0808/pay-crew/tree/dev/products/validator/
 
-#### [Details](https://github.com/Myxogastria0808/pay-crew/tree/dev/products/paycrew-validator/README.md)
-- https://github.com/Myxogastria0808/pay-crew/tree/dev/products/paycrew-validator/README.md
+#### [Details](https://github.com/Myxogastria0808/pay-crew/tree/dev/products/validator/README.md)
+- https://github.com/Myxogastria0808/pay-crew/tree/dev/products/validator/README.md
 
-#### [Vitest UI Report](https://myxogastria0808.github.io/pay-crew/vitest/paycrew-validator/)
-- https://myxogastria0808.github.io/pay-crew/vitest/paycrew-validator/
+#### [Vitest UI Report](https://myxogastria0808.github.io/pay-crew/vitest/validator/)
+- https://myxogastria0808.github.io/pay-crew/vitest/validator/
 
-#### [Coverage Report](https://myxogastria0808.github.io/pay-crew/coverage/paycrew-validator/)
-- https://myxogastria0808.github.io/pay-crew/coverage/paycrew-validator/
+#### [Coverage Report](https://myxogastria0808.github.io/pay-crew/coverage/validator/)
+- https://myxogastria0808.github.io/pay-crew/coverage/validator/
 
 ## CI/CD
 

@@ -1,4 +1,4 @@
-import type { ErrorResponseSchemaType } from 'paycrew-validator';
+import type { ErrorResponseSchemaType } from 'validator';
 
 // 参考サイト： https://zenn.dev/praha/articles/a8b72ba36294fe
 export class ApiError extends Error {

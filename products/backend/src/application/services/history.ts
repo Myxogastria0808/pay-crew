@@ -6,7 +6,7 @@ import {
   HistoryGetResponseSchemaType,
   HistoryPostRequestSchemaType,
   HistoryPostResponseSchemaType,
-} from 'paycrew-validator';
+} from 'validator';
 import { HistoryServiceType } from '../model/history';
 import { and, eq } from 'drizzle-orm';
 
@@ -25,13 +25,7 @@ export class HistoryService implements HistoryServiceType {
   }
 
   // データベースのhistoryの行の取得(fromとtoを指定)
-  async selectHistoryDBByFromTo({
-    from,
-    to,
-  }: {
-    from: string;
-    to: string;
-  }): Promise<(typeof history.$inferSelect)[]> {
+  async selectHistoryDBByFromTo({ from, to }: { from: string; to: string }): Promise<(typeof history.$inferSelect)[]> {
     const db = drizzle({ connection: this.hyperdrive });
     const result = await db
       .select()
@@ -61,9 +55,7 @@ export class HistoryService implements HistoryServiceType {
   }
 
   // /api/historyのPOST
-  async postHistoryService(
-    historyPostRequest: HistoryPostRequestSchemaType
-  ): Promise<HistoryPostResponseSchemaType> {
+  async postHistoryService(historyPostRequest: HistoryPostRequestSchemaType): Promise<HistoryPostResponseSchemaType> {
     const match_data = await this.selectHistoryDBByFromTo({
       from: historyPostRequest.from,
       to: historyPostRequest.to,

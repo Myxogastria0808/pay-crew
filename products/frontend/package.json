@@ -39,7 +39,7 @@
     "happy-dom": "catalog:frontend",
     "msw": "catalog:frontend",
     "orval": "catalog:frontend",
-    "paycrew-validator": "workspace:*",
+    "validator": "workspace:*",
     "prettier": "catalog:",
     "swr": "catalog:frontend",
     "typescript": "catalog:",
