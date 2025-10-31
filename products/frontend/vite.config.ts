@@ -1,4 +1,3 @@
-/// <reference types="vitest" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import { sentryVitePlugin } from '@sentry/vite-plugin';
@@ -25,18 +24,5 @@ export default defineConfig({
   ],
   build: {
     sourcemap: true,
-  },
-  test: {
-    environment: 'happy-dom',
-    // @vitest/coverage-v8
-    coverage: {
-      provider: 'v8',
-      enabled: true,
-      reporter: ['html'],
-      include: ['src/**/*.ts'],
-    },
-    // @vitest/ui
-    reporters: ['default', 'html'],
-    api: { port: 51204, strictPort: true },
   },
 });

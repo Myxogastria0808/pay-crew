@@ -3,6 +3,7 @@ import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   test: {
+    environment: 'happy-dom',
     // @vitest/coverage-v8
     coverage: {
       provider: 'v8',
@@ -12,6 +13,6 @@ export default defineConfig({
     },
     // @vitest/ui
     reporters: ['default', 'html'],
-    api: { port: 51206, strictPort: true },
+    api: { port: 51204, strictPort: true },
   },
 });
