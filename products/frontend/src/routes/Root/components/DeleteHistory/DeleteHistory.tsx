@@ -1,28 +1,22 @@
-import { useEffect, useState, type FC } from 'react';
-import { useDeleteApiHistory } from '../../../../api/api';
-import type { DeleteApiHistoryBody } from '../../../../api/api.schemas';
-import type { ApiError } from '../../../../api/apiError';
+import { type FC } from 'react';
 import styles from './DeleteHistory.module.css';
+import { useQueryClient } from '@tanstack/react-query';
+import { $api } from '../../../../api/fetchClient';
 
 type Props = {
   id: number;
 };
 
 const DeleteHistory: FC<Props> = (props: Props) => {
-  const { isMutating, trigger, data, error } = useDeleteApiHistory<ApiError>();
-
-  const [isDeleted, setIsDeleted] = useState<boolean>(false);
-
-  useEffect(() => {
-    if (isMutating) {
-      setIsDeleted(true);
-    } else if (!isMutating && error) {
-      setIsDeleted(false);
-    }
-  }, [isMutating])
+  const queryClient = useQueryClient();
+  const { mutate, isPending, isError, error } = $api.useMutation('delete', '/api/history', {
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: $api.queryOptions('get', '/api/history').queryKey });
+    },
+  });
 
   const deleteHistoryById = async (id: number) => {
-    await trigger({ id: id } satisfies DeleteApiHistoryBody);
+    mutate({ body: { id } });
   };
 
   return (
@@ -32,21 +26,11 @@ const DeleteHistory: FC<Props> = (props: Props) => {
         onClick={async () => {
           await deleteHistoryById(props.id);
         }}
-        disabled={isMutating || isDeleted}
+        disabled={isPending}
       >
-        {
-          isMutating
-          ? "削除中"
-          : isDeleted
-          ? "削除済み"
-          : <img src="/dust-box.png" alt="削除" className={styles.dustBox} />
-        }
+        {isPending ? '削除中' : <img src="/dust-box.png" alt="削除" className={styles.dustBox} />}
       </button>
-      {error ? (
-        <p>削除に失敗しました: {error.message}</p>
-      ) : data !== undefined && data.status === 500 ? (
-        <p>削除に失敗しました: {data.data.message}</p>
-      ) : null}
+      {isError ? <p>削除に失敗しました: {error.message}</p> : null}
     </>
   );
 };

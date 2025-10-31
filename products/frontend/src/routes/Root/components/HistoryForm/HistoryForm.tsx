@@ -3,13 +3,17 @@ import { ErrorMessage } from '@hookform/error-message';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { historyPostRequestSchema, type HistoryPostRequestSchemaType } from 'validator';
 import { useForm, type SubmitHandler } from 'react-hook-form';
-import { usePostApiHistory } from '../../../../api/api';
-import type { ApiError } from '../../../../api/apiError';
-import type { PostApiHistoryBody } from '../../../../api/api.schemas';
 import styles from './HistoryForm.module.css';
+import { useQueryClient } from '@tanstack/react-query';
+import { $api } from '../../../../api/fetchClient';
 
 const HistoryForm: FC = () => {
-  const { isMutating, trigger, data, error } = usePostApiHistory<ApiError>();
+  const queryClient = useQueryClient();
+  const { mutate, isPending, isError, error } = $api.useMutation('post', '/api/history', {
+    onSuccess: (data) => {
+      queryClient.setQueryData($api.queryOptions('get', '/api/history').queryKey, data);
+    },
+  });
 
   const {
     register,
@@ -24,13 +28,8 @@ const HistoryForm: FC = () => {
     },
   });
 
-  const insertHistory = async (data: HistoryPostRequestSchemaType) => {
-    await trigger(data satisfies PostApiHistoryBody);
-  };
-
   const onSubmit: SubmitHandler<HistoryPostRequestSchemaType> = async (formData) => {
-    // 送信のフックを発火させる
-    await insertHistory(formData);
+    mutate({ body: formData });
   };
 
   return (
@@ -53,20 +52,10 @@ const HistoryForm: FC = () => {
         <ErrorMessage errors={errors} name="amount" />
       </div>
 
-      <button type="submit" disabled={isMutating} className={styles.buttonAdd}>
+      <button type="submit" disabled={isPending} className={styles.buttonAdd}>
         追加
       </button>
-      <p>
-        {isMutating
-          ? '追加中...'
-          : error
-            ? `追加に失敗しました: ${error.message}`
-            : data === undefined
-              ? ''
-              : data.status === 500
-                ? `追加に失敗しました: ${data.data.message}`
-                : '追加しました'}
-      </p>
+      <p>{isPending ? '追加中...' : isError ? `追加に失敗しました: ${error.message}` : '追加しました'}</p>
     </form>
   );
 };

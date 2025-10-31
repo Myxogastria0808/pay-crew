@@ -91,10 +91,10 @@ docker compose down --rmi all --volumes
 pnpm run backend:openapi
 ```
 
-2. `orval`を実行して、コードを生成
+2. `openapi-react-query`を実行して、コードを生成
 
 ```sh
-pnpm run frontend:orval
+pnpm run frontend:openapi
 ```
 
 ## 開発時のデータベースの中身を確認する
@@ -129,10 +129,8 @@ pnpm run backend:migrate
 - React Router (for routing)
 - react-hook-form (for form handling)
   - validator: Zod (with @hookform/resolvers)
-- Orval (for generating API client and mock from OpenAPI spec)
-  - fetch API (for data fetching)
-  - SWR (for data fetching)
-  - MSW (mocking API)
+- typescript-react-query (type safe tiny wrapper for @tanstack/react-query)
+- msw (mocking API)
 - Sentry (for error tracking)
 
 #### [Live Demo](https://pay-crew.yukiosada.work/)
