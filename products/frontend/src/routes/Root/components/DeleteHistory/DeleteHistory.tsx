@@ -7,10 +7,9 @@ type Props = {
   id: number;
 };
 
-const queryClient = useQueryClient();
-
 const DeleteHistory: FC<Props> = (props: Props) => {
-  const { mutate, isPending, isError, error } = $api.useMutation('delete', '/api/history', {
+  const queryClient = useQueryClient();
+  const { mutate, isPending, isSuccess, isError, error } = $api.useMutation('delete', '/api/history', {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: $api.queryOptions('get', '/api/history').queryKey });
     },
@@ -29,7 +28,13 @@ const DeleteHistory: FC<Props> = (props: Props) => {
         }}
         disabled={isPending}
       >
-        {isPending ? '削除中' : <img src="/dust-box.png" alt="削除" className={styles.dustBox} />}
+        {isPending ? (
+          '削除中'
+        ) : isSuccess ? (
+          '削除完了'
+        ) : (
+          <img src="/dust-box.png" alt="削除" className={styles.dustBox} />
+        )}
       </button>
       {isError ? <p>削除に失敗しました: {error.message}</p> : null}
     </>
