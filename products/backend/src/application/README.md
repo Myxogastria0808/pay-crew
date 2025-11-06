@@ -18,7 +18,7 @@ export type HistoryServiceType = {
   deleteHistoryService: (historyDeleteRequest: HistoryDeleteRequestSchemaType) => Promise<HistoryDeleteResponseSchemaType>
 };
 ```
-APIのGET,POST,DELETEなどそれぞれに対応する関数の型定義。引数の型と返り値の型は"paycrew-validator"で定義されたものをimportする。
+APIのGET,POST,DELETEなどそれぞれに対応する関数の型定義。引数の型と返り値の型は"validator"で定義されたものをimportする。
 
 ## service
 

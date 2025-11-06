@@ -13,7 +13,7 @@ FrontendとBackend共にこのpackageを参照することで、
 flowchart TD
     frontend["products/frontend"]
     backend["products/backend"]
-    validator["products/paycrew-validator"]
+    validator["products/validator"]
 
     frontend --> validator
     backend --> validator

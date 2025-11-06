@@ -26,7 +26,7 @@
     "@vitest/ui": "catalog:",
     "tsx": "catalog:node",
     "drizzle-kit": "catalog:backend",
-    "paycrew-validator": "workspace:*",
+    "validator": "workspace:*",
     "wrangler": "catalog:backend",
     "vitest": "catalog:",
     "zod-openapi-share": "catalog:backend"

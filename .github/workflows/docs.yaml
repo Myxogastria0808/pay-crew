@@ -43,10 +43,10 @@ jobs:
         run: |
           mkdir -p ./docs/dist/vitest/frontend/
           mv ./products/frontend/html/* ./docs/dist/vitest/frontend/
-      - name: Move Vitest UI Report (paycrew-validator)
+      - name: Move Vitest UI Report (validator)
         run: |
-          mkdir -p ./docs/dist/vitest/paycrew-validator/
-          mv ./products/paycrew-validator/html/* ./docs/dist/vitest/paycrew-validator/
+          mkdir -p ./docs/dist/vitest/validator/
+          mv ./products/validator/html/* ./docs/dist/vitest/validator/
       - name: Move Vitest UI Report (sentry-proxy)
         run: |
           mkdir -p ./docs/dist/vitest/sentry-proxy/
@@ -64,10 +64,10 @@ jobs:
         run: |
           mkdir -p ./docs/dist/coverage/frontend/
           mv ./products/frontend/coverage/* ./docs/dist/coverage/frontend/
-      - name: Move Coverage Report (paycrew-validator)
+      - name: Move Coverage Report (validator)
         run: |
-          mkdir -p ./docs/dist/coverage/paycrew-validator/
-          mv ./products/paycrew-validator/coverage/* ./docs/dist/coverage/paycrew-validator/
+          mkdir -p ./docs/dist/coverage/validator/
+          mv ./products/validator/coverage/* ./docs/dist/coverage/validator/
       - name: Move Coverage Report (sentry-proxy)
         run: |
           mkdir -p ./docs/dist/coverage/sentry-proxy/

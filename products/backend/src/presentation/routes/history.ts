@@ -9,7 +9,7 @@ import {
   historyPostRequestSchema,
   historyDeleteRequestSchema,
   historyDeleteResponseSchema,
-} from 'paycrew-validator';
+} from 'validator';
 
 const history = new OpenAPIHono<{
   Bindings: Bindings;

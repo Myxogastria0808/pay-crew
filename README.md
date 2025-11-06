@@ -91,10 +91,10 @@ docker compose down --rmi all --volumes
 pnpm run backend:openapi
 ```
 
-2. `orval`を実行して、コードを生成
+2. `openapi-react-query`を実行して、コードを生成
 
 ```sh
-pnpm run frontend:orval
+pnpm run frontend:openapi
 ```
 
 ## 開発時のデータベースの中身を確認する
@@ -129,10 +129,8 @@ pnpm run backend:migrate
 - React Router (for routing)
 - react-hook-form (for form handling)
   - validator: Zod (with @hookform/resolvers)
-- Orval (for generating API client and mock from OpenAPI spec)
-  - fetch API (for data fetching)
-  - SWR (for data fetching)
-  - MSW (mocking API)
+- typescript-react-query (type safe tiny wrapper for @tanstack/react-query)
+- msw (mocking API)
 - Sentry (for error tracking)
 
 #### [Live Demo](https://pay-crew.yukiosada.work/)
@@ -233,22 +231,22 @@ pnpm run backend:migrate
 #### [Coverage Report](https://myxogastria0808.github.io/pay-crew/coverage/setup/)
 - https://myxogastria0808.github.io/pay-crew/coverage/setup/
 
-### Validator (products/paycrew-validator)
+### Validator (products/validator)
 
 - TypeScript
 - Zod
 
-#### [Source Code](https://github.com/Myxogastria0808/pay-crew/tree/dev/products/paycrew-validator/)
-- https://github.com/Myxogastria0808/pay-crew/tree/dev/products/paycrew-validator/
+#### [Source Code](https://github.com/Myxogastria0808/pay-crew/tree/dev/products/validator/)
+- https://github.com/Myxogastria0808/pay-crew/tree/dev/products/validator/
 
-#### [Details](https://github.com/Myxogastria0808/pay-crew/tree/dev/products/paycrew-validator/README.md)
-- https://github.com/Myxogastria0808/pay-crew/tree/dev/products/paycrew-validator/README.md
+#### [Details](https://github.com/Myxogastria0808/pay-crew/tree/dev/products/validator/README.md)
+- https://github.com/Myxogastria0808/pay-crew/tree/dev/products/validator/README.md
 
-#### [Vitest UI Report](https://myxogastria0808.github.io/pay-crew/vitest/paycrew-validator/)
-- https://myxogastria0808.github.io/pay-crew/vitest/paycrew-validator/
+#### [Vitest UI Report](https://myxogastria0808.github.io/pay-crew/vitest/validator/)
+- https://myxogastria0808.github.io/pay-crew/vitest/validator/
 
-#### [Coverage Report](https://myxogastria0808.github.io/pay-crew/coverage/paycrew-validator/)
-- https://myxogastria0808.github.io/pay-crew/coverage/paycrew-validator/
+#### [Coverage Report](https://myxogastria0808.github.io/pay-crew/coverage/validator/)
+- https://myxogastria0808.github.io/pay-crew/coverage/validator/
 
 ## CI/CD
 

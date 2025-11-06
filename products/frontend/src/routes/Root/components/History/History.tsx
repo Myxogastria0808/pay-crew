@@ -1,20 +1,16 @@
 import { type FC } from 'react';
-import { useGetApiHistory } from '../../../../api/api';
-import { type ApiError } from '../../../../api/apiError';
 import { DeleteHistory } from '..';
 import styles from './History.module.css';
+import { $api } from '../../../../api/fetchClient';
 
 const History: FC = () => {
-  const { data, error, isLoading } = useGetApiHistory<ApiError>();
-
+  const { data, isLoading, isError, error } = $api.useQuery('get', '/api/history');
   return (
     <>
       {isLoading ? (
         <p>読み込み中</p>
-      ) : error ? (
+      ) : isError ? (
         <p>読み込みエラー: {error.message}</p>
-      ) : data?.status !== 200 ? (
-        <p>読み込みエラー: {data?.data.message}</p>
       ) : (
         <table className={styles.historyList}>
           <thead>
@@ -26,19 +22,25 @@ const History: FC = () => {
             </tr>
           </thead>
           <tbody>
-            {data.data
-              .slice()
-              .reverse()
-              .map((v) => (
-                <tr className={styles.historyItem} key={v.id}>
-                  <td className={styles.historyFromText}>{v.from}</td>
-                  <td className={styles.historyToText}>{v.to}</td>
-                  <td className={styles.historyAmountText}>{v.amount}</td>
-                  <td>
-                    <DeleteHistory id={v.id} />
-                  </td>
-                </tr>
-              ))}
+            {Array.isArray(data) ? (
+              data
+                .slice()
+                .reverse()
+                .map((v) => (
+                  <tr className={styles.historyItem} key={v.id}>
+                    <td className={styles.historyFromText}>{v.from}</td>
+                    <td className={styles.historyToText}>{v.to}</td>
+                    <td className={styles.historyAmountText}>{v.amount}</td>
+                    <td>
+                      <DeleteHistory id={v.id} />
+                    </td>
+                  </tr>
+                ))
+            ) : (
+              <tr>
+                <td>履歴がありません</td>
+              </tr>
+            )}
           </tbody>
         </table>
       )}

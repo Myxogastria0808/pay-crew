@@ -4,7 +4,7 @@ import {
   HistoryPostResponseSchemaType,
   HistoryDeleteRequestSchemaType,
   HistoryDeleteResponseSchemaType,
-} from 'paycrew-validator';
+} from 'validator';
 
 export type HistoryServiceType = {
   // /api/historyのGET

@@ -1,7 +1,7 @@
 import { OpenAPIHono } from '@hono/zod-openapi';
 import { HTTPException } from 'hono/http-exception';
 import { cors } from 'hono/cors';
-import type { ErrorResponseSchemaType } from 'paycrew-validator';
+import type { ErrorResponseSchemaType } from 'validator';
 import { Scalar } from '@scalar/hono-api-reference';
 import type { Bindings } from './presentation/share/binding';
 import { default as root } from './presentation';
