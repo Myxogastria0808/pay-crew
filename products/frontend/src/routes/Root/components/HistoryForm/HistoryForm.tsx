@@ -10,8 +10,8 @@ import { $api } from '../../../../api/fetchClient';
 const HistoryForm: FC = () => {
   const queryClient = useQueryClient();
   const { mutate, isPending, isError, error } = $api.useMutation('post', '/api/history', {
-    onSuccess: (data) => {
-      queryClient.setQueryData($api.queryOptions('get', '/api/history').queryKey, data);
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: $api.queryOptions('get', '/api/history').queryKey });
     },
   });
 
