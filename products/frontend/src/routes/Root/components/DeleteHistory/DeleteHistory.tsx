@@ -7,8 +7,9 @@ type Props = {
   id: number;
 };
 
+const queryClient = useQueryClient();
+
 const DeleteHistory: FC<Props> = (props: Props) => {
-  const queryClient = useQueryClient();
   const { mutate, isPending, isError, error } = $api.useMutation('delete', '/api/history', {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: $api.queryOptions('get', '/api/history').queryKey });
