@@ -7,9 +7,8 @@ import styles from './HistoryForm.module.css';
 import { useQueryClient } from '@tanstack/react-query';
 import { $api } from '../../../../api/fetchClient';
 
-const queryClient = useQueryClient();
-
 const HistoryForm: FC = () => {
+  const queryClient = useQueryClient();
   const { mutate, isPending, isError, error } = $api.useMutation('post', '/api/history', {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: $api.queryOptions('get', '/api/history').queryKey });
