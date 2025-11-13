@@ -181,30 +181,6 @@ pnpm run backend:migrate
 - production
   - Xata Lite
 
-### Proxy Server from Sentry to Discord (products/sentry-proxy)
-
-- TypeScript
-- Hono (Web Framework)
-- fetch API (for calling Webhook)
-
-#### [Web UI for OpenAPI](https://pay-crew-sentry.yukiosada.work/docs)
-- https://pay-crew-sentry.yukiosada.work/docs
-
-#### [OpenAPI Spec](https://pay-crew-sentry.yukiosada.work/openapi)
-- https://pay-crew-sentry.yukiosada.work/openapi
-
-#### [Source Code](https://github.com/Myxogastria0808/pay-crew/tree/dev/products/sentry-proxy/)
-- https://github.com/Myxogastria0808/pay-crew/tree/dev/products/sentry-proxy/
-
-#### [Details](https://github.com/Myxogastria0808/pay-crew/tree/dev/products/sentry-proxy/README.md)
-- https://github.com/Myxogastria0808/pay-crew/tree/dev/products/sentry-proxy/README.md
-
-#### [Vitest UI Report](https://myxogastria0808.github.io/pay-crew/vitest/sentry-proxy/)
-- https://myxogastria0808.github.io/pay-crew/vitest/sentry-proxy/
-
-#### [Coverage Report](https://myxogastria0808.github.io/pay-crew/coverage/sentry-proxy/)
-- https://myxogastria0808.github.io/pay-crew/coverage/sentry-proxy/
-
 ### Docs (docs)
 
 - Astro
