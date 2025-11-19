@@ -15,11 +15,19 @@ export default {
   async fetch(request, env, ctx): Promise<Response> {
     const webhookUrl =
       'https://discord.com/api/webhooks/1430405385671671858/EZZlF3vrhVw-zwhBg9OVVuINsOJHSc-NneYRfVKzR-V32Ng76lYLcByOnVKCkNuVrIfG';
-    fetch(webhookUrl, {
-      method: 'post',
+
+    const res = await fetch(webhookUrl, {
+      method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ content: 'ふなっしー!!!!!' }),
     });
-    return new Response('Hello World!');
+
+    if (!res.ok) {
+      const text = await res.text();
+      console.error('Discord webhook failed:', res.status, text);
+      return new Response('Failed to send webhook', { status: 500 });
+    }
+
+    return new Response('Webhook sent!');
   },
 } satisfies ExportedHandler<Env>;
