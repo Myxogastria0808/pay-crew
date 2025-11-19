@@ -20,7 +20,7 @@ const ReminderTest: FC<Props> = (props) => {
     fetch(discordWebhookUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ content: `現在残っている返金\n${message}` }),
+      body: JSON.stringify({ content: `==========\n現在残っている返金\n${message}` }),
     });
   }
 
