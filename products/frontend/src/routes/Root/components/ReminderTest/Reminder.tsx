@@ -10,7 +10,7 @@ type Props = {
 }
 
 const ReminderTest: FC<Props> = (props) => {
-  const discordWebhookUrl = "https://discord.com/api/webhooks/1430405385671671858/EZZlF3vrhVw-zwhBg9OVVuINsOJHSc-NneYRfVKzR-V32Ng76lYLcByOnVKCkNuVrIfG";
+  const discordWebhookUrl = "https://discord.com/api/webhooks/1440560971348185088/sE8RwgjZnb6fqSMEb366mJqlSbE1dEIS39pgnTAjuksDjiNS4XXFCvvWmFAvjOzxs9YV";
 
   const onClick = () => {
     const message = props.historyData === undefined
