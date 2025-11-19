@@ -1,5 +1,5 @@
 import { type FC } from 'react';
-import { DeleteHistory } from '..';
+import { DeleteHistory, ReminderTest } from '..';
 import styles from './History.module.css';
 import { $api } from '../../../../api/fetchClient';
 
@@ -44,6 +44,7 @@ const History: FC = () => {
           </tbody>
         </table>
       )}
+      <ReminderTest historyData={data} />
     </>
   );
 };
