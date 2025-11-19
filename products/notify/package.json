@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "wrangler": "wrangler",
     "dev": "wrangler dev"
   },
   "devDependencies": {

@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "wrangler dev --config wrangler.local.jsonc",
+    "wrangler": "wrangler",
     "generate": "drizzle-kit generate",
     "migrate": "drizzle-kit migrate",
     "openapi": "tsx src/openapi/index.ts",
