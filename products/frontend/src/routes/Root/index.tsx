@@ -1,6 +1,5 @@
 // import { Link } from 'react-router';
 import { HistoryForm, History } from './components';
-import ReminderTest from './components/ReminderTest';
 import styles from './index.module.css';
 import type { FC } from 'react';
 
@@ -33,8 +32,6 @@ const Root: FC = () => {
           <h2>リマインダー通知</h2>
           <p className={styles.reminderMessage}>現在通知はありません。</p>
         </div>
-
-        <ReminderTest />
       </div>
     </main>
   );
