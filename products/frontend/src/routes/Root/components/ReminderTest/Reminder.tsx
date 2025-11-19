@@ -15,12 +15,12 @@ const ReminderTest: FC<Props> = (props) => {
   const onClick = () => {
     const message = props.historyData === undefined
     ? "No data"
-    : props.historyData.map((v) => `返金の流れ: ${v.to} -> ${v.from}\n\t金額: ${v.amount}`).join("\n");
+    : props.historyData.map((v) => `返金の流れ: ${v.to} -> ${v.from}\n\t金額: ${v.amount}\n`).join("\n");
 
     fetch(discordWebhookUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ content: `現在残っている返金\n${message}` }),
+      body: JSON.stringify({ content: `==========\n現在残っている返金\n${message}` }),
     });
   }
 
