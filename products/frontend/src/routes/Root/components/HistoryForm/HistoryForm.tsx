@@ -9,7 +9,7 @@ import { $api } from '../../../../api/fetchClient';
 
 const HistoryForm: FC = () => {
   const queryClient = useQueryClient();
-  const { mutate, isPending, isError, error } = $api.useMutation('post', '/api/history', {
+  const { mutate, isSuccess, isPending, isError, error } = $api.useMutation('post', '/api/history', {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: $api.queryOptions('get', '/api/history').queryKey });
     },
@@ -55,7 +55,9 @@ const HistoryForm: FC = () => {
       <button type="submit" disabled={isPending} className={styles.buttonAdd}>
         追加
       </button>
-      <p>{isPending ? '追加中...' : isError ? `追加に失敗しました: ${error.message}` : '追加しました'}</p>
+      <p>
+        {isPending ? '追加中...' : isError ? `追加に失敗しました: ${error.message}` : isSuccess ? '追加しました' : ''}
+      </p>
     </form>
   );
 };
