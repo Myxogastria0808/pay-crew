@@ -13,12 +13,17 @@
 
 import { reminder } from './reminder';
 
+export interface Env {
+  API_URL: string;
+}
+
 export default {
   async scheduled(controller: ScheduledController, env: Env, ctx: ExecutionContext) {
-    const webhookUrl = "https://discord.com/api/webhooks/1440560971348185088/sE8RwgjZnb6fqSMEb366mJqlSbE1dEIS39pgnTAjuksDjiNS4XXFCvvWmFAvjOzxs9YV";
+    const webhookUrl =
+      'https://discord.com/api/webhooks/1440560971348185088/sE8RwgjZnb6fqSMEb366mJqlSbE1dEIS39pgnTAjuksDjiNS4XXFCvvWmFAvjOzxs9YV';
 
     // DBのデータを取得
-    const data: string = await reminder();
+    const data: string = await reminder(env.API_URL);
 
     const res = await fetch(webhookUrl, {
       method: 'POST',
@@ -32,21 +37,6 @@ export default {
     }
   },
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
-    const webhookUrl =
-      'https://discord.com/api/webhooks/1430405385671671858/EZZlF3vrhVw-zwhBg9OVVuINsOJHSc-NneYRfVKzR-V32Ng76lYLcByOnVKCkNuVrIfG';
-
-    const res = await fetch(webhookUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ content: 'アクセスしてくれて、ありがとうなっしー!!!' }),
-    });
-
-    if (!res.ok) {
-      const text = await res.text();
-      console.error('Discord webhook failed:', res.status, text);
-      return new Response('Failed to send webhook', { status: 500 });
-    }
-
-    return new Response('Webhook sent!');
+    return new Response('Hello World!');
   },
 } satisfies ExportedHandler<Env>;
