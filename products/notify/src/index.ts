@@ -12,14 +12,29 @@
  */
 
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
+  async scheduled(controller: ScheduledController, env: Env, ctx: ExecutionContext) {
     const webhookUrl =
       'https://discord.com/api/webhooks/1430405385671671858/EZZlF3vrhVw-zwhBg9OVVuINsOJHSc-NneYRfVKzR-V32Ng76lYLcByOnVKCkNuVrIfG';
 
     const res = await fetch(webhookUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ content: 'ふなっしー!!!!!' }),
+      body: JSON.stringify({ content: 'cron実行なっしー!!!' }),
+    });
+
+    if (!res.ok) {
+      const text = await res.text();
+      console.error('Discord webhook failed:', res.status, text);
+    }
+  },
+  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+    const webhookUrl =
+      'https://discord.com/api/webhooks/1430405385671671858/EZZlF3vrhVw-zwhBg9OVVuINsOJHSc-NneYRfVKzR-V32Ng76lYLcByOnVKCkNuVrIfG';
+
+    const res = await fetch(webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ content: 'アクセスしてくれて、ありがとうなっしー!!!' }),
     });
 
     if (!res.ok) {
