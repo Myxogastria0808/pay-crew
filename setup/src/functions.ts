@@ -1,7 +1,7 @@
 import * as dotenv from 'dotenv';
 import { DotEnvCaster } from 'dotenv-caster';
 import fs from 'fs';
-import { DatabaseConfig, EnvConfig, FrontendConfig } from './types';
+import { BackendConfig, EnvConfig, FrontendConfig, NotifyConfig } from './types';
 
 export const dotenvLoader = (): EnvConfig => {
   dotenv.config();
@@ -41,16 +41,20 @@ export const dotenvLoader = (): EnvConfig => {
     sentryOrg,
     sentryProject,
   };
-  const backendConfig: DatabaseConfig = {
+  const backendConfig: BackendConfig = {
     postgresUser,
     postgresPassword,
     postgresDb,
     postgresPort,
   };
+  const notifyConfig: NotifyConfig = {
+    apiUrl: viteApiUrl,
+  };
 
   const envConfig = {
     frontendConfig,
     backendConfig,
+    notifyConfig,
   };
 
   return envConfig;

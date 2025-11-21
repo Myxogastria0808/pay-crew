@@ -1,21 +1,14 @@
-type historyDatasType = {
-  id: number;
-  from: string;
-  to: string;
-  amount: number;
-}[];
+import { type HistoryGetResponseSchemaType } from 'validator';
 
-export const reminder = async () => {
-  const historyApiUrl = "http://localhost:8787/api/history";
-
-  const response = await fetch(historyApiUrl, {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
+export const reminder = async (api_url: string): Promise<string> => {
+  const response = await fetch(api_url + '/api/history', {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
   });
 
-  const historyData = await response.json<historyDatasType>();
+  const historyData = await response.json<HistoryGetResponseSchemaType>();
 
-  const message = historyData.map((v) => `返金の流れ: ${v.to} -> ${v.from}\n\t金額: ${v.amount}\n`).join("\n");
+  const message = historyData.map((v) => `返金の流れ: ${v.to} -> ${v.from}\n\t金額: ${v.amount}\n`).join('\n');
 
   return `========================================\n現在残っている返金\n${message}\n========================================`;
 };

@@ -20,9 +20,13 @@ jobs:
         uses: cachix/install-nix-action@v31
         with:
           nix_path: nixpkgs=channel:nixpkgs-unstable
-      # Build
-      - name: Build
+      # Install Dependencies
+      - name: Install Dependencies
         run: nix develop --command bash -c "pnpm i"
+      # Replace API_URL in ./products/notify/wrangler.jsonc
+      - name: Replace API_URL
+        run: |
+          sed -i 's/"API_URL": "",/"API_URL": "${{ secrets.VITE_API_URL }}",/' ./products/notify/wrangler.jsonc
       # Deploy Frontend to Cloudflare Workers
       - name: Deploy Frontend to Cloudflare Workers
         uses: cloudflare/wrangler-action@v3
