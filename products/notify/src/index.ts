@@ -15,8 +15,7 @@ import { reminder } from './reminder';
 
 export default {
   async scheduled(controller: ScheduledController, env: Env, ctx: ExecutionContext) {
-    const webhookUrl =
-      'https://discord.com/api/webhooks/1430405385671671858/EZZlF3vrhVw-zwhBg9OVVuINsOJHSc-NneYRfVKzR-V32Ng76lYLcByOnVKCkNuVrIfG';
+    const webhookUrl = "https://discord.com/api/webhooks/1440560971348185088/sE8RwgjZnb6fqSMEb366mJqlSbE1dEIS39pgnTAjuksDjiNS4XXFCvvWmFAvjOzxs9YV";
 
     // DBのデータを取得
     const data: string = await reminder();
