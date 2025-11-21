@@ -11,15 +11,20 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
+import { reminder } from './reminder';
+
 export default {
   async scheduled(controller: ScheduledController, env: Env, ctx: ExecutionContext) {
     const webhookUrl =
       'https://discord.com/api/webhooks/1430405385671671858/EZZlF3vrhVw-zwhBg9OVVuINsOJHSc-NneYRfVKzR-V32Ng76lYLcByOnVKCkNuVrIfG';
 
+    // DBのデータを取得
+    const data: string = await reminder();
+
     const res = await fetch(webhookUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ content: 'cron実行なっしー!!!' }),
+      body: JSON.stringify({ content: data }),
     });
 
     if (!res.ok) {
