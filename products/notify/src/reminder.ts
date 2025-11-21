@@ -1,7 +1,7 @@
 import { type HistoryGetResponseSchemaType } from 'validator';
 
 export const reminder = async (api_url: string): Promise<string> => {
-  const response = await fetch(api_url + '/history', {
+  const response = await fetch(api_url + '/api/history', {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
   });

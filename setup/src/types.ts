@@ -1,6 +1,7 @@
 export type EnvConfig = {
   frontendConfig: FrontendConfig;
-  backendConfig: DatabaseConfig;
+  backendConfig: BackendConfig;
+  notifyConfig: NotifyConfig;
 };
 
 export type FrontendConfig = {
@@ -11,9 +12,13 @@ export type FrontendConfig = {
   sentryProject: string;
 };
 
-export type DatabaseConfig = {
+export type BackendConfig = {
   postgresUser: string;
   postgresPassword: string;
   postgresDb: string;
   postgresPort: number;
+};
+
+export type NotifyConfig = {
+  apiUrl: string;
 };
