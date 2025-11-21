@@ -33,6 +33,11 @@ cronジョブを設定することで、Cloudflare Workers上で
 }
 ```
 
+また、ローカル環境の設定ファイルは、`wrangler.local.jsonc`に記述する。
+このファイルは、`pnpm run setup:generate`コマンドで
+自動生成されるため、手動で作成する必要はない。
+ローカル環境の設定ファイルに追加で設定を行いたい場合は、`wrangler.local.jsonc`に追記すれば良い。
+
 ### `index.ts`
 
 scheduleハンドラを実装することで、cronジョブの処理を定義できる。
