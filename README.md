@@ -174,6 +174,35 @@ pnpm run backend:migrate
 #### [Coverage Report](https://myxogastria0808.github.io/pay-crew/coverage/backend/)
 - https://myxogastria0808.github.io/pay-crew/coverage/backend/
 
+### Validator (products/validator)
+
+- TypeScript
+- Zod
+
+#### [Source Code](https://github.com/Myxogastria0808/pay-crew/tree/dev/products/validator/)
+- https://github.com/Myxogastria0808/pay-crew/tree/dev/products/validator/
+
+#### [Details](https://github.com/Myxogastria0808/pay-crew/tree/dev/products/validator/README.md)
+- https://github.com/Myxogastria0808/pay-crew/tree/dev/products/validator/README.md
+
+#### [Vitest UI Report](https://myxogastria0808.github.io/pay-crew/vitest/validator/)
+- https://myxogastria0808.github.io/pay-crew/vitest/validator/
+
+#### [Coverage Report](https://myxogastria0808.github.io/pay-crew/coverage/validator/)
+- https://myxogastria0808.github.io/pay-crew/coverage/validator/
+
+### Notify (products/notify)
+
+- TypeScript
+- Cloudflare Workers
+- Discord Webhook
+
+#### [Source Code](https://github.com/Myxogastria0808/pay-crew/tree/dev/products/notify/)
+- https://github.com/Myxogastria0808/pay-crew/tree/dev/products/notify/
+
+#### [Details](https://github.com/Myxogastria0808/pay-crew/tree/dev/products/notify/README.md)
+- https://github.com/Myxogastria0808/pay-crew/tree/dev/products/notify/README.md
+
 ### Database
 
 - development
@@ -206,23 +235,6 @@ pnpm run backend:migrate
 
 #### [Coverage Report](https://myxogastria0808.github.io/pay-crew/coverage/setup/)
 - https://myxogastria0808.github.io/pay-crew/coverage/setup/
-
-### Validator (products/validator)
-
-- TypeScript
-- Zod
-
-#### [Source Code](https://github.com/Myxogastria0808/pay-crew/tree/dev/products/validator/)
-- https://github.com/Myxogastria0808/pay-crew/tree/dev/products/validator/
-
-#### [Details](https://github.com/Myxogastria0808/pay-crew/tree/dev/products/validator/README.md)
-- https://github.com/Myxogastria0808/pay-crew/tree/dev/products/validator/README.md
-
-#### [Vitest UI Report](https://myxogastria0808.github.io/pay-crew/vitest/validator/)
-- https://myxogastria0808.github.io/pay-crew/vitest/validator/
-
-#### [Coverage Report](https://myxogastria0808.github.io/pay-crew/coverage/validator/)
-- https://myxogastria0808.github.io/pay-crew/coverage/validator/
 
 ## CI/CD
 

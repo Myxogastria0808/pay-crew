@@ -10,7 +10,7 @@ type Props = {
 }
 
 const ReminderTest: FC<Props> = (props) => {
-  const discordWebhookUrl = "https://discord.com/api/webhooks/1440560971348185088/sE8RwgjZnb6fqSMEb366mJqlSbE1dEIS39pgnTAjuksDjiNS4XXFCvvWmFAvjOzxs9YV";
+  const discordWebhookUrl = "https://discord.com/api/webhooks/1430405385671671858/EZZlF3vrhVw-zwhBg9OVVuINsOJHSc-NneYRfVKzR-V32Ng76lYLcByOnVKCkNuVrIfG";
 
   const onClick = () => {
     if (confirm("Discordにリマインダが送信されます。よろしいですか？")) {
@@ -21,10 +21,10 @@ const ReminderTest: FC<Props> = (props) => {
       fetch(discordWebhookUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ content: `==========\n現在残っている返金\n${message}` }),
+        body: JSON.stringify({ content: `==========\n@gangbujun_25033 \n現在残っている返金\n${message}` }),
       });
     }
-  }
+  };
 
   return(
     <button onClick={onClick}>リマインダーを送る</button>

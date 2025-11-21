@@ -471,6 +471,9 @@ importers:
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
+      validator:
+        specifier: workspace:*
+        version: link:../validator
       vitest:
         specifier: 'catalog:'
         version: 4.0.5(@types/debug@4.1.12)(@types/node@24.9.2)(@vitest/ui@4.0.5)(happy-dom@20.0.10)(tsx@4.20.6)(yaml@2.8.1)
