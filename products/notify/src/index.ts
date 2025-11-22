@@ -30,11 +30,6 @@ export default {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ content: data }),
     });
-
-    if (!res.ok) {
-      const text = await res.text();
-      console.error('Discord webhook failed:', res.status, text);
-    }
   },
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     return new Response('Hello World!');
