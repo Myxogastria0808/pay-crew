@@ -26,7 +26,7 @@ jobs:
       # Inject hyperdrive id in ./products/backend/wrangler.toml
       - name: Inject hyperdrive id
         run: |
-          sed -i 's/"id": ""/"id": "${{ secrets.CLOUDFLARE_HYPERDRIVE_ID }}"/' ./products/backend/wrangler.jsonc
+          sed -i 's|"id": ""|"id": "${{ secrets.CLOUDFLARE_HYPERDRIVE_ID }}"|' ./products/backend/wrangler.jsonc
       # Build & Deploy Backend to Cloudflare Workers
       - name: Build & Deploy Backend to Cloudflare Workers
         uses: cloudflare/wrangler-action@v3
